@@ -1,0 +1,1 @@
+alphacloud项目统用依赖项目，提供maven配置第三方jar，以及util类
