@@ -8,7 +8,6 @@
 		<groupId>com.moseeker</groupId>
 		<artifactId>alphacloud</artifactId>
 		<version>1.0.0</version>
-		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<properties>
 		<swagger2.version>2.7.0</swagger2.version>
