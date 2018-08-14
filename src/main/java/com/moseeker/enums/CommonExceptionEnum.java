@@ -7,6 +7,8 @@ public enum CommonExceptionEnum implements BaseEnum<CommonExceptionEnum> {
 	error10002("10002", "服务不可用"),//
 	error10003("10003", "未知错误"),//
 	error10004("10004", "端口错误"),//
+    error10005("10005", "缺少必要地校验参数！"),//
+    error10006("10006", "还未校验"),
 	;
 
 	private String key;
