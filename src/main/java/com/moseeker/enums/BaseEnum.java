@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 
 public interface BaseEnum<E extends Enum<E>> {
 
+
 	String getKey();
 
 	String getValue();

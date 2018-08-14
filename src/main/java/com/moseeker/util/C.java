@@ -334,4 +334,6 @@ public final class C {
 
     public static final int HKAMTW = 861;
 
+    public static final int UPPER_LIMIT = 500;  //接口处理的数据量的上限
+
 }
