@@ -1,5 +1,6 @@
 package com.moseeker.exception;
 
+import com.moseeker.enums.BaseEnum;
 import com.moseeker.enums.CommonExceptionEnum;
 
 public class BaseException extends RuntimeException {
@@ -28,6 +29,12 @@ public class BaseException extends RuntimeException {
 		this.errorCode = commonExceptionEnum.getKey();
 		this.errorMessage = commonExceptionEnum.getValue();
 	}
+
+    public BaseException(BaseEnum commonExceptionEnum) {
+        super(commonExceptionEnum.getValue());
+        this.errorCode = commonExceptionEnum.getKey();
+        this.errorMessage = commonExceptionEnum.getValue();
+    }
 
 	public BaseException(String errorCode, String errorMessage, String... args) {
 		for (int i = 0; i < args.length; i++) {
