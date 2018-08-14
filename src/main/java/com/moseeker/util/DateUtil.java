@@ -14,6 +14,16 @@ import org.springframework.util.StringUtils;
  */
 public final class DateUtil {
 
+	public static final String SHOT_DATE = "yy-MM-dd";
+	public static final String NORMAL_DATE = "yyyy-MM-dd";
+	public static final String SHOT_TIME = "yyyy-MM-dd HH:mm:ss";
+	public static final String LONG_TIME = "yyyy-MM-dd HH:mm:ss sss";
+
+	private static final SimpleDateFormat SHOT_DATE_SDF = new SimpleDateFormat(SHOT_DATE);
+	private static final SimpleDateFormat normalDateSDF = new SimpleDateFormat(NORMAL_DATE);
+	private static final SimpleDateFormat shotTimeSDF = new SimpleDateFormat(SHOT_TIME);
+	private static final SimpleDateFormat longTimeSDF = new SimpleDateFormat(LONG_TIME);
+
 	public static final Date currentTime() {
 		return new Date();
 	}
@@ -180,4 +190,42 @@ public final class DateUtil {
 		return df;
 	}
 
+	public static String dateToNormalDate(Date date) {
+		synchronized(normalDateSDF) {
+			return normalDateSDF.format(date);
+		}
+	}
+
+	public static String dateToShortTime(Date date) {
+		synchronized (shotTimeSDF) {
+			return shotTimeSDF.format(date);
+		}
+	}
+
+	public static String dateToLongTime(Date date) {
+		synchronized (longTimeSDF) {
+			return longTimeSDF.format(date);
+		}
+	}
+
+	public static Date shortDateToDate(String shortDate) throws ParseException {
+		synchronized (SHOT_DATE_SDF) {
+			Date date = SHOT_DATE_SDF.parse(shortDate);
+			return date;
+		}
+	}
+
+	public static Date nomalDateToDate(String normalDate) throws ParseException {
+		synchronized (normalDateSDF) {
+			Date date = normalDateSDF.parse(normalDate);
+			return date;
+		}
+	}
+
+	public static Date shortTimeToDate(String shortTime) throws ParseException {
+		synchronized (shotTimeSDF) {
+			Date date = shotTimeSDF.parse(shortTime);
+			return date;
+		}
+	}
 }
