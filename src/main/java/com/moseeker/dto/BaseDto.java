@@ -6,6 +6,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
+@Deprecated
 public class BaseDto implements Serializable {
 	
 	private static final long serialVersionUID = 6705330896059224050L;
