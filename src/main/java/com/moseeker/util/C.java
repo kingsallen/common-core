@@ -190,9 +190,9 @@ public final class C {
     /** PROFILE 区域 END **/
 
     /** 公司类型 **/
-    public static final int COMPANY_TYPE_FREE = 1; //免费用户
-    public static final int COMPANY_TYPE_OTHER = 2; //其他
-    public static final int COMPANY_TYPE_ENTERPRISE = 0; //企业用户
+    public static final byte COMPANY_TYPE_FREE = 1; //免费用户
+    public static final byte COMPANY_TYPE_OTHER = 2; //其他
+    public static final byte COMPANY_TYPE_ENTERPRISE = 0; //企业用户
     /** 公司类型 **/
 
     /** 公司来源 **/
@@ -335,5 +335,7 @@ public final class C {
     public static final int HKAMTW = 861;
 
     public static final int UPPER_LIMIT = 500;  //接口处理的数据量的上限
+
+    public static final String SERVER_SUCCESS_STATUS ="0";
 
 }

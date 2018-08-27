@@ -440,4 +440,11 @@ public class StringUtils {
 
         return value;
     }
+
+    public static boolean isEmtryOrZore(Integer i){
+        if(i == null || i <= 0){
+            return true;
+        }
+        return false;
+    }
 }
