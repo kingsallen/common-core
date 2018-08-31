@@ -85,6 +85,11 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 		<!-- 其他jar包引入 -->
+		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
