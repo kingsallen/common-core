@@ -30,7 +30,7 @@ public class BaseException extends RuntimeException {
 		this.errorMessage = commonExceptionEnum.getValue();
 	}
 
-    public BaseException(BaseEnum commonExceptionEnum) {
+    public BaseException(BaseEnum<?> commonExceptionEnum) {
         super(commonExceptionEnum.getValue());
         this.errorCode = commonExceptionEnum.getKey();
         this.errorMessage = commonExceptionEnum.getValue();

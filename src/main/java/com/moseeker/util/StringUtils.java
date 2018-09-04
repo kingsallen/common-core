@@ -1,7 +1,14 @@
 package com.moseeker.util;
 
 import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 public class StringUtils {
     public StringUtils() {
@@ -28,11 +35,11 @@ public class StringUtils {
         }
     }
 
-    public static boolean isEmptyList(List list) {
+    public static boolean isEmptyList(List<?> list) {
         return list == null || list.size() <= 0;
     }
 
-    public static boolean isEmptySet(Set set) {
+    public static boolean isEmptySet(Set<?> set) {
         return set == null || set.size() <= 0;
     }
 
@@ -241,14 +248,15 @@ public class StringUtils {
         return result.toString();
     }
 
-    public static Map<String, Object> underscoreNameMap(Map<String, Object> resume) {
+    @SuppressWarnings("unchecked")
+	public static Map<String, Object> underscoreNameMap(Map<String, Object> resume) {
         if(resume != null && !resume.isEmpty()) {
-            Map<String, Object> result = new HashMap();
-            Iterator var2 = resume.keySet().iterator();
+            Map<String, Object> result = new HashMap<String, Object>();
+            Iterator<String> var2 = resume.keySet().iterator();
 
             while(true) {
                 while(var2.hasNext()) {
-                    String key = (String)var2.next();
+                    String key = var2.next();
                     String newKey = underscoreName(key);
                     if(isNullOrEmpty(newKey)) {
                         newKey = key;
@@ -257,8 +265,8 @@ public class StringUtils {
                     if(resume.get(key) == null) {
                         result.put(newKey, resume.get(key));
                     } else if(resume.get(key) instanceof Map) {
-                        Map<String, Object> map = (Map)resume.get(key);
-                        Map<String, Object> result1 = new HashMap();
+                        Map<String, Object> map = (Map<String, Object>)resume.get(key);
+                        Map<String, Object> result1 = new HashMap<String, Object>();
                         if(map != null && !map.isEmpty()) {
                             result1 = underscoreNameMap(map);
                         }
@@ -267,15 +275,15 @@ public class StringUtils {
                     } else {
                         Object value;
                         if(resume.get(key) instanceof List) {
-                            List<Object> list = (List)resume.get(key);
-                            List tempList = new ArrayList();
+                            List<Object> list = (List<Object>)resume.get(key);
+                            List<Object> tempList = new ArrayList<Object>();
                             if(!isEmptyList(list)) {
-                                Iterator var14 = list.iterator();
+                                Iterator<Object> var14 = list.iterator();
 
                                 while(var14.hasNext()) {
                                     value = var14.next();
                                     if(value instanceof Map) {
-                                        tempList.add(underscoreNameMap((Map)value));
+                                        tempList.add(underscoreNameMap((Map<String, Object>)value));
                                     } else {
                                         tempList.add(value);
                                     }
@@ -295,7 +303,7 @@ public class StringUtils {
                                 for(int i = 0; i < Array.getLength(resume.get(key)); ++i) {
                                     value = Array.get(resume.get(key), i);
                                     if(value instanceof Map) {
-                                        Map<String, Object> result2 = underscoreNameMap((Map)value);
+                                        Map<String, Object> result2 = underscoreNameMap((Map<String, Object>)value);
                                         arr[i] = result2;
                                     } else {
                                         arr[i] = value;

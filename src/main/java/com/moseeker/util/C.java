@@ -10,29 +10,10 @@ public final class C {
 	
 	public static final String EMPTY = "";
 
-	// activemq配置
-	public static final String ACTIVEMQ_QUEUE_DEFAULT = "default";// 默认队列
-	public static final String ACTIVEMQ_QUEUE_BASIS_EMAIL = "basis_email";// 发邮件
-	public static final String ACTIVEMQ_QUEUE_BASIS_SMS = "basis_sms";// 发短信
-	public static final String ACTIVEMQ_QUEUE_LOGGER_INTERFACE = "logger_interface";// 接口日志
-	public static final String ACTIVEMQ_QUEUE_LOGGER_QUARTZ = "logger_quartz";// 定时任务日志
-	public static final String ACTIVEMQ_QUEUE_LOGGER_VISIT = "logger_visit";// 访问记录
-	public static final String ACTIVEMQ_QUEUE_SYSTEM_USER_HISTORY = "system_user_history";// 平台用户操作历史
-	public static final String ACTIVEMQ_QUEUE_BASIS_ATTACHMENT_DOWNLOAD = "basis_attachment_download";// 附件下载次数
-	public static final String ACTIVEMQ_QUEUE_BASIS_ATTACHMENT_UPLOAD_QINIU = "basis_attachment_upload_qiniu";// 七牛附件上传
-	public static final String ACTIVEMQ_QUEUE_BASIS_WECHART_MESSAGE = "basis_wechart_message";// 微信公众号消息推送
-
 	public static final Double EARTH_RADIUS = 6378.137;
 
 	public static final Integer REDIS_OPERATION_LOCK = 500;
 	public static final Integer REDIS_API_LOCK = 50;
-
-	// 项目配置
-	public static final String COMPANY = "";
-	public static final String SYSTEM = "";
-	public static final String VERSION = "1.0.0";
-	public static final String DEVELOPER = "caizhh";
-	public static final Boolean SHOW_SQL = Boolean.TRUE;
 
 	// DateUtil
 	public static final String FORMAT_YYYYMMDD = "yyyy-MM-dd";
@@ -50,13 +31,6 @@ public final class C {
 	public static final Integer SESSION = 3600;
 
 	public static final String INFINITE_DATE = "2099-12-31";
-
-	public static final String MONITOR_CONFIG_USERNAME = "root";// 用户名
-	public static final String MONITOR_CONFIG_PASSWORD = "";// 密码
-	public static final String MONITOR_CONFIG_FILEPATH = "/home/config/ssh";// 私钥文件
-	public static final String MONITOR_CONFIG_HOST = "192.168.5.213";// 服务器地址
-	public static final Integer MONITOR_CONFIG_PORT = 22;// 端口号
-	public static final Integer MONITOR_CONFIG_TIMEOUT = 60000000;// 处理超时
 
 	// 常量
 	public static final String YES = "yes";
