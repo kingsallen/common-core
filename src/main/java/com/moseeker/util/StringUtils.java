@@ -370,7 +370,7 @@ public class StringUtils {
 		return value;
 	}
 
-	public static boolean isEmtryOrZero(Integer i) {
+	public static boolean isEmptyOrZero(Integer i) {
 		if (i == null || i <= 0) {
 			return true;
 		}
@@ -559,12 +559,5 @@ public class StringUtils {
 		return result;
 	}
 
-	public static boolean isEmptyOrZero(Integer i){
-	    if(i == null || i <= 0){
-	        return true;
-        }else{
-	        return false;
-        }
-    }
 
 }
