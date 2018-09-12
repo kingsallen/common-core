@@ -1,12 +1,29 @@
 package com.moseeker.util.validation;
 
 
-import com.moseeker.exception.BaseException;
-import com.moseeker.util.StringUtils;
-import com.moseeker.util.validation.rules.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.moseeker.exception.BaseException;
+import com.moseeker.util.StringUtils;
+import com.moseeker.util.validation.rules.DateType;
+import com.moseeker.util.validation.rules.DateTypeValidateRule;
+import com.moseeker.util.validation.rules.DoubleTypeValidateRule;
+import com.moseeker.util.validation.rules.IntTypeValidateRule;
+import com.moseeker.util.validation.rules.OverUpperValidateRule;
+import com.moseeker.util.validation.rules.RegExpressValidateRule;
+import com.moseeker.util.validation.rules.RequiredOneValidateRule;
+import com.moseeker.util.validation.rules.RequiredStringValidateRule;
+import com.moseeker.util.validation.rules.RequiredValidateRule;
+import com.moseeker.util.validation.rules.SensitiveWordsValidateRule;
+import com.moseeker.util.validation.rules.StringLengthValidateRule;
+import com.moseeker.util.validation.rules.StringSplitLengthValidateRule;
 
 /**
  * 
@@ -85,7 +102,7 @@ public class ValidateUtil {
 	 * @return
 	 */
 	public ValidateRule addRequiredOneValidate(String paramName,
-			List beanToBeValidated, String errorMessage, String message)
+			List<?> beanToBeValidated, String errorMessage, String message)
 			throws BaseException {
 		RequiredOneValidateRule rv = null;
 		try {
@@ -105,7 +122,7 @@ public class ValidateUtil {
 	}
 
 	public ValidateRule addRequiredOneValidate(String paramName,
-											   List beanToBeValidated)
+											   List<?> beanToBeValidated)
 			throws BaseException {
 		return addRequiredOneValidate(paramName, beanToBeValidated, null, null);
 	}
@@ -121,7 +138,7 @@ public class ValidateUtil {
 	 * @throws BaseException
 	 */
 	public ValidateRule addUpperLimitValidate(String paramName,
-											  List beanToBeValidated, String errorMessage, String message, Integer upperLimit)
+											  List<?> beanToBeValidated, String errorMessage, String message, Integer upperLimit)
 			throws BaseException {
 		OverUpperValidateRule rv = null;
 		try {
@@ -148,7 +165,7 @@ public class ValidateUtil {
 	 * @throws BaseException
 	 */
 	public ValidateRule addUpperLimitValidate(String paramName,
-											  List beanToBeValidated)
+											  List<?> beanToBeValidated)
 			throws BaseException {
 		return addUpperLimitValidate(paramName, beanToBeValidated, null, null, null);
 	}

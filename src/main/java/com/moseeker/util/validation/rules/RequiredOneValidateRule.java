@@ -1,16 +1,17 @@
 package com.moseeker.util.validation.rules;
 
 
+import java.util.List;
+
 import com.moseeker.util.StringUtils;
 import com.moseeker.util.validation.ValidateRule;
-import java.util.List;
 
 public class RequiredOneValidateRule extends ValidateRule {
 
-	private List beanToValidated;
+	private List<?> beanToValidated;
 
 	public RequiredOneValidateRule(String paramName,
-			List beanToValidated, String message, String errorMessage) {
+			List<?> beanToValidated, String message, String errorMessage) {
 		this.paramName = paramName;
 		this.beanToValidated = beanToValidated;
 		this.setMessage(message);
@@ -43,11 +44,11 @@ public class RequiredOneValidateRule extends ValidateRule {
 		return this.message;
 	}
 
-	public List getBeanToValidated() {
+	public List<?> getBeanToValidated() {
 		return beanToValidated;
 	}
 
-	public void setBeanToValidated(List beanToValidated) {
+	public void setBeanToValidated(List<?> beanToValidated) {
 		this.beanToValidated = beanToValidated;
 	}
 

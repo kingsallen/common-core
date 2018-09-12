@@ -1,10 +1,12 @@
 package com.moseeker.util.validation.rules;
 
 
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
+
 import com.moseeker.util.C;
 import com.moseeker.util.validation.ValidateRule;
-import java.util.List;
-import org.apache.commons.lang.StringUtils;
 
 /**
  * @Author: jack
@@ -12,11 +14,11 @@ import org.apache.commons.lang.StringUtils;
  */
 public class OverUpperValidateRule extends ValidateRule {
 
-    private List beanToValidated;
+    private List<?> beanToValidated;
     private int upperLimit = C.UPPER_LIMIT;
 
     public OverUpperValidateRule(String paramName,
-                                   List beanToValidated, String message, String errorMessage, Integer upperLimit) {
+                                   List<?> beanToValidated, String message, String errorMessage, Integer upperLimit) {
         this.paramName = paramName;
         this.beanToValidated = beanToValidated;
         this.setMessage(message);
@@ -32,15 +34,15 @@ public class OverUpperValidateRule extends ValidateRule {
     }
 
     public OverUpperValidateRule(String paramName,
-                                 List beanToValidated) {
+                                 List<?> beanToValidated) {
         this(paramName, beanToValidated, null, null, null);
     }
 
-    public List getBeanToValidated() {
+    public List<?> getBeanToValidated() {
         return beanToValidated;
     }
 
-    public void setBeanToValidated(List beanToValidated) {
+    public void setBeanToValidated(List<?> beanToValidated) {
         this.beanToValidated = beanToValidated;
     }
 
