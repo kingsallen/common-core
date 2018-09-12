@@ -15,6 +15,7 @@ public class ResultObject<T> {
 	private String message;
 	private T data;
 
+
     public String getCode() {
         return code;
     }
