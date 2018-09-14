@@ -3,7 +3,7 @@ package com.moseeker.util.validation.rules;
 
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
+import org.springframework.util.StringUtils;
 
 import com.moseeker.util.C;
 import com.moseeker.util.validation.ValidateRule;
@@ -22,7 +22,7 @@ public class OverUpperValidateRule extends ValidateRule {
         this.paramName = paramName;
         this.beanToValidated = beanToValidated;
         this.setMessage(message);
-        if (!StringUtils.isNotBlank(errorMessage)) {
+        if (!StringUtils.isEmpty(errorMessage)) {
             this.setErrorMessage(errorMessage);
         } else {
             this.setErrorMessage("数量过多,超过上限");
@@ -54,8 +54,8 @@ public class OverUpperValidateRule extends ValidateRule {
         }
 
         if (!legal) {
-            if (StringUtils.isBlank(this.message)
-                    && !StringUtils.isBlank(this.errorMessage)) {
+            if (StringUtils.isEmpty(this.message)
+                    && !StringUtils.isEmpty(this.errorMessage)) {
                 this.message = this.paramName + " " + errorMessage;
             }
         } else {

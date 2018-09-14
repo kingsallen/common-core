@@ -166,7 +166,7 @@ public class StringUtils {
 	}
 
 	public static boolean isJsonNullOrEmpty(Object obj) {
-		return obj instanceof String ? !org.apache.commons.lang.StringUtils.isNotBlank((String) obj) || obj.equals("[]") || obj.equals("{}") || obj.equals("null") : obj == null;
+		return obj instanceof String ? obj == null || ((String) obj).trim().length() == 0 || obj.equals("[]") || obj.equals("{}") || obj.equals("null") : obj == null;
 	}
 
 	public static String humpName(String strName) {
