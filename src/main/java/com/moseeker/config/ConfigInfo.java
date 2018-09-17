@@ -16,6 +16,7 @@ public class ConfigInfo {
     private String description;
     private String version;
     private String developer;
+    private Map<String, String> doc;
     private Map<String, String> mapped;
 
 }
