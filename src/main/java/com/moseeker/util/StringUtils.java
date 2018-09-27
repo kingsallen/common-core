@@ -36,6 +36,14 @@ public class StringUtils {
 		}
 	}
 
+    public static List<Integer> converSetToList(Set<Integer> userIdSet){
+        List<Integer> userIdList=new ArrayList<>();
+        for(Integer id:userIdSet){
+            userIdList.add(id);
+        }
+        return userIdList;
+    }
+
 	public static boolean isEmptyList(List<?> list) {
 		return list == null || list.isEmpty();
 	}
