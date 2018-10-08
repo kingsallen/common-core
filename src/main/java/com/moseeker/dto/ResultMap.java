@@ -1,6 +1,6 @@
 package com.moseeker.dto;
 
-import java.util.List;
+import java.util.Map;
 
 import com.moseeker.enums.CommonExceptionEnum;
 
@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResultList<T> {
+public class ResultMap<T> {
 	
 	private String code;
 	private String message;
-	private List<T> data;
-	
-	public static <T> ResultList<T> getSuccessResultList(List<T> list) {
-		return new ResultList<T>(CommonExceptionEnum.success.getKey(), CommonExceptionEnum.success.getValue(), list);
-	}
+	private Map<String, T> data;
 
+	public static <T> ResultMap<T> getSuccessResultMap(Map<String, T> map) {
+		return new ResultMap<T>(CommonExceptionEnum.success.getKey(), CommonExceptionEnum.success.getValue(), map);
+	}
+	
 }
