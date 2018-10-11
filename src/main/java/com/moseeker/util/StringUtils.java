@@ -1,15 +1,7 @@
 package com.moseeker.util;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import com.alibaba.fastjson.JSON;
 
@@ -566,6 +558,20 @@ public class StringUtils {
 		}
 		return result;
 	}
+    public static String listToString(List<String> list, String splitTag){
+        if(!StringUtils.isEmptyList(list)){
+            String keyword = org.apache.commons.lang.StringUtils.join(list,splitTag);
+            return keyword;
+        }
+        return "";
+    }
 
+    public static List<String> stringToList(String str, String splitTag){
+        if(!StringUtils.isNullOrEmpty(str)){
+            String[] keyword = str.split(splitTag);
+            return Arrays.asList(keyword);
+        }
+        return new ArrayList<>();
+    }
 
 }
