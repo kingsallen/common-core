@@ -24,7 +24,15 @@ public class Pagination<T> implements Serializable {
 		this.pageIndex = pageIndex;
 	}
 
+	@Deprecated
 	public void copyPagination(Pagination<?> page) {
+		this.allSize = page.getAllSize();
+		this.allPage = page.getAllPage();
+		this.pageSize = page.getPageSize();
+		this.pageIndex = page.getPageIndex();
+	}
+
+	public void setPagination(Pagination<?> page) {
 		this.allSize = page.getAllSize();
 		this.allPage = page.getAllPage();
 		this.pageSize = page.getPageSize();
