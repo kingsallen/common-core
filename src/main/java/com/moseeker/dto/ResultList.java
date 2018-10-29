@@ -1,12 +1,11 @@
 package com.moseeker.dto;
 
-import java.util.List;
-
 import com.moseeker.enums.CommonExceptionEnum;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +20,7 @@ public class ResultList<T> {
 		return new ResultList<T>(CommonExceptionEnum.success.getKey(), CommonExceptionEnum.success.getValue(), list);
 	}
 
+	public static <T> ResultList<T> getErrorResultList(String key, String value,List<T> list) {
+		return new ResultList<T>(key, value, list);
+	}
 }
