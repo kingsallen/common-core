@@ -145,6 +145,62 @@ public class StringUtils {
 		}
 	}
 
+	/**
+	 * 将map中的key由下划线转驼峰
+	 *
+	 * @param map
+	 * @param <V>
+	 * @param <T>
+	 * @return
+	 */
+	public static <K, V, T extends Map<K, V>> T convertUnderKeyToCamel(T map) {
+
+		if (map == null) return map;
+
+		Iterator<Map.Entry<K, V>> mapIterator = map.entrySet().iterator();
+		Map.Entry<K, V> entry;
+		Map<K, V> tempMap = new HashMap<>();
+		K tempKey;
+		V tempValue;
+		while (mapIterator.hasNext()) {
+			entry = mapIterator.next();
+			tempKey = entry.getKey();
+			tempValue = entry.getValue();
+			if (tempKey instanceof String) {
+				tempKey = (K) underLineToCamel((String) tempKey);
+			}
+			if (entry.getValue() == null) {
+				tempValue = entry.getValue();
+			} else if (entry.getValue() instanceof Map) {
+				tempValue = (V) convertUnderKeyToCamel((Map) tempValue);
+			} else if (entry.getValue() instanceof List) {
+				List tempList = new ArrayList();
+				for (Object o : (List) entry.getValue()) {
+					if (o instanceof Map) {
+						tempList.add(convertUnderKeyToCamel((Map) o));
+					} else {
+						tempList.add(o);
+					}
+				}
+				((List) entry.getValue()).clear();
+				((List) entry.getValue()).addAll(tempList);
+			} else if (entry.getValue().getClass().isArray()) {
+				for (int i = 0; i < Array.getLength(entry.getValue()); i++) {
+					Object value = Array.get(entry.getValue(), i);
+					if (value instanceof Map) {
+						Array.set(entry.getValue(), i, convertUnderKeyToCamel((Map) value));
+					}
+				}
+			}
+			tempMap.put(tempKey, tempValue);
+			mapIterator.remove();
+		}
+		map.putAll(tempMap);
+
+		return map;
+
+	}
+
 	public static boolean lastContain(String context, String c) {
 		if (isNotNullOrEmpty(context)) {
 			int index = context.lastIndexOf(c);

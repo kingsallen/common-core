@@ -1,6 +1,7 @@
 package com.moseeker.enums;
 
 import com.moseeker.util.StringUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 
