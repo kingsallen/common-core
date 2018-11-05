@@ -311,5 +311,9 @@ public final class C {
     public static final int UPPER_LIMIT = 500;  //接口处理的数据量的上限
 
     public static final String SERVER_SUCCESS_STATUS ="0";
+    //=======================application服务使用的常量=====================
+    //投递申请限制次数
+    public static final int APPLICATION_COUNT_LIMIT = 3;
+
 
 }

@@ -397,7 +397,7 @@ public class StringUtils {
 		return JSON.parseObject(data, className);
 	}
 
-	public static <T, R> R convertVOoPOJO(T object, Class<R> className) throws Exception {
+	public static <T, R> R convertVOToPOJO(T object, Class<R> className) throws Exception {
 		if (object == null) {
 			return null;
 		}
