@@ -43,4 +43,7 @@ public class ResultObject<T> {
 		return new ResultObject<T>(CommonExceptionEnum.success.getKey(), CommonExceptionEnum.success.getValue(), object);
 	}
 
+	public static <T> ResultObject<T> getErrorResultObject(String key, String value,T object) {
+        return new ResultObject<T>(key, value, object);
+    }
 }

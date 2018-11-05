@@ -1,15 +1,7 @@
 package com.moseeker.util;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import com.alibaba.fastjson.JSON;
 
@@ -35,6 +27,14 @@ public class StringUtils {
 			return "";
 		}
 	}
+
+    public static List<Integer> converSetToList(Set<Integer> userIdSet){
+        List<Integer> userIdList=new ArrayList<>();
+        for(Integer id:userIdSet){
+            userIdList.add(id);
+        }
+        return userIdList;
+    }
 
 	public static boolean isEmptyList(List<?> list) {
 		return list == null || list.isEmpty();
@@ -143,6 +143,62 @@ public class StringUtils {
 			}
 			return builder.toString();
 		}
+	}
+
+	/**
+	 * 将map中的key由下划线转驼峰
+	 *
+	 * @param map
+	 * @param <V>
+	 * @param <T>
+	 * @return
+	 */
+	public static <K, V, T extends Map<K, V>> T convertUnderKeyToCamel(T map) {
+
+		if (map == null) return map;
+
+		Iterator<Map.Entry<K, V>> mapIterator = map.entrySet().iterator();
+		Map.Entry<K, V> entry;
+		Map<K, V> tempMap = new HashMap<>();
+		K tempKey;
+		V tempValue;
+		while (mapIterator.hasNext()) {
+			entry = mapIterator.next();
+			tempKey = entry.getKey();
+			tempValue = entry.getValue();
+			if (tempKey instanceof String) {
+				tempKey = (K) underLineToCamel((String) tempKey);
+			}
+			if (entry.getValue() == null) {
+				tempValue = entry.getValue();
+			} else if (entry.getValue() instanceof Map) {
+				tempValue = (V) convertUnderKeyToCamel((Map) tempValue);
+			} else if (entry.getValue() instanceof List) {
+				List tempList = new ArrayList();
+				for (Object o : (List) entry.getValue()) {
+					if (o instanceof Map) {
+						tempList.add(convertUnderKeyToCamel((Map) o));
+					} else {
+						tempList.add(o);
+					}
+				}
+				((List) entry.getValue()).clear();
+				((List) entry.getValue()).addAll(tempList);
+			} else if (entry.getValue().getClass().isArray()) {
+				for (int i = 0; i < Array.getLength(entry.getValue()); i++) {
+					Object value = Array.get(entry.getValue(), i);
+					if (value instanceof Map) {
+						Array.set(entry.getValue(), i, convertUnderKeyToCamel((Map) value));
+					}
+				}
+			}
+			tempMap.put(tempKey, tempValue);
+			mapIterator.remove();
+		}
+		map.putAll(tempMap);
+
+		return map;
+
 	}
 
 	public static boolean lastContain(String context, String c) {
@@ -558,6 +614,20 @@ public class StringUtils {
 		}
 		return result;
 	}
+    public static String listToString(List<String> list, String splitTag){
+        if(!StringUtils.isEmptyList(list)){
+            String keyword = org.apache.commons.lang.StringUtils.join(list,splitTag);
+            return keyword;
+        }
+        return "";
+    }
 
+    public static List<String> stringToList(String str, String splitTag){
+        if(!StringUtils.isNullOrEmpty(str)){
+            String[] keyword = str.split(splitTag);
+            return Arrays.asList(keyword);
+        }
+        return new ArrayList<>();
+    }
 
 }
