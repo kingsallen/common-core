@@ -474,6 +474,19 @@ public class StringUtils {
 		return list;
 	}
 
+	public static <T, R> List<R> convertVoToPOJO(List<T> objectList, Class<R> className) throws Exception {
+		if (StringUtils.isEmptyList(objectList)) {
+			return new ArrayList<>();
+		}
+		List<R> list = new ArrayList<R>();
+		for (T object : objectList) {
+			String data = JSON.toJSONString(object);
+			R result = JSON.parseObject(data, className);
+			list.add(result);
+		}
+		return list;
+	}
+
 	/*
 	 * 获取一个对象中固定的列表
 	 */
