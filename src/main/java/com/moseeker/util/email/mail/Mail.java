@@ -3,6 +3,7 @@ package com.moseeker.util.email.mail;
 
 import com.moseeker.constant.Constant;
 import com.moseeker.util.ConfigPropertiesUtil;
+import com.moseeker.util.SpringBeanUtil;
 import com.moseeker.util.StringUtils;
 import com.moseeker.util.email.attachment.Attachment;
 import com.moseeker.util.email.config.EmailContent;
@@ -10,6 +11,7 @@ import com.moseeker.util.email.config.EmailSessionConfig;
 import com.moseeker.util.email.config.ServerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
@@ -29,15 +31,16 @@ import java.util.Properties;
  */
 
 public class Mail {
+
+    private static Environment environment = SpringBeanUtil.getBean(Environment.class);
+
+    private static Logger logger = LoggerFactory.getLogger(Mail.class);
 	
-	private static Logger logger = LoggerFactory.getLogger(Mail.class);
-	
-	private static ConfigPropertiesUtil propertiesReader = ConfigPropertiesUtil.getInstance();
-	private static final String serverDomain = propertiesReader.get("email.serverDomain", String.class);
-    private static final Integer serverPort = propertiesReader.get("email.serverPort", Integer.class);
-    private static final String userName = propertiesReader.get("email.userName", String.class);
-    private static final String password = propertiesReader.get("email.password", String.class);
-    private static final String sender = propertiesReader.get("email.senderAddress", String.class);
+	private static final String serverDomain = environment.getProperty("email.serverDomain", String.class);
+    private static final Integer serverPort = environment.getProperty("email.serverPort", Integer.class);
+    private static final String userName = environment.getProperty("email.userName", String.class);
+    private static final String password = environment.getProperty("email.password", String.class);
+    private static final String sender = environment.getProperty("email.senderAddress", String.class);
 
     private final Message message;				//邮件
     private final ServerConfig serverConfig;			//服务器配置
