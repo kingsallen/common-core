@@ -1,7 +1,7 @@
 package com.moseeker.util.email.mail;
 
 
-import com.moseeker.constants.Constant;
+import com.moseeker.constant.Constant;
 import com.moseeker.util.ConfigPropertiesUtil;
 import com.moseeker.util.StringUtils;
 import com.moseeker.util.email.attachment.Attachment;
