@@ -1,4 +1,4 @@
-package com.moseeker.constants;
+package com.moseeker.constant;
 
 public final class ConstantErrorCodeMessage {
 
