@@ -1,13 +1,13 @@
 package com.moseeker.vo;
 
+import com.moseeker.util.C;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.List;
 
-import com.moseeker.util.C;
-
-import lombok.Data;
-
 @Data
+@Deprecated
 public class Pagination<T> implements Serializable {
 
 	private static final long serialVersionUID = -6922440751113440798L;
