@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
+@Deprecated
 public class BasePagerVo<T> extends BaseVo {
 
 	private static final long serialVersionUID = 6156744855563002359L;
