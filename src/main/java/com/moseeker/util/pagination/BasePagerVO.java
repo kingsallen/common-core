@@ -39,7 +39,7 @@ public  class BasePagerVO<T> {
             this.totalPages= 0;
         }
 
-        this.totalPages = Double.valueOf (Math.ceil( this.totalRows / this.pageSize)).intValue();
+        this.totalPages = Double.valueOf (Math.ceil( (float)this.totalRows / this.pageSize)).intValue();
     }
 
     public Integer getTotalRows() {
