@@ -1,8 +1,10 @@
 package com.moseeker.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import java.text.SimpleDateFormat;
@@ -15,7 +17,7 @@ import java.util.TimeZone;
  * Created by lee on 2018/11/14.
  */
 
-//@Configuration
+@Configuration
 public class MappingJackson2StringToDateConverter extends WebMvcConfigurationSupport {
 
     @Override
@@ -27,5 +29,16 @@ public class MappingJackson2StringToDateConverter extends WebMvcConfigurationSup
                 objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).setTimeZone(TimeZone.getTimeZone("GMT+8"));
             }
         }
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").addResourceLocations(
+                "classpath:/static/");
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations(
+                "classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations(
+                "classpath:/META-INF/resources/webjars/");
+        super.addResourceHandlers(registry);
     }
 }
