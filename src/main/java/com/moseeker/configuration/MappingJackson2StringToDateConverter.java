@@ -27,6 +27,7 @@ public class MappingJackson2StringToDateConverter extends WebMvcConfigurationSup
             if (converter instanceof MappingJackson2HttpMessageConverter) {
                 ObjectMapper objectMapper = ((MappingJackson2HttpMessageConverter) converter).getObjectMapper();
                 objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).setTimeZone(TimeZone.getTimeZone("GMT+8"));
+
             }
         }
     }
