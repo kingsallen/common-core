@@ -1,7 +1,6 @@
 package com.moseeker.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -15,7 +14,8 @@ import java.util.TimeZone;
  *
  * Created by lee on 2018/11/14.
  */
-@Configuration
+
+//@Configuration
 public class MappingJackson2StringToDateConverter extends WebMvcConfigurationSupport {
 
     @Override
