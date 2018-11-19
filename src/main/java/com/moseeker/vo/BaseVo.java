@@ -9,6 +9,7 @@ import com.moseeker.util.DateUtil;
 import lombok.Data;
 
 @Data
+@Deprecated
 public class BaseVo implements Serializable {
 
 	private static final long serialVersionUID = 2010592892081877918L;
