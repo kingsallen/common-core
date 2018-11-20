@@ -1,12 +1,11 @@
 package com.moseeker.util.validation.rules;
 
 
-import java.util.List;
-
+import com.moseeker.constant.Constant;
+import com.moseeker.util.validation.ValidateRule;
 import org.springframework.util.StringUtils;
 
-import com.moseeker.util.C;
-import com.moseeker.util.validation.ValidateRule;
+import java.util.List;
 
 /**
  * @Author: jack
@@ -15,7 +14,7 @@ import com.moseeker.util.validation.ValidateRule;
 public class OverUpperValidateRule extends ValidateRule {
 
     private List<?> beanToValidated;
-    private int upperLimit = C.UPPER_LIMIT;
+    private int upperLimit = Constant.UPPER_LIMIT;
 
     public OverUpperValidateRule(String paramName,
                                    List<?> beanToValidated, String message, String errorMessage, Integer upperLimit) {

@@ -1,7 +1,7 @@
 package com.moseeker.util;
 
+import com.moseeker.constant.Constant;
 import com.moseeker.exception.BaseException;
-
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
@@ -58,7 +58,7 @@ public class PinyinUtil {
 				}
 			}
 		} catch (BadHanyuPinyinOutputFormatCombination e) {
-			throw new BaseException(C.EMPTY, "字符不能转成汉语拼音");
+			throw new BaseException(Constant.EMPTY, "字符不能转成汉语拼音");
 		}
 		return hanyupinyin;
 	}
@@ -108,7 +108,7 @@ public class PinyinUtil {
 				}
 			}
 		} catch (BadHanyuPinyinOutputFormatCombination e) {
-			throw new BaseException(C.EMPTY, "字符不能转成汉语拼音");
+			throw new BaseException(Constant.EMPTY, "字符不能转成汉语拼音");
 		}
 		return hanyupinyin;
 	}
@@ -155,7 +155,7 @@ public class PinyinUtil {
 				// 否则不转换
 			}
 		} catch (BadHanyuPinyinOutputFormatCombination e) {
-			throw new BaseException(C.EMPTY, "字符不能转成汉语拼音");
+			throw new BaseException(Constant.EMPTY, "字符不能转成汉语拼音");
 		}
 		return hanyupinyin;
 	}
