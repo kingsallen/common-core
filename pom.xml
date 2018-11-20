@@ -196,6 +196,12 @@
 			<artifactId>mail</artifactId>
 			<version>1.5.0-b01</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>2.2.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
