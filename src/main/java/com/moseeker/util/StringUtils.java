@@ -1,9 +1,9 @@
 package com.moseeker.util;
 
+import com.alibaba.fastjson.JSON;
+
 import java.lang.reflect.Array;
 import java.util.*;
-
-import com.alibaba.fastjson.JSON;
 
 public class StringUtils {
 
@@ -603,7 +603,7 @@ public class StringUtils {
 		String[] dataArray = datas.split(splitName);
 		List<String> result = new ArrayList<>();
 		for (String data : dataArray) {
-			if (isNotNullOrEmpty(data) && result.contains(data)) {
+			if (isNotNullOrEmpty(data) && !result.contains(data)) {
 				result.add(data);
 			}
 		}
@@ -621,7 +621,7 @@ public class StringUtils {
 		List<Integer> result = new ArrayList<>();
 		for (String data : dataArray) {
 			Integer i = Integer.parseInt(data);
-			if (isNotNullOrEmpty(data) && result.contains(i)) {
+			if (isNotNullOrEmpty(data) && !result.contains(i)) {
 				result.add(i);
 			}
 		}
