@@ -21,16 +21,32 @@ public final class Constant {
         throw new AssertionError();
     };
 
-    /** 系统appid 常量定义 && 共同常量定义 START **/
+    /** ALPHADOG系统appid 常量定义 && 共同常量定义 START **/
     public static final int APPID_ALPHADOG = 0;     // 基础服务本身
-    public static final int APPID_C = 1;            // c端
+    public static final int APPID_C = 1;            // pc端
     public static final int APPID_QX = 2;           // weixin端(聚合号)
     public static final int APPID_PLATFORM = 3;     // weixin端（企业号）
     public static final int APPID_HR = 4;           // hr
+    public static final int APPID_NEOWEIXINREFER_QX = 5; // 新weixin端(聚合号)
+    public static final int APPID_NEOWEIXINREFER_PLATFORM = 6; // 新weixin端(聚合号)
+    public static final int APPID_NEOWEIXINREFER_HELPER = 7; // 新weixin端（招聘助手号）
+    public static final int APPID_MINIAPP = 8;      // minapp（小程序）
     public static final int APPID_ATS = 20;         // ats
     public static final int APPID_SYSPLAT = 21;     // sysplat
     public static final int APPID_CRONJOB = 22;     // cronjob
+    public static final int APPID_SEARCHENGINE = 23;// 搜索引擎
+    public static final int APPID_CHAOS = 24;       // chaos
+    public static final int APPID_EMAIL = 30;       // PYTHON Email 服务
+    public static final int APPID_PARSER = 31;      // PYTHON Parser服务
+    public static final int APPID_DOWNLOAD = 32;    // PYTHON download服务
+    public static final int APPID_SCRAPER = 51;     // PYTHON scraper
+    public static final int APPID_OMS = 60;         // 内部crm, OMS
     public static final int APPID_ANALYTICS = 101;  // 统计
+    public static final int APPID_MOBOT = 102;      // mobot
+    public static final int APPID_DAS = 201;        // das（以后会迁到基础服务，届时会被删除）
+    public static final int APPID_PARTNER = 202;    // partner（支付宝校园招聘对接）
+    public static final int APPID_IMPORT_SCRIPT = 203; // 脚本批量导入第三方简历
+    public static final int APPID_PINDUODUO = 204;  // 聘多多
 
     public static final String DASVALIDATE_SENSITIVEWORDS_ILLEGAL = "敏感词校验失败";
 
