@@ -261,6 +261,8 @@ public final class Constant {
     public static final int PAGE_=20;
 
     public static final String CHINA_ID ="43";
+    public static final String CHINA_CODE ="86";
+
 
     public static final int DATABASE_PAGE_SIZE=500;
 
@@ -303,5 +305,74 @@ public final class Constant {
             "other_workexps.position_name;other_workexps.achievement;other_workexps.description;credentials.name;credentials.organization;credentials.url;" +
             "attachments.name;attachment.description;skills.name;imports.user_name;imports.data;imports.account_id;awards.name;languages.name;works.name;works.url;" +
             "works.description";
+
+
+
+
+    public static final Integer DEFAULT_PAGE_SIZE = 10;
+    public static final Integer DEFAULT_PAGE_INDEX = 1;
+
+    public static final String EMPTY = "";
+
+    public static final Double EARTH_RADIUS = 6378.137;
+
+    public static final Integer REDIS_OPERATION_LOCK = 500;
+    public static final Integer REDIS_API_LOCK = 50;
+
+    // DateUtil
+    public static final String FORMAT_YYYYMMDD = "yyyy-MM-dd";
+    public static final String FORMAT_HHMISS = "HH:mm:ss";
+    public static final String FORMAT_YYMMDD = "yyMMdd";
+    public static final String FORMAT_YYYYMM = "yyyyMM";
+    public static final String FORMAT_YYYYMMDD_HHMISS = "yyyy-MM-dd HH:mm:ss";
+    public static final String FORMAT_YYYYMMDD_HHMISS_SSS = "yyyy-MM-dd HH:mm:ss:SSS";
+    public static final String FORMAT_YYYYMMDD_CN = "yyyy年MM月dd日";
+    public static final String FORMAT_HHMISS_CN = "HH时mm分ss秒";
+    public static final String FORMAT_YYYYMMDD_HHMISS_CN = "yyyy年MM月dd日 HH时mm分ss秒";
+    public static final String FORMAT_YYYYMMDD_HHMISS_SSS_CN = "yyyy年MM月dd日 HH时mm分ss秒 SSS毫秒";
+
+    // session有效期（秒）
+    public static final Integer SESSION = 3600;
+
+    public static final String INFINITE_DATE = "2099-12-31";
+
+    // 常量
+    public static final String YES = "yes";
+    public static final String NO = "no";
+
+    // 排序
+    public static final String FIELD_ID = "id";
+    public static final String FIELD_REMARK = "remark";
+    public static final String FIELD_DELETED = "deleted";
+    public static final String FIELD_CREATEBY = "createBy";
+    public static final String FIELD_CREATETIME = "createTime";
+    public static final String FIELD_UPDATEBY = "updateBy";
+    public static final String FIELD_UPDATETIME = "updateTime";
+    public static final String FIELD_VERSION = "version";
+
+    public static final String ORDER_ASC = "asc";
+    public static final String ORDER_DESC = "desc";
+
+    // Po定义数据库字段的长度
+    public static final int COLUMN_LENGTH_LONG = 11;
+    public static final int COLUMN_LENGTH_INTEGER = 11;
+    public static final int COLUMN_LENGTH_STRING = 200;
+    public static final int COLUMN_LENGTH_ENUM = 50;
+    public static final int COLUMN_LENGTH_BIGDECIMAL = 20;
+
+    public static final int PRECISION_PRICE = 2;// 单价的小数位数
+    public static final int PRECISION_AMOUNT = 2;// 金额的小数位数
+    public static final int PRECISION_QUANTITY = 2;// 数量的小数位数
+    public static final int PRECISION_RATE = 4;// 比率（折扣率、税率等）的小数位数
+    public static final int PRECISION_CURRENCY = 0;// 虚拟货币（家币、积分等）的小数位数
+    public static final int PRECISION_ITUDE = 10;// 经纬度的小数位数
+
+
+
+    public static final String SERVER_SUCCESS_STATUS ="0";
+    //=======================application服务使用的常量=====================
+    //投递申请限制次数
+    public static final int APPLICATION_COUNT_LIMIT = 3;
+
 
 }
