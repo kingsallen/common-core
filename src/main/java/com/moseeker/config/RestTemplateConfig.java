@@ -63,8 +63,8 @@ public class RestTemplateConfig {
     public ClientHttpRequestFactory clientHttpRequestFactory() {
         HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
         clientHttpRequestFactory.setHttpClient(httpClientBuilder().build());
-        clientHttpRequestFactory.setConnectTimeout(6000); // 连接超时，毫秒
-        clientHttpRequestFactory.setReadTimeout(6000); // 读写超时，毫秒
+        clientHttpRequestFactory.setConnectTimeout(30000); // 连接超时，毫秒
+        clientHttpRequestFactory.setReadTimeout(30000); // 读写超时，毫秒
         return clientHttpRequestFactory;
     }
 
