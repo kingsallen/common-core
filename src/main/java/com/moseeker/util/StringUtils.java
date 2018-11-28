@@ -3,6 +3,7 @@ package com.moseeker.util;
 import com.alibaba.fastjson.JSON;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 import java.util.*;
 
 public class StringUtils {
@@ -643,4 +644,30 @@ public class StringUtils {
         return new ArrayList<>();
     }
 
+    /**
+     * 合并两条数据。将target中更改的属性，根据属性名称一致作为条件，给origin对象对应的属性赋值
+     *
+     * @param orig 被更新的对象
+     * @param dest 值对象
+     * @throws Exception
+     */
+    public static <T, R> void copyNotNullFieldsToPOJO(T orig, R dest) throws Exception {
+        if (orig == null || dest == null) {
+            return;
+        }
+        Field[] destFields = dest.getClass().getDeclaredFields();
+        Field[] origFields = orig.getClass().getDeclaredFields();
+        for (Field origField : origFields) {
+            origField.setAccessible(true);
+            for (Field destField : destFields) {
+                destField.setAccessible(true);
+                if (destField.get(dest) != null
+                        && destField.getName().equals(origField.getName())
+                        && !destField.getName().equals("serialVersionUID")) {
+                    origField.set(orig, destField.get(dest));
+                    break;
+                }
+            }
+        }
+    }
 }
