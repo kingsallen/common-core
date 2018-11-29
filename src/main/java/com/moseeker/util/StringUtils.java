@@ -647,7 +647,7 @@ public class StringUtils {
     }
 
     /**
-     * 合并两条数据。将target中更改的属性，根据属性名称一致作为条件，给origin对象对应的属性赋值
+     * 合并两条数据。将dest中更改的属性，根据属性名称一致作为条件，给orig对象对应的属性赋值
      *
      * @param orig 被更新的对象
      * @param dest 值对象
