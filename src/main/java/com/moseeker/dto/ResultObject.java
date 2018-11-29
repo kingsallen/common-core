@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel("返回结果Obj")
+@ApiModel("返回结果ResultObject")
 public class ResultObject<T> {
 
     @ApiModelProperty(value = "状态码", example = "0")
