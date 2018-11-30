@@ -3,7 +3,8 @@ package com.moseeker.config;/**
  */
 
 import com.rabbitmq.client.ConnectionFactory;
-import org.elasticsearch.common.inject.internal.BindingBuilder;
+
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
