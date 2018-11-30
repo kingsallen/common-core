@@ -3,9 +3,7 @@ package com.moseeker.config;/**
  */
 
 import com.rabbitmq.client.ConnectionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.*;
+import org.elasticsearch.common.inject.internal.BindingBuilder;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -35,10 +33,10 @@ public class ConfigRabbitMQ {
     @Bean
     public ConnectionFactory connectionFactory() {
         ConnectionFactory cf = new ConnectionFactory();
-        cf.setHost(env.getProperty("rabbitmq.host").trim());
-        cf.setPort(Integer.valueOf(env.getProperty("rabbitmq.port").trim()));
-        cf.setUsername(env.getProperty("rabbitmq.username").trim());
-        cf.setPassword(env.getProperty("rabbitmq.password").trim());
+        cf.setHost(env.getProperty("spring.rabbitmq.host").trim());
+        cf.setPort(Integer.valueOf(env.getProperty("spring.rabbitmq.port").trim()));
+        cf.setUsername(env.getProperty("spirng.rabbitmq.username").trim());
+        cf.setPassword(env.getProperty("spring.rabbitmq.password").trim());
         return cf;
     }
 
