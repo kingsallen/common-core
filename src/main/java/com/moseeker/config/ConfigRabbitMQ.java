@@ -5,6 +5,7 @@ package com.moseeker.config;/**
 import com.rabbitmq.client.ConnectionFactory;
 
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
@@ -28,6 +29,7 @@ import java.util.List;
  * @DATE 18/11/29 下午3:27
  **/
 @Configuration
+@EnableRabbit
 public class ConfigRabbitMQ {
     @Autowired
     private Environment env;
