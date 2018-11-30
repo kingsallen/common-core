@@ -1,6 +1,6 @@
 package com.moseeker.vo;
 
-import com.moseeker.util.C;
+import com.moseeker.constant.Constant;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,8 +13,8 @@ public class Pagination<T> implements Serializable {
 	private static final long serialVersionUID = -6922440751113440798L;
 	private int allSize;// 总共多少条
 	private int allPage;// 总共多少页
-	private int pageSize = C.DEFAULT_PAGE_SIZE;// 每页大小
-	private int pageIndex = C.DEFAULT_PAGE_INDEX;// 当前第几页
+	private int pageSize = Constant.DEFAULT_PAGE_SIZE;// 每页大小
+	private int pageIndex = Constant.DEFAULT_PAGE_INDEX;// 当前第几页
 	private List<T> results;
 
 	public void setPagination(int allSize, int allPage, int pageSize, int pageIndex) {

@@ -1,8 +1,8 @@
 package com.moseeker.util.validation.rules;
 
 
+import com.moseeker.constant.Constant;
 import com.moseeker.exception.BaseException;
-import com.moseeker.util.C;
 import com.moseeker.util.StringUtils;
 import com.moseeker.util.validation.SensitiveWordDB;
 import com.moseeker.util.validation.ValidateRule;
@@ -29,13 +29,13 @@ public class SensitiveWordsValidateRule extends ValidateRule {
 	public SensitiveWordsValidateRule(String paramName, Object beanToValidated)
 			throws BaseException {
 		super(paramName, beanToValidated);
-		this.errorMessage = C.DASVALIDATE_SENSITIVEWORDS_ILLEGAL;
+		this.errorMessage = Constant.DASVALIDATE_SENSITIVEWORDS_ILLEGAL;
 	}
 
 	public SensitiveWordsValidateRule(String paramName, String message,
 			Object beanToValidated) throws BaseException {
 		super(paramName, message, beanToValidated);
-		this.errorMessage = C.DASVALIDATE_SENSITIVEWORDS_ILLEGAL;
+		this.errorMessage = Constant.DASVALIDATE_SENSITIVEWORDS_ILLEGAL;
 	}
 
 	@Override

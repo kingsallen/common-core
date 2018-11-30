@@ -1,24 +1,19 @@
 package com.moseeker.util;
 
-import java.beans.BeanInfo;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.moseeker.constant.Constant;
+import com.moseeker.exception.BaseException;
 import com.moseeker.vo.Pagination;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.FatalBeanException;
 import org.springframework.util.StringUtils;
 
-import com.moseeker.exception.BaseException;
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.*;
 
 /**
  * @category Bean工具类
@@ -35,7 +30,7 @@ public final class BeanUtil extends BeanUtils {
 
     public static <S, T> void copyPagination(Class<S> classOfS, Class<T> classOfT, Pagination<S> source, Pagination<T> target, String[] ignoreProperties, String[] nullProperties) throws BeansException, InstantiationException, IllegalAccessException {
         if (source == null) {
-            throw new BaseException(C.EMPTY, "参数source不能为null");
+            throw new BaseException(Constant.EMPTY, "参数source不能为null");
         }
         if (target == null) {
             target = new Pagination<>();
@@ -62,7 +57,7 @@ public final class BeanUtil extends BeanUtils {
 
     public static <K, S, T> void copyMap(Class<S> classOfS, Class<T> classOfT, Map<K, S> source, Map<K, T> target, String[] ignoreProperties, String[] nullProperties) throws BeansException, InstantiationException, IllegalAccessException {
         if (source == null) {
-            throw new BaseException(C.EMPTY, "参数source不能为null");
+            throw new BaseException(Constant.EMPTY, "参数source不能为null");
         }
         if (target == null) {
             target = new HashMap<>();
@@ -86,7 +81,7 @@ public final class BeanUtil extends BeanUtils {
 
     public static <S, T> void copyList(Class<S> classOfS, Class<T> classOfT, List<S> source, List<T> target, String[] ignoreProperties, String[] nullProperties) throws BeansException, IllegalAccessException, InstantiationException {
         if (source == null) {
-            throw new BaseException(C.EMPTY, "参数source不能为null");
+            throw new BaseException(Constant.EMPTY, "参数source不能为null");
         }
         if (target == null) {
             target = new ArrayList<>();
@@ -109,7 +104,7 @@ public final class BeanUtil extends BeanUtils {
 
     public static <S, T> void copyBean(Class<S> classOfS, Class<T> classOfT, S source, T target, String[] ignoreProperties, String[] nullProperties) throws BeansException, InstantiationException, IllegalAccessException {
         if (source == null) {
-            throw new BaseException(C.EMPTY, "参数source不能为null");
+            throw new BaseException(Constant.EMPTY, "参数source不能为null");
         }
         if (target == null) {
             target = classOfT.newInstance();
@@ -183,10 +178,10 @@ public final class BeanUtil extends BeanUtils {
     @Deprecated
     public static void copyProperties(Object source, Object target, String[] ignoreProperties, String[] nullProperties) throws BeansException {
         if (source == null) {
-            throw new BaseException(C.EMPTY, "Source must not be null");
+            throw new BaseException(Constant.EMPTY, "Source must not be null");
         }
         if (target == null) {
-            throw new BaseException(C.EMPTY, "Target must not be null");
+            throw new BaseException(Constant.EMPTY, "Target must not be null");
         }
         Class<?> actualEditable = target.getClass();
         PropertyDescriptor[] targetPropertyDescriptors = BeanUtils.getPropertyDescriptors(actualEditable);

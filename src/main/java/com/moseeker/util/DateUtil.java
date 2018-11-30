@@ -1,5 +1,9 @@
 package com.moseeker.util;
 
+import com.moseeker.constant.Constant;
+import org.joda.time.DateTime;
+import org.springframework.util.StringUtils;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,11 +14,8 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.joda.time.DateTime;
-import org.springframework.util.StringUtils;
 
 /**
  * @category 日期工具类
@@ -123,10 +124,10 @@ public final class DateUtil {
 		if (birthday == null) {
 			return 0;
 		}
-		int birthdayYear = Integer.parseInt(format(birthday, C.FORMAT_YYYYMMDD).split("-")[0]);
-		int birthdayMonth = Integer.parseInt(format(birthday, C.FORMAT_YYYYMMDD).split("-")[1]);
-		int nowYear = Integer.parseInt(format(currentTime(), C.FORMAT_YYYYMMDD).split("-")[0]);
-		int nowMonth = Integer.parseInt(format(currentTime(), C.FORMAT_YYYYMMDD).split("-")[1]);
+		int birthdayYear = Integer.parseInt(format(birthday, Constant.FORMAT_YYYYMMDD).split("-")[0]);
+		int birthdayMonth = Integer.parseInt(format(birthday, Constant.FORMAT_YYYYMMDD).split("-")[1]);
+		int nowYear = Integer.parseInt(format(currentTime(), Constant.FORMAT_YYYYMMDD).split("-")[0]);
+		int nowMonth = Integer.parseInt(format(currentTime(), Constant.FORMAT_YYYYMMDD).split("-")[1]);
 		int age = nowYear - birthdayYear;
 		if (nowMonth < birthdayMonth) {
 			age--;
