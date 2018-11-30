@@ -36,7 +36,7 @@ public class ConfigRabbitMQ {
         ConnectionFactory cf = new ConnectionFactory();
         cf.setHost(env.getProperty("spring.rabbitmq.host").trim());
         cf.setPort(Integer.valueOf(env.getProperty("spring.rabbitmq.port").trim()));
-        cf.setUsername(env.getProperty("spirng.rabbitmq.username").trim());
+        cf.setUsername(env.getProperty("spring.rabbitmq.username").trim());
         cf.setPassword(env.getProperty("spring.rabbitmq.password").trim());
         return cf;
     }
