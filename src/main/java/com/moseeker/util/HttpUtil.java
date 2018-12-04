@@ -1,11 +1,12 @@
 package com.moseeker.util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import com.alibaba.fastjson.JSONObject;
+import com.moseeker.constant.Constant;
+import com.moseeker.exception.BaseException;
+import org.springframework.util.StringUtils;
+
+import javax.net.ssl.*;
+import java.io.*;
 import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -13,17 +14,6 @@ import java.net.URLConnection;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Map;
-
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
-import org.springframework.util.StringUtils;
-
-import com.alibaba.fastjson.JSONObject;
-import com.moseeker.exception.BaseException;
 
 public class HttpUtil {
 
@@ -143,13 +133,13 @@ public class HttpUtil {
 
 	public static final JSONObject sendHttpsRequest(String requestUrl, String requestMethod, String param) throws Exception {
 		if (StringUtils.isEmpty(requestUrl)) {
-			throw new BaseException(C.EMPTY, "requestUrl不能为空");
+			throw new BaseException(Constant.EMPTY, "requestUrl不能为空");
 		}
 		if (StringUtils.isEmpty(requestMethod)) {
-			throw new BaseException(C.EMPTY, "requestMethod不能为空");
+			throw new BaseException(Constant.EMPTY, "requestMethod不能为空");
 		}
 		if (!"GET".equalsIgnoreCase(requestMethod) && !"POST".equalsIgnoreCase(requestMethod)) {
-			throw new BaseException(C.EMPTY, "requestMethod只能为GET或者POST");
+			throw new BaseException(Constant.EMPTY, "requestMethod只能为GET或者POST");
 		}
 		JSONObject jsonObject = null;
 		StringBuffer buffer = new StringBuffer();

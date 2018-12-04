@@ -1,11 +1,10 @@
 package com.moseeker.util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
+import com.moseeker.constant.Constant;
+import com.moseeker.exception.BaseException;
+import org.springframework.util.StringUtils;
+
+import java.io.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -13,10 +12,6 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.util.StringUtils;
-
-import com.moseeker.exception.BaseException;
 
 public final class ProjectUtil {
 
@@ -27,7 +22,7 @@ public final class ProjectUtil {
 	 * @return
 	 */
 	public static final boolean strIsNull(String str) {
-		if (str == null || C.EMPTY.equals(str.trim())) {
+		if (str == null || Constant.EMPTY.equals(str.trim())) {
 			return true;
 		}
 		return false;
@@ -57,7 +52,7 @@ public final class ProjectUtil {
 	 */
 	public static final String convertNullToEmpty(Object str) {
 		if (str == null) {
-			return C.EMPTY;
+			return Constant.EMPTY;
 		}
 		return str.toString();
 	}
@@ -87,7 +82,7 @@ public final class ProjectUtil {
 		int a4 = (int) (Math.random() * (10 - 1 + 1));
 		int a5 = (int) (Math.random() * (10 - 1 + 1));
 		int a6 = (int) (Math.random() * (10 - 1 + 1));
-		return C.EMPTY + a1 + a2 + a3 + a4 + a5 + a6;
+		return Constant.EMPTY + a1 + a2 + a3 + a4 + a5 + a6;
 	}
 
 	/**
@@ -105,7 +100,7 @@ public final class ProjectUtil {
 		double a = radLat1 - radLat2;
 		double b = x1 * Math.PI / 180.0 - x2 * Math.PI / 180.0;
 		double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
-		s = s * C.EARTH_RADIUS * 1000;
+		s = s * Constant.EARTH_RADIUS * 1000;
 		long result = Math.round(s);
 		DecimalFormat dfa = new DecimalFormat("#####0");
 		return dfa.format(result);
@@ -303,7 +298,7 @@ public final class ProjectUtil {
 		}
 		// 七牛CDN图片压缩
 		if (StringUtils.startsWithIgnoreCase(url, "https://img.jiaw.com")) {
-			String param = C.EMPTY;
+			String param = Constant.EMPTY;
 			if (width != null && width > 0) {
 				param = param + "/w/" + width;
 			}
@@ -316,7 +311,7 @@ public final class ProjectUtil {
 	}
 
 	public static final String getConsolePrefix() {
-		return "[" + DateUtil.format(DateUtil.currentTime(), C.FORMAT_YYYYMMDD_HHMISS_SSS) + "]";
+		return "[" + DateUtil.format(DateUtil.currentTime(), Constant.FORMAT_YYYYMMDD_HHMISS_SSS) + "]";
 	}
 
 }
