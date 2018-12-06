@@ -447,7 +447,7 @@ public class StringUtils {
         return map;
     }
 
-    public static <T, R> R convertPOJOToVO(T object, Class<R> className) throws Exception {
+    public static <T, R> R convertPOJOToVO(T object, Class<R> className) {
         if (object == null) {
             return null;
         }
