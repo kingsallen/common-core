@@ -677,4 +677,56 @@ public class StringUtils {
             }
         }
     }
+
+    /**
+     * 将POJO转化为Map
+     *
+     * @param obj
+     * @return
+     * @throws Exception
+     */
+    public static Map<String, Object> objectToMap(Object obj) throws Exception {
+        if (obj == null) {
+            return null;
+        }
+
+        Map<String, Object> map = new HashMap<>();
+        Field[] declaredFields = obj.getClass().getDeclaredFields();
+        for (Field field : declaredFields) {
+            field.setAccessible(true);
+            map.put(field.getName(), field.get(obj));
+        }
+        return map;
+    }
+
+    /**
+     * 将POJO转化为Map
+     *
+     * @param objList
+     * @return
+     * @throws Exception
+     */
+    public static <T> List<Map<String, Object>> objectToMap(List<T> objList) throws Exception {
+        if (objList == null || objList.size() == 0) {
+            return null;
+        }
+
+        List<Map<String, Object>> mapList = new ArrayList<>();
+
+        objList.forEach(obj -> {
+            Field[] declaredFields = obj.getClass().getDeclaredFields();
+            Map<String, Object> beanMap = new HashMap<>();
+            for (Field field : declaredFields) {
+                field.setAccessible(true);
+                try {
+                    beanMap.put(field.getName(), field.get(obj));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+            mapList.add(beanMap);
+        });
+
+        return mapList;
+    }
 }
