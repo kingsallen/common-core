@@ -220,6 +220,22 @@ public class ValidateUtil {
 
 	/**
 	 * 往验证器中添加一个StringLengthValidateRule
+	 *
+	 * @param param
+	 * @param beanToBeValidated
+	 * @param minRange
+	 * @param maxRange
+	 * @return DasValidateRule
+	 */
+	public ValidateRule addStringLengthValidate(String param,
+												Object beanToBeValidated,
+												Integer minRange, Integer maxRange)
+			throws BaseException {
+		return addStringLengthValidate(param, beanToBeValidated, null, null, minRange, maxRange);
+	}
+
+	/**
+	 * 往验证器中添加一个StringLengthValidateRule
 	 * 
 	 * @param param
 	 * @param beanToBeValidated
@@ -367,6 +383,41 @@ public class ValidateUtil {
 			throw e;
 		}
 		return itvr;
+	}
+
+	/**
+	 * 添加长双精度类型（Double）的校验
+	 * @param paramName
+	 * @param beanToBeValidated
+	 * @param minRange
+	 * @param maxRange
+	 */
+	public ValidateRule addDoubleTypeValidate(String paramName, Double beanToBeValidated, double minRange, double maxRange) {
+		DoubleTypeValidateRule itvr = null;
+		try {
+			itvr = new DoubleTypeValidateRule(paramName, beanToBeValidated,
+					minRange, maxRange);
+
+			addToRules(itvr);
+
+		} catch (BaseException e) {
+			logger.error("faild!", e);
+			throw e;
+		}
+		return itvr;
+	}
+
+	/**
+	 * 往验证器中添加一个DateTypeValidateRule
+	 *
+	 * @param paramName
+	 * @param beanToBeValidated
+	 * @param type
+	 * @return DasValidateRule
+	 */
+	public ValidateRule addDateValidate(String paramName,
+										Object beanToBeValidated, DateType type) throws BaseException {
+		return addDateValidate(paramName, beanToBeValidated, type);
 	}
 
 	/**
