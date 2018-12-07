@@ -455,7 +455,7 @@ public class StringUtils {
         return JSON.parseObject(data, className);
     }
 
-    public static <T, R> R convertVOToPOJO(T object, Class<R> className) throws Exception {
+    public static <T, R> R convertVOToPOJO(T object, Class<R> className) {
         if (object == null) {
             return null;
         }
@@ -476,7 +476,7 @@ public class StringUtils {
         return list;
     }
 
-    public static <T, R> List<R> convertVoToPOJO(List<T> objectList, Class<R> className) throws Exception {
+    public static <T, R> List<R> convertVoToPOJO(List<T> objectList, Class<R> className) {
         if (StringUtils.isEmptyList(objectList)) {
             return new ArrayList<>();
         }
