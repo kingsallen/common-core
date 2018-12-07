@@ -1,7 +1,6 @@
 package com.moseeker.dto;
 
 import java.util.Map;
-
 import com.moseeker.enums.CommonExceptionEnum;
 
 import lombok.AllArgsConstructor;

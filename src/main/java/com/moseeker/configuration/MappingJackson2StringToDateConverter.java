@@ -17,7 +17,7 @@ import java.util.TimeZone;
  * Created by lee on 2018/11/14.
  */
 
-@Configuration
+//@Configuration
 public class MappingJackson2StringToDateConverter extends WebMvcConfigurationSupport {
 
     @Override
