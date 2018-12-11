@@ -374,6 +374,8 @@ public final class Constant {
     //投递申请限制次数
     public static final int APPLICATION_COUNT_LIMIT = 3;
 
+    public static final String USERNAME_IS_NULL="未填写";
+
 
 
 }
