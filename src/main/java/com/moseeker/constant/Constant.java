@@ -380,4 +380,8 @@ public final class Constant {
     public static final String WORD_DOCX = "docx";
     public static final String WORD_PDF = ".pdf";
 
+    public static final String USERNAME_IS_NULL="未填写";
+
+
+
 }

@@ -9,6 +9,11 @@ import java.util.regex.PatternSyntaxException;
 public class FormCheck {
 
 	private static final BaseException PARAM_NULL_EXPCEPTION = new BaseException("9999","参数不能为空！");
+    private static String MOBILE_EXP = "^[1][3,4,5,6,7,8,9][0-9]{9}$";
+
+    public static String getMobileExp() {
+        return MOBILE_EXP;
+    }
 
 	/**
 	 * @param str
@@ -33,7 +38,7 @@ public class FormCheck {
 
 	/**
 	 * 判断是否包含特殊字符
-	 * 
+	 *
 	 * @param str
 	 *            被校验的字符串
 	 * @return 是否校验通过，true：包含特殊字符；false：不包含特殊字符
@@ -53,7 +58,7 @@ public class FormCheck {
 
 	/**
 	 * 判断是否由6-20位的ascii编码组成的字符串
-	 * 
+	 *
 	 * @param str
 	 *            被校验的对象
 	 * @return 是否校验通过，true：由6-20位的ascii编码组成的字符串；false：由6-20位的ascii编码组成的字符串
@@ -73,7 +78,7 @@ public class FormCheck {
 
 	/**
 	 * 判断是否是邮箱
-	 * 
+	 *
 	 * @param str
 	 * @return 校验规则异常，主要由于正则表达式出错
 	 */
@@ -89,7 +94,7 @@ public class FormCheck {
 
 	/**
 	 * 判断是否是URL地址。不精确判断
-	 * 
+	 *
 	 * @param str
 	 *            被校验的对象
 	 * @return 是否校验通过，true：由6-20位的ascii编码组成的字符串；false：由6-20位的ascii编码组成的字符串
@@ -107,7 +112,7 @@ public class FormCheck {
 
 	/**
 	 * 判断的依据是unicode中文字符的范围
-	 * 
+	 *
 	 * @param str
 	 *            被校验的对象
 	 * @return
@@ -125,7 +130,7 @@ public class FormCheck {
 
 	/**
 	 * 判断是否是电话号码
-	 * 
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -151,7 +156,7 @@ public class FormCheck {
 
 	/**
 	 * 判断是否是手机号码
-	 * 
+	 *
 	 * @param str
 	 * @return
 	 */
