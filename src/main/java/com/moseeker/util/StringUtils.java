@@ -463,7 +463,7 @@ public class StringUtils {
         return JSON.parseObject(data, className);
     }
 
-    public static <T, R> List<R> convertPOJOToVO(List<T> objectList, Class<R> className) throws Exception {
+    public static <T, R> List<R> convertPOJOToVO(List<T> objectList, Class<R> className) {
         if (StringUtils.isEmptyList(objectList)) {
             return new ArrayList<>();
         }
