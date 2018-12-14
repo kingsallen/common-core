@@ -16,6 +16,7 @@ public final class Constant {
     public static final String POINTS_CONF_EMPLOYEE_VERIFIED = "完成员工认证";
     public static final String POINTS_CONF_REFINE_CANDIDATE= "完善被推荐人信息";
     public static final String EMPLOYEE_PARSE_PROFILE_DOCUMENT = "员工简历简历数据";
+    public static final String USER_PARSE_PROFILE_DOCUMENT = "用户简历数据";
 
     private Constant() throws AssertionError {
         throw new AssertionError();
@@ -373,6 +374,11 @@ public final class Constant {
     //=======================application服务使用的常量=====================
     //投递申请限制次数
     public static final int APPLICATION_COUNT_LIMIT = 3;
+
+    public static final int IS_NOT_OPEN_GRPD=1;
+    public static final String WORD_DOC="doc";
+    public static final String WORD_DOCX = "docx";
+    public static final String WORD_PDF = ".pdf";
 
     public static final String USERNAME_IS_NULL="未填写";
 
