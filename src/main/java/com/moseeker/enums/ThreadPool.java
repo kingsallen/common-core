@@ -13,26 +13,15 @@ public enum ThreadPool {
 
     ExecutorService service;
 
-    private ThreadPool() {
+    ThreadPool() {
         init();
     }
 
     public <T> Future<T> startTast(Callable<T> task) {
-        if(service == null) {
-            synchronized (this) {
-                init();
-            }
-        }
-
         return this.service.submit(task);
     }
 
     public <T> Future<T> startTastSleep(Callable<T> task) {
-        if(service == null) {
-            synchronized (this) {
-                init();
-            }
-        }
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -42,11 +31,6 @@ public enum ThreadPool {
     }
 
     public <T> Future<T> startTast(Runnable task, T t) {
-        if(service == null) {
-            synchronized (this) {
-                init();
-            }
-        }
         return this.service.submit(task, t);
     }
 
@@ -56,7 +40,6 @@ public enum ThreadPool {
                 this.service.shutdown();
             }
         }
-
     }
 
     private void init() {
