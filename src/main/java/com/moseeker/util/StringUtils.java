@@ -1,6 +1,7 @@
 package com.moseeker.util;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -728,5 +729,13 @@ public class StringUtils {
         });
 
         return mapList;
+    }
+
+    public static String collectionToString(Collection list, String splitTag) {
+        if (CollectionUtils.isNotEmpty(list)) {
+            String keyword = org.apache.commons.lang.StringUtils.join(list, splitTag);
+            return keyword;
+        }
+        return "";
     }
 }
