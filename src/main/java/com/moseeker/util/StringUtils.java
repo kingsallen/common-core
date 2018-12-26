@@ -581,6 +581,21 @@ public class StringUtils {
         }
         return null;
     }
+    public static <T, R> R getResult(int code, List<T> list, String field, Class<R> classInit) throws Exception {
+        if (isEmptyList(list)) {
+            return null;
+        }
+        for (T object : list) {
+            Map<String, Object> map = JSON.parseObject(JSON.toJSONString(object));
+            int id = (int) map.get(field);
+            if (id == code) {
+                R result=JSON.parseObject(JSON.toJSONString(map),classInit);
+                return result;
+            }
+
+        }
+        return null;
+    }
 
     /*
      * 将list转化成set
