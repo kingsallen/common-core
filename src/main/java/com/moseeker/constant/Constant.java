@@ -393,6 +393,7 @@ public final class Constant {
     /**  推荐候选人初筛通过	 */
     public static final int HB_INITIAL_SCEEN_TYPE = 4;
 
+    public static final String POSITION_SYNC_FAIL_ROUTINGKEY = "messagetemplate.position_sync_fail";
 
 
 }
