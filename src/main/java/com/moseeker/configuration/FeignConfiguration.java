@@ -1,11 +1,11 @@
 package com.moseeker.configuration;
 
+import feign.Logger;
+import feign.auth.BasicAuthRequestInterceptor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import feign.auth.BasicAuthRequestInterceptor;
 
 @Configuration
 public class FeignConfiguration {
@@ -23,4 +23,8 @@ public class FeignConfiguration {
 		return new BasicAuthRequestInterceptor(name, password);
 	}
 
+	@Bean
+	public Logger.Level feignLoggerLevel() {
+		return feign.Logger.Level.FULL;
+	}
 }

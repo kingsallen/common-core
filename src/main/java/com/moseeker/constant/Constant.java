@@ -382,6 +382,18 @@ public final class Constant {
 
     public static final String USERNAME_IS_NULL="未填写";
 
+    /**  员工认证红包	 */
+    public static final int HB_EMPLOYEE_TYPE = 0;
+    /**  推荐评价红包	 */
+    public static final int HB_RECOMMEND_TYPE = 1;
+    /**  转发被点击红包	 */
+    public static final int HB_CLICK_TYPE = 2;
+    /**  转发被申请红包	 */
+    public static final int HB_APPLICATION_TYPE = 3;
+    /**  推荐候选人初筛通过	 */
+    public static final int HB_INITIAL_SCEEN_TYPE = 4;
+
+    public static final String POSITION_SYNC_FAIL_ROUTINGKEY = "messagetemplate.position_sync_fail";
 
 
 }

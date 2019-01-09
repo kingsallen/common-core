@@ -1,6 +1,7 @@
 package com.moseeker.util;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -580,6 +581,21 @@ public class StringUtils {
         }
         return null;
     }
+    public static <T, R> R getResult(int code, List<T> list, String field, Class<R> classInit) throws Exception {
+        if (isEmptyList(list)) {
+            return null;
+        }
+        for (T object : list) {
+            Map<String, Object> map = JSON.parseObject(JSON.toJSONString(object));
+            int id = (int) map.get(field);
+            if (id == code) {
+                R result=JSON.parseObject(JSON.toJSONString(map),classInit);
+                return result;
+            }
+
+        }
+        return null;
+    }
 
     /*
      * 将list转化成set
@@ -728,5 +744,13 @@ public class StringUtils {
         });
 
         return mapList;
+    }
+
+    public static String collectionToString(Collection list, String splitTag) {
+        if (CollectionUtils.isNotEmpty(list)) {
+            String keyword = org.apache.commons.lang.StringUtils.join(list, splitTag);
+            return keyword;
+        }
+        return "";
     }
 }
