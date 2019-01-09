@@ -61,7 +61,7 @@ public class BaseX {
   /**
    * tester method.
    */
-  public static void main(String[] args) {
+ /* public static void main(String[] args) {
     String original = "123456789012345678901234567890";
     System.out.println("Original: " + original);
     BaseX bx = new BaseX(DICTIONARY_62);
@@ -74,7 +74,7 @@ public class BaseX {
     }else{
       System.err.println("FAILED! decoded value is NOT the same as the original!!");
     }
-  }
+  }*/
 
   /**
    * encodes the given string into the base of the dictionary provided in the constructor.
