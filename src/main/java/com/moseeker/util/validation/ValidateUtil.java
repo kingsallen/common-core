@@ -417,7 +417,7 @@ public class ValidateUtil {
 	 */
 	public ValidateRule addDateValidate(String paramName,
 										Object beanToBeValidated, DateType type) throws BaseException {
-		return addDateValidate(paramName, beanToBeValidated, type);
+		return addDateValidate(paramName, beanToBeValidated, type, null, null);
 	}
 
 	/**
