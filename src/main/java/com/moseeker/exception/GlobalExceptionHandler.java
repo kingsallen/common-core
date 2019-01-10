@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.sql.SQLException;
+
 /**
  *
  */
@@ -22,6 +24,15 @@ public class GlobalExceptionHandler {
         Result result = new Result();
         result.setCode(e.getErrorCode());
         result.setMessage(e.getErrorMessage());
+        log.error(e.getMessage(), e);
+        return result;
+    }
+
+    @ExceptionHandler(BaseException.class)
+    public Result handleDBException(SQLException e) {
+        Result result = new Result();
+        result.setCode(CommonExceptionEnum.error10001.getKey());
+        result.setMessage(CommonExceptionEnum.error10001.getValue());
         log.error(e.getMessage(), e);
         return result;
     }
