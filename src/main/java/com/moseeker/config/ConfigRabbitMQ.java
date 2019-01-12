@@ -31,7 +31,6 @@ import java.util.List;
  **/
 @Configuration
 @EnableRabbit
-@Lazy
 public class ConfigRabbitMQ {
     @Autowired
     private Environment env;
