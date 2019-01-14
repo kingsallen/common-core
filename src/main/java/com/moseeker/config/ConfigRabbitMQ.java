@@ -31,7 +31,6 @@ import java.util.List;
  **/
 @Configuration
 @EnableRabbit
-@Lazy
 public class ConfigRabbitMQ {
     @Autowired
     private Environment env;
@@ -94,88 +93,5 @@ public class ConfigRabbitMQ {
         SimpleRabbitListenerContainerFactory listenerContainerFactory = new SimpleRabbitListenerContainerFactory();
         listenerContainerFactory.setConnectionFactory(cachingConnectionFactory());
         return listenerContainerFactory;
-    }
-
-
-    @Bean
-    public Queue addAwardQue() {
-        Queue queue = new Queue("add_award_que", true, false, false);
-        return queue;
-    }
-
-    @Bean
-    public Queue sendTemplateQue() {
-        Queue queue = new Queue("send_template_que", true, false, false);
-        return queue;
-    }
-    //数据组推送职位队列
-    @Bean
-    public Queue personaRecomQue() {
-        Queue queue = new Queue("persona_recom_que", true, false, false);
-        return queue;
-    }
-
-    @Bean
-    public Queue employeeFirstRegisterQueue() {
-        Queue queue = new Queue("employee_first_register_exchange", true, false, false);
-        return queue;
-    }
-
-    @Bean
-    public TopicExchange employeeRegisterExchange() {
-        TopicExchange topicExchange = new TopicExchange("employee_register_exchange", true, false);
-        return topicExchange;
-    }
-    @Bean
-    public TopicExchange templateExchange() {
-        TopicExchange topicExchange = new TopicExchange("message_template_exchange", true, false);
-        return topicExchange;
-    }
-    @Bean
-    public TopicExchange personaRecomExchange() {
-        TopicExchange topicExchange = new TopicExchange("person_recom_exchange", true, false);
-        return topicExchange;
-    }
-
-    @Bean
-    public TopicExchange topicExchange() {
-        TopicExchange topicExchange = new TopicExchange("user_action_topic_exchange", true, false);
-        return topicExchange;
-    }
-
-    @Bean
-    public Queue profileCompanyTagQue() {
-        Queue queue = new Queue("profile_company_tag_recom_que", true, false, false);
-        return queue;
-    }
-
-    @Bean
-    public TopicExchange profileCompanyTagRecomExchange() {
-        TopicExchange topicExchange = new TopicExchange("profile_company_tag_recom_exchange", true, false);
-        return topicExchange;
-    }
-
-    @Bean
-    public Queue bonusNoticeQueue() {
-        Queue queue = new Queue("bonus_notice_queue", true, false, false);
-        return queue;
-    }
-
-    @Bean
-    public TopicExchange applicationStateChangeExchange() {
-        TopicExchange topicExchange = new TopicExchange("add_bonus_change_exchange", true, false);
-        return topicExchange;
-    }
-
-    @Bean
-    public List<Binding> binding() {
-        return new ArrayList<Binding>(){{
-            add(BindingBuilder.bind(addAwardQue()).to(topicExchange()).with("sharejd.#"));
-            add(BindingBuilder.bind(sendTemplateQue()).to(templateExchange()).with("messagetemplate.#"));
-            add(BindingBuilder.bind(personaRecomQue()).to(personaRecomExchange()).with("personarecom.#"));
-            add(BindingBuilder.bind(profileCompanyTagQue()).to(profileCompanyTagRecomExchange()).with("profilecompanytagrecom.#"));
-            add(BindingBuilder.bind(bonusNoticeQueue()).to(applicationStateChangeExchange()).with("add_bonus_change_routingkey.add_bonus"));
-            add(BindingBuilder.bind(employeeFirstRegisterQueue()).to(employeeRegisterExchange()).with("employee_register_routingkey.first_register"));
-        }};
     }
 }

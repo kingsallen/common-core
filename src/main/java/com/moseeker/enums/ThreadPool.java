@@ -34,6 +34,10 @@ public enum ThreadPool {
         return this.service.submit(task, t);
     }
 
+    public void startTast(Runnable task) {
+        service.submit(task);
+    }
+
     public void close() {
         synchronized (service) {
             if(service != null) {
@@ -47,5 +51,4 @@ public enum ThreadPool {
                 60L, TimeUnit.SECONDS,
                 new SynchronousQueue<Runnable>());
     }
-
 }
