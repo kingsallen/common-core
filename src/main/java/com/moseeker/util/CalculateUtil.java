@@ -1,11 +1,12 @@
 package com.moseeker.util;
 
+import com.moseeker.constant.Constant;
+import com.moseeker.exception.BaseException;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
-
-import com.moseeker.exception.BaseException;
 
 /**
  * @category BigDecimal计算工具类
@@ -13,83 +14,83 @@ import com.moseeker.exception.BaseException;
 public final class CalculateUtil {
 
 	public static final BigDecimal parsePrice(BigDecimal price) {
-		return parseValue(price, C.PRECISION_PRICE, RoundingMode.HALF_UP);
+		return parseValue(price, Constant.PRECISION_PRICE, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parsePrice(Integer price) {
-		return parseValue(price, C.PRECISION_PRICE, RoundingMode.HALF_UP);
+		return parseValue(price, Constant.PRECISION_PRICE, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parsePrice(Long price) {
-		return parseValue(price, C.PRECISION_PRICE, RoundingMode.HALF_UP);
+		return parseValue(price, Constant.PRECISION_PRICE, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parsePrice(String price) {
-		return parseValue(price, C.PRECISION_PRICE, RoundingMode.HALF_UP);
+		return parseValue(price, Constant.PRECISION_PRICE, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parseAmount(BigDecimal amount) {
-		return parseValue(amount, C.PRECISION_AMOUNT, RoundingMode.UP);
+		return parseValue(amount, Constant.PRECISION_AMOUNT, RoundingMode.UP);
 	}
 
 	public static final BigDecimal parseAmount(Integer amount) {
-		return parseValue(amount, C.PRECISION_AMOUNT, RoundingMode.UP);
+		return parseValue(amount, Constant.PRECISION_AMOUNT, RoundingMode.UP);
 	}
 
 	public static final BigDecimal parseAmount(Long amount) {
-		return parseValue(amount, C.PRECISION_AMOUNT, RoundingMode.UP);
+		return parseValue(amount, Constant.PRECISION_AMOUNT, RoundingMode.UP);
 	}
 
 	public static final BigDecimal parseAmount(String amount) {
-		return parseValue(amount, C.PRECISION_AMOUNT, RoundingMode.UP);
+		return parseValue(amount, Constant.PRECISION_AMOUNT, RoundingMode.UP);
 	}
 
 	public static final BigDecimal parseQuantity(BigDecimal quantity) {
-		return parseValue(quantity, C.PRECISION_QUANTITY, RoundingMode.HALF_UP);
+		return parseValue(quantity, Constant.PRECISION_QUANTITY, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parseQuantity(Integer quantity) {
-		return parseValue(quantity, C.PRECISION_QUANTITY, RoundingMode.HALF_UP);
+		return parseValue(quantity, Constant.PRECISION_QUANTITY, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parseQuantity(Long quantity) {
-		return parseValue(quantity, C.PRECISION_QUANTITY, RoundingMode.HALF_UP);
+		return parseValue(quantity, Constant.PRECISION_QUANTITY, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parseQuantity(String quantity) {
-		return parseValue(quantity, C.PRECISION_QUANTITY, RoundingMode.HALF_UP);
+		return parseValue(quantity, Constant.PRECISION_QUANTITY, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parseRate(BigDecimal rate) {
-		return parseValue(rate, C.PRECISION_RATE, RoundingMode.HALF_UP);
+		return parseValue(rate, Constant.PRECISION_RATE, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parseRate(Integer rate) {
-		return parseValue(rate, C.PRECISION_RATE, RoundingMode.HALF_UP);
+		return parseValue(rate, Constant.PRECISION_RATE, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parseRate(Long rate) {
-		return parseValue(rate, C.PRECISION_RATE, RoundingMode.HALF_UP);
+		return parseValue(rate, Constant.PRECISION_RATE, RoundingMode.HALF_UP);
 	}
 
 	public static final BigDecimal parseRate(String rate) {
-		return parseValue(rate, C.PRECISION_RATE, RoundingMode.HALF_UP);
+		return parseValue(rate, Constant.PRECISION_RATE, RoundingMode.HALF_UP);
 	}
 	
 	public static final BigDecimal parseCoin(BigDecimal coin) {
-		return parseValue(coin, C.PRECISION_CURRENCY, RoundingMode.DOWN);
+		return parseValue(coin, Constant.PRECISION_CURRENCY, RoundingMode.DOWN);
 	}
 
 	public static final BigDecimal parseCoin(Integer coin) {
-		return parseValue(coin, C.PRECISION_CURRENCY, RoundingMode.DOWN);
+		return parseValue(coin, Constant.PRECISION_CURRENCY, RoundingMode.DOWN);
 	}
 
 	public static final BigDecimal parseCoin(Long coin) {
-		return parseValue(coin, C.PRECISION_CURRENCY, RoundingMode.DOWN);
+		return parseValue(coin, Constant.PRECISION_CURRENCY, RoundingMode.DOWN);
 	}
 
 	public static final BigDecimal parseCoin(String coin) {
-		return parseValue(coin, C.PRECISION_CURRENCY, RoundingMode.DOWN);
+		return parseValue(coin, Constant.PRECISION_CURRENCY, RoundingMode.DOWN);
 	}
 
 	private static final BigDecimal parseValue(Serializable v, Integer scale, RoundingMode mode) {
@@ -112,7 +113,7 @@ public final class CalculateUtil {
 			String value = (String) v;
 			return new BigDecimal(value).setScale(scale, mode).stripTrailingZeros();
 		}
-		throw new BaseException(C.EMPTY, "不支持数据类型[" + v.getClass() + "]");
+		throw new BaseException(Constant.EMPTY, "不支持数据类型[" + v.getClass() + "]");
 	}
 
 	/**
@@ -125,7 +126,7 @@ public final class CalculateUtil {
 	public static final BigDecimal calcAmount(BigDecimal price, BigDecimal quantity) {
 		BigDecimal p = parsePrice(price);
 		BigDecimal q = parseQuantity(quantity);
-		BigDecimal amount = p.multiply(q).setScale(C.PRECISION_AMOUNT, RoundingMode.UP);
+		BigDecimal amount = p.multiply(q).setScale(Constant.PRECISION_AMOUNT, RoundingMode.UP);
 		return amount.stripTrailingZeros();
 	}
 
@@ -139,7 +140,7 @@ public final class CalculateUtil {
 	public static final BigDecimal calcCoin(BigDecimal price, BigDecimal vipPrice) {
 		BigDecimal p = parsePrice(price);
 		BigDecimal vp = parsePrice(vipPrice);
-		BigDecimal coin = p.subtract(vp).setScale(C.PRECISION_CURRENCY, RoundingMode.DOWN);
+		BigDecimal coin = p.subtract(vp).setScale(Constant.PRECISION_CURRENCY, RoundingMode.DOWN);
 		return coin.stripTrailingZeros();
 	}
 
@@ -153,7 +154,7 @@ public final class CalculateUtil {
 		if (rate == null) {
 			return "0%";
 		}
-		return parseValue(rate, C.PRECISION_RATE, RoundingMode.HALF_UP).multiply(new BigDecimal("100")).stripTrailingZeros().longValue() + "%";
+		return parseValue(rate, Constant.PRECISION_RATE, RoundingMode.HALF_UP).multiply(new BigDecimal("100")).stripTrailingZeros().longValue() + "%";
 	}
 
 	/**

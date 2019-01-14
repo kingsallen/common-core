@@ -1,14 +1,14 @@
 package com.moseeker.vo;
 
+import com.moseeker.constant.Constant;
+import com.moseeker.util.DateUtil;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import com.moseeker.util.C;
-import com.moseeker.util.DateUtil;
-
-import lombok.Data;
-
 @Data
+@Deprecated
 public class BaseVo implements Serializable {
 
 	private static final long serialVersionUID = 2010592892081877918L;
@@ -24,33 +24,33 @@ public class BaseVo implements Serializable {
 	public String getCreateTimeStr() {
 		Date ct = getCreateTime();
 		if (ct == null) {
-			return C.EMPTY;
+			return Constant.EMPTY;
 		}
-		return DateUtil.format(ct, C.FORMAT_YYYYMMDD_HHMISS);
+		return DateUtil.format(ct, Constant.FORMAT_YYYYMMDD_HHMISS);
 	}
 
 	public String getCreateDateStr() {
 		Date ct = getCreateTime();
 		if (ct == null) {
-			return C.EMPTY;
+			return Constant.EMPTY;
 		}
-		return DateUtil.format(ct, C.FORMAT_YYYYMMDD);
+		return DateUtil.format(ct, Constant.FORMAT_YYYYMMDD);
 	}
 
 	public String getUpdateTimeStr() {
 		Date ct = getUpdateTime();
 		if (ct == null) {
-			return C.EMPTY;
+			return Constant.EMPTY;
 		}
-		return DateUtil.format(ct, C.FORMAT_YYYYMMDD_HHMISS);
+		return DateUtil.format(ct, Constant.FORMAT_YYYYMMDD_HHMISS);
 	}
 
 	public String getUpdateDateStr() {
 		Date ct = getCreateTime();
 		if (ct == null) {
-			return C.EMPTY;
+			return Constant.EMPTY;
 		}
-		return DateUtil.format(ct, C.FORMAT_YYYYMMDD);
+		return DateUtil.format(ct, Constant.FORMAT_YYYYMMDD);
 	}
 	
 }
