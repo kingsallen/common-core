@@ -252,7 +252,7 @@
 	<repositories>
 		<!-- moseeker私服仓库 -->
 		<repository>
-			<id>moseeker-snapshots</id>
+			<id>moseeker-releases</id>
 			<url>http://maven.moseeker.com/repository/maven-public/</url>
 			<snapshots>
 				<enabled>true</enabled>
