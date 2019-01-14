@@ -1,9 +1,6 @@
 package com.moseeker.util;
 
-import sun.misc.BASE64Encoder;
-
 import java.text.DecimalFormat;
-import java.util.Base64;
 import java.util.Random;
 import java.util.UUID;
 
@@ -18,7 +15,8 @@ import java.util.UUID;
 public class UUIDUtil {
 
 	private static Random random = new Random();
-	private static Base64.Encoder encoder = Base64.getEncoder();
+	private static MD5Util md5Util = new MD5Util();
+
 
 	public UUIDUtil() {}
 	
@@ -72,7 +70,7 @@ public class UUIDUtil {
 	private static String getRandom() {
 		int i = random.nextInt(10000);
 		String id = generateFixLengthString(String.valueOf(i), 4);
-		return encoder.encodeToString(id.getBytes());
+		return md5Util.encryptPBKDF2(id).substring(0, 8);
 	}
 
 	private static String getID(int id) {
