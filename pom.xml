@@ -262,5 +262,12 @@
 			<id>moseeker-releases</id>
 			<url>http://maven.moseeker.com/repository/maven-public/</url>
 		</repository>
+		<repository>
+			<id>moseeker-releases</id>
+			<url>http://maven.moseeker.com/repository/maven-public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 </project>
