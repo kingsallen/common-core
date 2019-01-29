@@ -13,7 +13,7 @@ public enum CommonExceptionEnum implements BaseEnum<CommonExceptionEnum> {
 	error10008("10008", "appid为空"),//
 	error10009("10009", "appid非法"),//
 	error10010("10010", "interfaceid为空"), //
-	error10011("10011", "interfaceid非法"),//
+	error10011("10011", "interfaceid非法")
 	;
 
 	private String key;
