@@ -1,7 +1,13 @@
 package com.moseeker.constant.jobboard;
 
 public enum SyncRequestType {
+    /**
+     * 调用端：HR
+     */
     WEB(1,"网页端"),
+    /**
+     * 调用端：ATS一段式对接
+     */
     ATS(2,"ATS");
 
     SyncRequestType(int code, String title) {
