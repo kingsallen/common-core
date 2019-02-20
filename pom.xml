@@ -4,6 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>common-core</artifactId>
 	<packaging>jar</packaging>
+	<version>1.0.0</version>
 	<parent>
 		<groupId>com.moseeker</groupId>
 		<artifactId>alphacloud</artifactId>
@@ -237,6 +238,12 @@
 			<artifactId>druid</artifactId>
 			<version>1.0.19</version>
 		</dependency>
+		<!-- logback写入redis的工具类-->
+		<dependency>
+			<groupId>com.cwbase</groupId>
+			<artifactId>logback-redis-appender</artifactId>
+			<version>1.1.5</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -253,6 +260,10 @@
 		<!-- moseeker私服仓库 -->
 		<repository>
 			<id>moseeker-snapshots</id>
+			<url>http://maven.moseeker.com/repository/maven-public/</url>
+		</repository>
+		<repository>
+			<id>moseeker-releases</id>
 			<url>http://maven.moseeker.com/repository/maven-public/</url>
 			<snapshots>
 				<enabled>true</enabled>
