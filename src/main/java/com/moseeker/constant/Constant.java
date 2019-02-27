@@ -396,5 +396,7 @@ public final class Constant {
 
     public static final String POSITION_SYNC_FAIL_ROUTINGKEY = "messagetemplate.position_sync_fail";
 
+    public static final String KAFKA_TOPIC_POSITION_STATUS = "radar_position_status";
+
 
 }
