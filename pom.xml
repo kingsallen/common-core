@@ -4,6 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>common-core</artifactId>
 	<packaging>jar</packaging>
+	<version>1.0.0</version>
 	<parent>
 		<groupId>com.moseeker</groupId>
 		<artifactId>alphacloud</artifactId>
@@ -260,9 +261,6 @@
 		<repository>
 			<id>moseeker-snapshots</id>
 			<url>http://maven.moseeker.com/repository/maven-public/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
 		</repository>
 		<repository>
 			<id>moseeker-releases</id>
