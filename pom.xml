@@ -269,7 +269,7 @@
 			<id>moseeker-releases</id>
 			<url>http://maven.moseeker.com/repository/maven-public/</url>
 			<snapshots>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
