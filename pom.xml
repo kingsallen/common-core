@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>common-core</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<parent>
 		<groupId>com.moseeker</groupId>
 		<artifactId>alphacloud</artifactId>
@@ -89,25 +89,25 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-        </dependency>
-        <!-- jodd -->
 		<dependency>
-		    <groupId>org.jodd</groupId>
-		    <artifactId>jodd-core</artifactId>
-		    <version>${jodd.version}</version>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
 		</dependency>
-        <dependency>
+		<!-- jodd -->
+		<dependency>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd-core</artifactId>
+			<version>${jodd.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.jodd</groupId>
 			<artifactId>jodd-http</artifactId>
 			<version>${jodd.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.jodd</groupId>
-		    <artifactId>jodd-bean</artifactId>
-		    <version>${jodd.version}</version>
+			<groupId>org.jodd</groupId>
+			<artifactId>jodd-bean</artifactId>
+			<version>${jodd.version}</version>
 		</dependency>
 		<!-- swagger2 -->
 		<dependency>
@@ -210,7 +210,7 @@
 			<artifactId>spring-rabbit</artifactId>
 			<version>1.7.1.RELEASE</version>
 		</dependency>
-	<!-- LCN分布式事务框架 -->
+		<!-- LCN分布式事务框架 -->
 		<dependency>
 			<groupId>com.codingapi</groupId>
 			<artifactId>transaction-springcloud</artifactId>
@@ -261,12 +261,15 @@
 		<repository>
 			<id>moseeker-snapshots</id>
 			<url>http://maven.moseeker.com/repository/maven-public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</repository>
 		<repository>
 			<id>moseeker-releases</id>
 			<url>http://maven.moseeker.com/repository/maven-public/</url>
 			<snapshots>
-				<enabled>true</enabled>
+				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
