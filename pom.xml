@@ -8,6 +8,7 @@
 	<parent>
 		<groupId>com.moseeker</groupId>
 		<artifactId>alphacloud</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<properties>
 		<jodd.version>5.0.4</jodd.version>
