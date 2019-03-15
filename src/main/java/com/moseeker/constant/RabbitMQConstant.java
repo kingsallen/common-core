@@ -18,7 +18,10 @@ public enum RabbitMQConstant {
     POSITION_OPERATE_ROUTEKEY_EDIT("position_operate_routekey_edit"),
     POSITION_OPERATE_ROUTEKEY_RESYNC("position_operate_routekey_resync"),
     POSITION_OPERATE_ROUTEKEY_DOWNSHELF("position_operate_routekey_downshelf"),
-    POSITION_OPERATE_ROUTEKEY_DEL("position_operate_routekey_del")
+    POSITION_OPERATE_ROUTEKEY_DEL("position_operate_routekey_del"),
+    HR_OPERATOR_ALL_HISTORY("hr_operator_all_record_queue"),
+    HR_OPERATOR_ALL_HISTORY_ROUTEKEY("hr_operator_all_record_routekey"),
+    HR_OPERATOR_ALL_HISTORY_EXCHANGE("hr_operator_all_record_exchange")
     ;
 
     private String value;
