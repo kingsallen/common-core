@@ -181,7 +181,7 @@ public final class DateUtil {
 
     private static final SimpleDateFormat SHOT_DATE_SDF = new SimpleDateFormat(SHOT_DATE);
     private static final SimpleDateFormat normalDateSDF = new SimpleDateFormat(NORMAL_DATE);
-    private static final SimpleDateFormat minuteTimeSDF = new SimpleDateFormat(SHOT_DATE);
+    private static final SimpleDateFormat minuteTimeSDF = new SimpleDateFormat(MINUTE_TIME);
     private static final SimpleDateFormat shotTimeSDF = new SimpleDateFormat(SHOT_TIME);
     private static final SimpleDateFormat longTimeSDF = new SimpleDateFormat(LONG_TIME);
 
