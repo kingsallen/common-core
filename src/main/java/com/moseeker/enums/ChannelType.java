@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public enum ChannelType {
 
-    NONE(0,"default","默认",""){
+    NONE(0, "default", "默认", "") {
         @Override
         public String getOrigin(String origin) {
 
@@ -120,12 +120,12 @@ public enum ChannelType {
         public String getOrigin(String origin) {
             return null;
         }
-    }, MAIMAI(10,"maimai","脉脉","common_retrieval_flow"){
+    }, MAIMAI(10, "maimai", "脉脉", "common_retrieval_flow") {
         @Override
         public String getOrigin(String origin) {
             return null;
         }
-    }, JOB58(11, "58.com", "58同城", "common_retrieval_flow"){
+    }, JOB58(11, "58.com", "58同城", "common_retrieval_flow") {
         @Override
         public String getOrigin(String origin) {
             String result;
@@ -135,6 +135,11 @@ public enum ChannelType {
                 result = getResult(origin, 35);
             }
             return result;
+        }
+    }, TW104(12, "104", "104", "common_retrieval_flow") {
+        @Override
+        public String getOrigin(String origin) {
+            return null;
         }
     }, UPLOAD51(20, "upload51", "51上传", "talent_upload") {
         @Override
@@ -235,7 +240,7 @@ public enum ChannelType {
             }
             return result;
         }
-    },MVHOUSEJOB51UPLOAD(31, "mvHouse(51)upload", "前程无忧（主投导入）", "mvHouse"){
+    }, MVHOUSEJOB51UPLOAD(31, "mvHouse(51)upload", "前程无忧（主投导入）", "mvHouse") {
         @Override
         public String getOrigin(String origin) {
             String result;
@@ -246,7 +251,7 @@ public enum ChannelType {
             }
             return result;
         }
-    },MVHOUSEJOB51DOWNLOAD(32, "mvHouse(51)download", "前程无忧（下载导入）", "mvHouse"){
+    }, MVHOUSEJOB51DOWNLOAD(32, "mvHouse(51)download", "前程无忧（下载导入）", "mvHouse") {
         @Override
         public String getOrigin(String origin) {
             String result;
@@ -257,7 +262,7 @@ public enum ChannelType {
             }
             return result;
         }
-    },MVHOUSEZHILIANUPLOAD(33, "mvHouse(ZhiLian)upload", "智联招聘（主投导入）", "mvHouse"){
+    }, MVHOUSEZHILIANUPLOAD(33, "mvHouse(ZhiLian)upload", "智联招聘（主投导入）", "mvHouse") {
         @Override
         public String getOrigin(String origin) {
             String result;
@@ -268,7 +273,7 @@ public enum ChannelType {
             }
             return result;
         }
-    },MVHOUSEZHILIANDOWNLOAD(34, "mvHouse(ZhiLian)download", "智联招聘（下载导入）", "mvHouse"){
+    }, MVHOUSEZHILIANDOWNLOAD(34, "mvHouse(ZhiLian)download", "智联招聘（下载导入）", "mvHouse") {
         @Override
         public String getOrigin(String origin) {
             String result;
