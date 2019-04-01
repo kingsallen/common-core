@@ -35,8 +35,8 @@ public enum SmsType{
     APPLIER_APP_ATTACH_RESOLVE_ERROR_SMS(28),
     PPLIER_APP_ATTACH_RESOLVE_OVERSIZE_SMS(29),
     APPLIER_APP_RESOLVE_FAIL_SMS(30),
-    ALARM_SMS(31);
-
+    ALARM_SMS(31),
+    COMMON_MERGE_ACCOUNT_SMS(32);//通用开通账号模版
     private final int value;
 
     private SmsType(int value) {
