@@ -284,6 +284,17 @@ public enum ChannelType {
             }
             return result;
         }
+    },UPLOADHEADHUNTER(36, "uploadHeadhunter", "猎头上传", "headhunter"){
+        @Override
+        public String getOrigin(String origin) {
+            String result;
+            if (StringUtils.isNullOrEmpty(origin)) {
+                result = "100000000000000000000000000000000000";
+            } else {
+                result = getResult(origin, 36);
+            }
+            return result;
+        }
     };
 
     ChannelType(int value, String name, String alias, String retriveName) {

@@ -36,8 +36,7 @@ public enum AppOriginEnum {
     JIANJIEZHUANFARECOM(21,"间接内推(转发投递)"),
     OLDEMPLOYEE(22,"老员工回聘"),
     EMPLOYEEZHUANGANG(23,"员工转岗"),
-    ;
-
+    LIETOU(24,"猎头");
     private int number;
     private String name;
     private AppOriginEnum(int number,String name){
