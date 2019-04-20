@@ -31,9 +31,14 @@ public enum AppOriginEnum {
     EMPLOYEERECOMMEND(16,"员工主动推荐"),
     RECOM(17,"内推"),
     JOB58(18,"job58"),
+    JIANJIECONNECTIONRECOM(19,"间接内推(联系内推)"),
+    JIANJIEINVERTIONRECOM(20,"间接内推(邀请投递)"),
+    JIANJIEZHUANFARECOM(21,"间接内推(转发投递)"),
     OLDEMPLOYEE(22,"老员工回聘"),
     EMPLOYEEZHUANGANG(23,"员工转岗"),
+    LIETOU(24,"猎头"),
     HRRECOMMEND(25,"HR推荐");
+
 
     private int number;
     private String name;

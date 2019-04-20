@@ -65,5 +65,4 @@ public enum KeyIdentifier {
     TW104_TOKEN_REFRESH,
     TW104_TOKEN_TEMP_STORE,
     TW104_CITY_STORE
-
 }
