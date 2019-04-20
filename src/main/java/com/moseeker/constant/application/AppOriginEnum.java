@@ -32,7 +32,8 @@ public enum AppOriginEnum {
     RECOM(17,"内推"),
     JOB58(18,"job58"),
     OLDEMPLOYEE(22,"老员工回聘"),
-    EMPLOYEEZHUANGANG(23,"员工转岗");
+    EMPLOYEEZHUANGANG(23,"员工转岗"),
+    HRRECOMMEND(25,"HR推荐");
 
     private int number;
     private String name;
