@@ -124,6 +124,9 @@ public enum ApplicationSource {
             case UPLOADHEADHUNTER:
                 origin = 8388608;
                 break;
+            case TW104:
+                origin = 33554432;
+                break;
             default:
         }
         return origin;
