@@ -14,9 +14,9 @@ import java.util.Map;
  **/
 public enum AppOriginEnum {
     PC(1,"PC"),
-    QIYEHAO(2,"企业号"),
+    QIYEHAO(2,"仟寻主投"), //“企业号”显示为“仟寻主投”
     JUHEHAO(3,"聚合号"),
-    JOB51(4,"51"),
+    JOB51(4,"前程无忧"),//“51”显示为“前程无忧”
     ZHILIAN(5,"智联"),
     LIEPIN(6,"猎聘"),
     ZHIFUBAO(7,"支付宝"),
