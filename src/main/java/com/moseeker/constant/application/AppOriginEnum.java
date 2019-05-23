@@ -30,7 +30,7 @@ public enum AppOriginEnum {
     MINHANG(15,"民航"),
     EMPLOYEERECOMMEND(16,"员工主动推荐"),
     RECOM(17,"内推"),
-    JOB58(18,"job58"),
+    JOB58(18,"58同城"),//"job58"显示为 "58同城"
     JIANJIECONNECTIONRECOM(19,"间接内推(联系内推)"),
     JIANJIEINVERTIONRECOM(20,"间接内推(邀请投递)"),
     JIANJIEZHUANFARECOM(21,"间接内推(转发投递)"),
