@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
         Result result = new Result();
         log.error(e.getMessage(), e);
         result.setCode(CommonExceptionEnum.error10001.getKey());
-        result.setMessage(e.getMessage());
+        result.setMessage(CommonExceptionEnum.error10001.getValue());
         return result;
     }
 }
