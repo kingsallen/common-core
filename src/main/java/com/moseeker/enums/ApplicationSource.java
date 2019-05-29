@@ -13,7 +13,7 @@ public enum ApplicationSource {
     ALIPAY(64, 1000000), PROXOYAPPLICATION(128, 10000000), DELEGATE(256, 100000000),
     ProgramImport(512, 1000000000), EmailApply(1024, 10000000000l),VERYEAST(2048,100000000000l),JOB1001(4096,1000000000000l)
     ,JOBSDB(8192,10000000000000l),CARNOC(16384,100000000000000l), EMPLOYEE_CHATBOT(32768,1000000000000000l),
-    EMPLOYEE_REFERRAL(65536,10000000000000000l),JOB58(131072,100000000000000000L),TW104(1<<21,2^21L);
+    EMPLOYEE_REFERRAL(65536,10000000000000000l),JOB58(131072,100000000000000000L),TW104(1<<25,2^25L);
 
     private int value;
     private long flag;
@@ -123,6 +123,9 @@ public enum ApplicationSource {
                 break;
             case UPLOADHEADHUNTER:
                 origin = 8388608;
+                break;
+            case TW104:
+                origin = 33554432;
                 break;
             default:
         }
