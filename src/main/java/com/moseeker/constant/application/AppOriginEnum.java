@@ -37,7 +37,8 @@ public enum AppOriginEnum {
     OLDEMPLOYEE(22,"老员工回聘"),
     EMPLOYEEZHUANGANG(23,"员工转岗"),
     LIETOU(24,"猎头"),
-    HRRECOMMEND(25,"HR推荐");
+    HRRECOMMEND(25,"HR推荐"),
+    TW104(26,"台湾104");
 
 
     private int number;
