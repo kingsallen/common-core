@@ -23,8 +23,8 @@ public enum ProfileOriginEnum {
     ORIGIN_ZHILIAN_SEND(33,"智联招聘（主投导入）"),
     ORIGIN_ZHILIAN_DOWNLOAD(34,"智联招聘（下载导入）"),
     ORIGIN_58(35,"58同城（上传）"),
-    ORIGIN_RECOM_UPLOAD(36,"简历内推（上传）"),
-    ORIGIN_LIETOU(37,"猎头（上传）"),
+    ORIGIN_RECOM_UPLOAD(39,"简历内推（上传）"),
+    ORIGIN_LIETOU(36,"猎头（上传）"),
     ORIGIN_TAIWAN104(38,"台湾104（上传）");
 
     private int length;
