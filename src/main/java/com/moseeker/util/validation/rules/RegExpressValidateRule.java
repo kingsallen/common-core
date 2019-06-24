@@ -67,7 +67,7 @@ public class RegExpressValidateRule extends ValidateRule {
 				this.errorMessage = "不合符规则";
 			}
 		} else {
-			this.errorMessage = "必须是字符类型数据";
+			this.errorMessage = StringUtils.isNotNullOrEmpty(this.errorMessage)?this.errorMessage:"不合符规则";
 		}
 		if (!this.legal) {
 			if (StringUtils.isNullOrEmpty(this.message)
