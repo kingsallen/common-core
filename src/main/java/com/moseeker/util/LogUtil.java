@@ -2,15 +2,13 @@ package com.moseeker.util;
 
 import com.alibaba.fastjson.JSON;
 import com.moseeker.constant.LogType;
-import com.moseeker.constant.TraceConstant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.MDC;
 
 import java.util.Map;
 
 public class LogUtil {
-    private final static Logger logger = LoggerFactory.getLogger("");
+    private final static Logger logger = LoggerFactory.getLogger(LogUtil.class);
 
     private static void debug(String serviceName, String methodName, String msg, String filter1, String filter2, Map<String, Object> extraInfo) {
         logger.debug("[{}][{}][{}][{}][{}][{}]", serviceName, methodName, filter1, filter2, msg, JSON.toJSONString(extraInfo));
@@ -52,10 +50,25 @@ public class LogUtil {
     }
 
     public static boolean CommonLog(LogType logType, String message, String filter1, String filter2, Map<String, Object> extraInfo) {
-        StackTraceElement[] stacks = Thread.currentThread().getStackTrace();
-        StackTraceElement stackTraceElement = stacks[2];
-        CommonLog(logType, stackTraceElement.getClassName(), stackTraceElement.getMethodName(), message, filter1, filter2, extraInfo);
-        return true;
+        try {
+            StackTraceElement[] stacks = Thread.currentThread().getStackTrace();
+            StackTraceElement stackTraceElement = stacks[2];
+            CommonLog(logType, stackTraceElement.getClassName(), stackTraceElement.getMethodName(), message, filter1, filter2, extraInfo);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
+    public static boolean CommonLog(LogType logType, String message) {
+        try {
+            StackTraceElement[] stacks = Thread.currentThread().getStackTrace();
+            StackTraceElement stackTraceElement = stacks[2];
+            CommonLog(logType, stackTraceElement.getClassName(), stackTraceElement.getMethodName(), message, "", "", null);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
 }
