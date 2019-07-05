@@ -251,6 +251,10 @@ public final class Constant {
 
     public static final String CDN_URL = "https://cdn.moseeker.com/";
 
+    //职位申请类型
+    public static final String SOCIAL_APPLY = "social";
+    public static final String CAMPUS_APPLY = "campus";
+
     //微信消息模板
     public static final int EMPLOYEE_PROFILE_COMPLETION=56;
     public static final int FANS_PROFILE_COMPLETION=58;
