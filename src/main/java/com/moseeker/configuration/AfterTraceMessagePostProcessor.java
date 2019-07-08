@@ -11,7 +11,7 @@ public class AfterTraceMessagePostProcessor implements MessagePostProcessor {
     @Override
     public Message postProcessMessage(Message message) throws AmqpException {
         Object traceId = message.getMessageProperties().getHeaders().get(TraceConstant.HEADERNAME);
-        MDC.put(TraceConstant.LOGKEY, traceId.toString());
+        MDC.put(TraceConstant.CUSTOM_TRACE_ID, traceId.toString());
         return message;
     }
 }

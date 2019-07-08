@@ -22,7 +22,7 @@ public class TraceInterceptor implements HandlerInterceptor {
         if (StringUtils.isNullOrEmpty(uuid)) {
             uuid = UUID.randomUUID().toString();
         }
-        MDC.put(TraceConstant.LOGKEY, uuid);
+        MDC.put(TraceConstant.CUSTOM_TRACE_ID, uuid);
         return true;
     }
 
@@ -33,6 +33,6 @@ public class TraceInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        MDC.remove(TraceConstant.LOGKEY);
+        MDC.remove(TraceConstant.CUSTOM_TRACE_ID);
     }
 }
