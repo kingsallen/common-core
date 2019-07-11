@@ -252,6 +252,9 @@ public final class Constant {
     public static final String CDN_URL = "https://cdn.moseeker.com/";
 
     //职位申请类型
+    public static final String SOCIAL_APPLY_LIMIT = "socialLimit";
+    public static final String CAMPUS_APPLY_LIMIT = "campusLimit";
+
     public static final String SOCIAL_APPLY = "social";
     public static final String CAMPUS_APPLY = "campus";
 
