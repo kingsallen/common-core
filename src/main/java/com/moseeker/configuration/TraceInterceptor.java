@@ -35,7 +35,7 @@ public class TraceInterceptor implements HandlerInterceptor {
             if (tracer != null) {
                 Span span = tracer.getCurrentSpan();
                 if (span != null) {
-                    span.tag(TraceConstant.CUSTOM_Tag, uuid);
+                    span.tag(TraceConstant.CUSTOM_TAG, uuid);
                 }
             }
 
