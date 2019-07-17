@@ -30,8 +30,10 @@ public enum RabbitMQConstant {
     HR_INTERVIEW_CANCEL_NOTICE_ROUTEKEY("hr_interview_cancel_notice_routekey"),
     POSITION_QUEUE_UPDATE_PUBLISHER("position_queue_update_publisher"),
     POSITION_QUEUE_UPDATE_PUBLISHER_ROUTEKEY("position_queue_update_publisher_routekey"),
-    POSITION_QUEUE_UPDATE_PUBLISHER_EXCHANGE("position_queue_update_publisher_exchange")
-
+    POSITION_QUEUE_UPDATE_PUBLISHER_EXCHANGE("position_queue_update_publisher_exchange"),
+    MESSAGE_CENTER_NOTICE_EXCHANGE("message_center_notice_exchange"),
+    MESSAGE_CENTER_NOTICE_QUEUE("message_center_notice_queue"),
+    MESSAGE_CENTER_NOTICE_ROUTEKEY("message_center_notice_routekey")
     ;
 
     private String value;
