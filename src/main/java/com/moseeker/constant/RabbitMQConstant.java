@@ -33,7 +33,10 @@ public enum RabbitMQConstant {
     POSITION_QUEUE_UPDATE_PUBLISHER_EXCHANGE("position_queue_update_publisher_exchange"),
     NEW_PROCESS_ATS_MESSSAGE_QUEUE("new_process_ats_message_queue"),
     NEW_PROCESS_ATS_MESSSAGE_EXCHANGE("new_process_ats_message_exchage"),
-    NEW_PROCESS_ATS_MESSSAGE_ROUTINGKEY("new_process_ats_message_routingkey")
+    NEW_PROCESS_ATS_MESSSAGE_ROUTINGKEY("new_process_ats_message_routingkey"),
+    MESSAGE_CENTER_NOTICE_EXCHANGE("message_center_notice_exchange"),
+    MESSAGE_CENTER_NOTICE_QUEUE("message_center_notice_queue"),
+    MESSAGE_CENTER_NOTICE_ROUTEKEY("message_center_notice_routekey")
     ;
 
     private String value;
