@@ -7,10 +7,11 @@ import com.moseeker.util.ConfigPropertiesUtil;
 import com.moseeker.util.FormCheck;
 import com.moseeker.util.StringUtils;
 import com.moseeker.util.validation.sensitivewords.SensitiveWordNode;
-import java.io.InputStreamReader;
-import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.InputStreamReader;
+import java.util.*;
 
 /**
  * 
@@ -117,6 +118,40 @@ public class SensitiveWordDB {
 
 		return sensitiveWordsArray;
 	}
+
+	/**
+	 * 检查需要判断的内容中是否存在敏感词
+	 * @param essay
+	 * @return 所有敏感词
+	 */
+	public Set<String> sensitiveExaminString(String essay) {
+		Set<String> sb = new LinkedHashSet<>();
+		List<String> essays = generatKeywords(essay);
+		if(essays != null && essays.size() > 0) {
+			for(String ess : essays) {
+				try {
+					boolean isCharacter = FormCheck.isCharacter(ess);
+					if(isCharacter) {
+						Set<String> stringSet = examinEssayString(ess, isCharacter);
+						if(!stringSet.isEmpty()){
+							sb.addAll(stringSet);
+						}
+					} else {
+						for(int i=0; i< ess.length(); i++) {
+							Set<String> stringSet = examinEssayString(ess.substring(i, ess.length()), isCharacter);
+							if(!stringSet.isEmpty()){
+								sb.addAll(stringSet);
+							}
+						}
+					}
+				} catch (BaseException e) {
+					continue;
+				}
+			}
+		}
+		return sb;
+	}
+
 	/**
 	 * 检查需要判断的内容中是否存在敏感词
 	 * @param essay
@@ -149,6 +184,48 @@ public class SensitiveWordDB {
 			}
 		}
 		return flag;
+	}
+
+	/**
+	 * 检查句子或者短语或者词组中是否包含敏感词。
+	 * @param ess 被检查的文本
+	 * @param isCharacter 是否是英文 如果包含英文，无需逐个匹配
+	 * @return 包含的所有敏感词
+	 */
+	private Set<String> examinEssayString(String ess, boolean isCharacter) {
+		Set<String> set = new HashSet<>();
+		if(!StringUtils.isNullOrEmpty(ess)) {
+			HashSet<SensitiveWordNode> children = rootNode.getChildren();
+			for(int i=0; i< ess.length(); i++) {
+				boolean endSensitiveDB = false; //如果已经到达敏感词库结尾,直接退出
+				char essayChar = ess.charAt(i);
+				if(children != null && children.size() > 0) {
+					for(SensitiveWordNode node : children) {
+						if(essayChar == node.getValue()) {
+							if(node.isSensitive() && (!isCharacter || i == ess.length()-1)) {
+								StringBuilder v = new StringBuilder();
+								SensitiveWordNode n = node;
+								while (n != null && n.getFatherNode() != null){
+									v.insert(0,n.getValue());
+									n = n.getFatherNode();
+								}
+								set.add(v.toString());
+								break;
+							}
+							children = node.getChildren();
+							if(children == null) {
+								endSensitiveDB = true;
+								break;
+							}
+						}
+					}
+				}
+				if(endSensitiveDB) {
+					break;
+				}
+			}
+		}
+		return set;
 	}
 	
 	/**
