@@ -193,7 +193,7 @@ public class SensitiveWordDB {
 	 * @return 包含的所有敏感词
 	 */
 	private Set<String> examinEssayString(String ess, boolean isCharacter) {
-		Set<String> set = new HashSet<>();
+		Set<String> set = new LinkedHashSet<>();
 		if(!StringUtils.isNullOrEmpty(ess)) {
 			HashSet<SensitiveWordNode> children = rootNode.getChildren();
 			for(int i=0; i< ess.length(); i++) {
