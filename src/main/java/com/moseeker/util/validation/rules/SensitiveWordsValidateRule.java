@@ -7,6 +7,8 @@ import com.moseeker.util.StringUtils;
 import com.moseeker.util.validation.SensitiveWordDB;
 import com.moseeker.util.validation.ValidateRule;
 
+import java.util.Set;
+
 /**
  * 
  * @description 敏感词验证器
@@ -36,6 +38,10 @@ public class SensitiveWordsValidateRule extends ValidateRule {
 			Object beanToValidated) throws BaseException {
 		super(paramName, message, beanToValidated);
 		this.errorMessage = Constant.DASVALIDATE_SENSITIVEWORDS_ILLEGAL;
+	}
+
+	public Set<String> validateString() {
+		return db.sensitiveExaminString((String) this.beanToValidated);
 	}
 
 	@Override
