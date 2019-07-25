@@ -13,15 +13,15 @@ import java.util.Map;
 public enum DegreeSource {
 
     NOCHOICE(0, "未选择",""),
-    MIDDLESCHOOL(1, "初中及以下","Junior High and Below","Junior High School"),
-    SECONDARY(2, "中专","Technical School"),
-    HIGHTSCHOOL(3, "高中","High School","Senior High School"),
-    JUNIORCOLLEGE(4, "大专","Junior College"),
+    MIDDLESCHOOL(1, "初中及以下","Junior High and Below","Junior High School", "初中", "junior high"),
+    SECONDARY(2, "中专","Technical School", "中技", "Skilled Workers Training", "中专", "Secondary Specialized"),
+    HIGHTSCHOOL(3, "高中","High School","Senior High School", "Senior High"),
+    JUNIORCOLLEGE(4, "大专","Junior College", "Associate"),
     UNDERGRADUATE(5, "本科","Bachelor","Undergraduate"),
-    MASTER(6, "硕士","研究生","Master"),
-    DOCTOR(7, "博士","Doctorate"),
+    MASTER(6, "硕士","研究生","Master", "MBA", "EMBA"),
+    DOCTOR(7, "博士","Doctorate", "Doctor"),
     POSTDOCTOR(8, "博士以上","Postdoctor"),
-    OTHER(9, "其他","Other");
+    OTHER(9, "其他","Other", "其它");
 
     private int value;
     private String[] degree;
