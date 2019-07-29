@@ -1,6 +1,7 @@
 package com.moseeker.util.validation;
 
 
+import com.alibaba.fastjson.JSON;
 import com.moseeker.enums.CommonExceptionEnum;
 import com.moseeker.exception.BaseException;
 import com.moseeker.util.ConfigPropertiesUtil;
@@ -197,31 +198,41 @@ public class SensitiveWordDB {
 		if(!StringUtils.isNullOrEmpty(ess)) {
 			HashSet<SensitiveWordNode> children = rootNode.getChildren();
 			for(int i=0; i< ess.length(); i++) {
-				boolean endSensitiveDB = false; //如果已经到达敏感词库结尾,直接退出
+				boolean sameKeyWord = false;
 				char essayChar = ess.charAt(i);
 				if(children != null && children.size() > 0) {
 					for(SensitiveWordNode node : children) {
 						if(essayChar == node.getValue()) {
+							//触发敏感词childrenNode及最下层childrenNode的isSensitive属性都为true
 							if(node.isSensitive() && (!isCharacter || i == ess.length()-1)) {
 								StringBuilder v = new StringBuilder();
 								SensitiveWordNode n = node;
-								while (n != null && n.getFatherNode() != null){
-									v.insert(0,n.getValue());
+								while (n != null && n.getFatherNode() != null) {
+									v.insert(0, n.getValue());
 									n = n.getFatherNode();
 								}
 								set.add(v.toString());
-								break;
 							}
 							children = node.getChildren();
 							if(children == null) {
-								endSensitiveDB = true;
-								break;
+								break;//到达最下层childrenNode节点且已添加进set,所以跳出循环到字符串继续匹配敏感词
 							}
+							sameKeyWord = true;
+							break; //触发敏感词进入childrenNode循环
 						}
 					}
 				}
-				if(endSensitiveDB) {
-					break;
+				if(!sameKeyWord) {
+					if(children != null){
+						// 没有完全匹配的需要回退到开始的下一个字符
+						SensitiveWordNode node = null;
+						for(SensitiveWordNode item : children){
+							node = item.getFatherNode();
+							break;
+						}
+						i -= node.getStep();
+					}
+					children = rootNode.getChildren();
 				}
 			}
 		}
