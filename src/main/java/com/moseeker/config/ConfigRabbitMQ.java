@@ -2,6 +2,10 @@ package com.moseeker.config;/**
  * Created by zztaiwll on 18/11/29.
  */
 
+import com.moseeker.configuration.AfterTraceMessagePostProcessor;
+import com.moseeker.configuration.BeforeTraceMessagePostProcessor;
+import com.moseeker.constant.LogType;
+import com.moseeker.util.LogUtil;
 import com.rabbitmq.client.ConnectionFactory;
 
 import org.springframework.amqp.core.*;
@@ -11,16 +15,13 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.retry.backoff.ExponentialBackOffPolicy;
 import org.springframework.retry.support.RetryTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @version 1.0
@@ -55,8 +56,34 @@ public class ConfigRabbitMQ {
         backOffPolicy.setMaxInterval(10000);
         retryTemplate.setBackOffPolicy(backOffPolicy);
         rabbitTemplate.setRetryTemplate(retryTemplate);
+        rabbitTemplate.setBeforePublishPostProcessors(beforeTraceMessagePostProcessor());
+        //rabbitTemplate.setAfterReceivePostProcessors(afterTraceMessagePostProcessor());
         return rabbitTemplate;
     }
+
+    @Bean
+   public BeforeTraceMessagePostProcessor beforeTraceMessagePostProcessor(){
+        return new BeforeTraceMessagePostProcessor();
+    }
+
+//    @Bean
+//    public AfterTraceMessagePostProcessor afterTraceMessagePostProcessor(){
+//        return new AfterTraceMessagePostProcessor();
+//    }
+
+
+//    @Bean
+//    public SimpleMessageListenerContainer messageListenerContainer(){
+//        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+//        container.setConnectionFactory(cachingConnectionFactory());
+//        container.setQueueNames("TestQue");
+//        container.setAfterReceivePostProcessors(afterTraceMessagePostProcessor());
+//        container.setAcknowledgeMode(AcknowledgeMode.AUTO);
+//        container.setMessageListener((MessageListener) message -> {
+//            LogUtil.CommonLog(LogType.Info,new String(message.getBody()));
+//        });
+//        return container;
+//    }
 
     @Bean
     public CachingConnectionFactory cachingConnectionFactory() {
