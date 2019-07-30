@@ -12,7 +12,7 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${spring.application.name} %logger{50} - %msg%n</pattern>
+            <pattern>[%X{customTraceId}][%X{X-B3-TraceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${spring.application.name} %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
     <!-- 按照每天生成日志文件 -->
@@ -23,13 +23,13 @@
         </rollingPolicy>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${spring.application.name} %logger{50} - %msg%n</pattern>
+            <pattern>[%X{customTraceId}][%X{X-B3-TraceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${spring.application.name} %logger{50} - %msg%n</pattern>
         </encoder>
     </appender>
 
     <appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${spring.application.name} %logger{50} - %msg%n</pattern>
+            <pattern>[%X{customTraceId}][%X{X-B3-TraceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] ${spring.application.name} %logger{50} - %msg%n</pattern>
         </layout>
         <host>${redis.elk.host}</host>
         <port>${redis.elk.port}</port>
