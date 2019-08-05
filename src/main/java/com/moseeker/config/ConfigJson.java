@@ -1,6 +1,7 @@
 package com.moseeker.config;
 
 import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -11,19 +12,26 @@ import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.PropertyFilter;
 import com.fasterxml.jackson.databind.ser.PropertyWriter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
+import org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
 @Configuration
-public class ConfigJson {
+public class ConfigJson extends InstantiationAwareBeanPostProcessorAdapter {
 
-    @Bean
-    public ObjectMapper filter() {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setFilterProvider(getFilters());
-        return mapper;
+    @Override
+    public boolean postProcessAfterInstantiation(final Object bean, final String beanName) throws BeansException {
+
+        if (bean instanceof ObjectMapper) {
+            ObjectMapper mapper = (ObjectMapper) bean;
+            mapper.setFilterProvider(getFilters());
+        }
+        return super.postProcessAfterInstantiation(bean, beanName);
     }
 
     @Bean
