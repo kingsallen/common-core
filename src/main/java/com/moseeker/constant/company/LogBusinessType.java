@@ -1,12 +1,22 @@
 package com.moseeker.constant.company;
 
-import sun.rmi.runtime.Log;
-
 /**
  * 操作记录应用场景分类
  * @author yehu
  */
 public interface LogBusinessType {
+
+    /**
+     * 获取类型id
+     * @return
+     */
+    int getTypeId();
+
+    /**
+     * 获取操作类型(增删改或未知)
+     * @return
+     */
+    int getOperationtype();
 
     /**
      * 职位相关
@@ -15,95 +25,210 @@ public interface LogBusinessType {
         /**
          * 创建职位
          */
-        CREATE(4,LogOperationType.CREATE.getNum()),
+        CREATE{
+            @Override
+            public int getTypeId() {
+                return 4;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
         /**
          * 置顶职位
          */
-        STICKY(5,LogOperationType.UPDATE.getNum()),
+        STICKY{
+            @Override
+            public int getTypeId() {
+                return 5;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 取消置顶职位
          */
-        CANCEL_STICKY(6,LogOperationType.UPDATE.getNum()),
+        CANCEL_STICKY{
+            @Override
+            public int getTypeId() {
+                return 6;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 撤下职位
          */
-        RECEDED(7, LogOperationType.UPDATE.getNum()),
+        RECEDED{
+            @Override
+            public int getTypeId() {
+                return 7;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 恢复职位
          */
-        RESUME(8,LogOperationType.UPDATE.getNum()),
+        RESUME{
+            @Override
+            public int getTypeId() {
+                return 8;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 编辑职位
          */
-        EDIT(9,LogOperationType.UPDATE.getNum()),
+        EDIT{
+            @Override
+            public int getTypeId() {
+                return 9;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 同步职位
          */
-        SYNCHRONOUS(10,LogOperationType.UPDATE.getNum()),
+        SYNCHRONOUS{
+            @Override
+            public int getTypeId() {
+                return 10;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 删除职位
          */
-        DELETE(11,LogOperationType.DELETE.getNum()),
+        DELETE{
+            @Override
+            public int getTypeId() {
+                return 11;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.DELETE.getNum();
+            }
+        },
 
         /**
          * 分配职位
          */
-        ARRANGE(12,LogOperationType.UPDATE.getNum()),
+        ARRANGE{
+            @Override
+            public int getTypeId() {
+                return 12;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量置顶
          */
-        BATCH_STICKY(13,LogOperationType.UPDATE.getNum()),
+        BATCH_STICKY{
+            @Override
+            public int getTypeId() {
+                return 13;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量分配
          */
-        BATCH_ARRANGE(14,LogOperationType.UPDATE.getNum()),
+        BATCH_ARRANGE{
+            @Override
+            public int getTypeId() {
+                return 14;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量撤下
          */
-        BATCH_RECEDED(15,LogOperationType.UPDATE.getNum()),
+        BATCH_RECEDED{
+            @Override
+            public int getTypeId() {
+                return 15;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量删除
          */
-        BATCH_DELETE(16,LogOperationType.DELETE.getNum()),
+        BATCH_DELETE{
+            @Override
+            public int getTypeId() {
+                return 16;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.DELETE.getNum();
+            }
+        },
 
         /**
          * 批量导入
          */
-        BATCH_IMPORT(17,LogOperationType.UPDATE.getNum())
-        ;
-        private Integer typeId;
+        BATCH_IMPORT{
+            @Override
+            public int getTypeId() {
+                return 17;
+            }
 
-        private Integer operationLogType;
-
-        public Integer getTypeId() {
-            return typeId;
-        }
-
-        public void setTypeId(Integer typeId) {
-            this.typeId = typeId;
-        }
-
-        public Integer getOperationLogType() {
-            return operationLogType;
-        }
-
-        public void setOperationLogType(Integer operationLogType) {
-            this.operationLogType = operationLogType;
-        }
-
-        Position(Integer typeId, Integer operationLogType) {
-            this.typeId = typeId;
-            this.operationLogType = operationLogType;
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
         }
     }
 
@@ -114,87 +239,184 @@ public interface LogBusinessType {
         /**
          * 批量推荐到用人部门
          */
-        BATCH_RECOMMEND(18,LogOperationType.UPDATE.getNum()),
+        BATCH_RECOMMEND{
+            @Override
+            public int getTypeId() {
+                return 18;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 导出excel
          */
-        EXCEL_EXPORT(19,LogOperationType.UPDATE.getNum()),
+        EXCEL_EXPORT{
+            @Override
+            public int getTypeId() {
+                return 19;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量收藏
          */
-        BATCH_COLLECT(20,LogOperationType.DEFAULT.getNum()),
+        BATCH_COLLECT{
+            @Override
+            public int getTypeId() {
+                return 20;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.DEFAULT.getNum();
+            }
+        },
 
         /**
          * 批量下载简历
          */
-        BATCH_DOWNLOAD_PROFILE(21,LogOperationType.UPDATE.getNum()),
+        BATCH_DOWNLOAD_PROFILE{
+            @Override
+            public int getTypeId() {
+                return 21;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量淘汰
          */
-        BATCH_OBSOLETE(22,LogOperationType.UPDATE.getNum()),
+        BATCH_OBSOLETE{
+            @Override
+            public int getTypeId() {
+                return 22;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量变更阶段
          */
-        BATCH_CHANGE_PROCESS(23,LogOperationType.UPDATE.getNum()),
+        BATCH_CHANGE_PROCESS{
+            @Override
+            public int getTypeId() {
+                return 23;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 人才库批量取消收藏
          */
-        TALENT_POOL_BATCH_CANCEL_COLLECT(24,LogOperationType.UPDATE.getNum()),
+        TALENT_POOL_BATCH_CANCEL_COLLECT{
+            @Override
+            public int getTypeId() {
+                return 24;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 人才库批量设为公开
          */
-        TALENT_POOL_BATCH_SET_PUBLIC(25,LogOperationType.UPDATE.getNum()),
+        TALENT_POOL_BATCH_SET_PUBLIC{
+            @Override
+            public int getTypeId() {
+                return 25;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 人才库批量设为私有
          */
-        TALENT_POOL_BATCH_SET_PRIVATE(26,LogOperationType.UPDATE.getNum()),
+        TALENT_POOL_BATCH_SET_PRIVATE{
+            @Override
+            public int getTypeId() {
+                return 26;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 人才库批量下载简历
          */
-        TALENT_POOL_BATCH_DOWNLOAD_PROFILE(27,LogOperationType.UPDATE.getNum()),
+        TALENT_POOL_BATCH_DOWNLOAD_PROFILE{
+            @Override
+            public int getTypeId() {
+                return 27;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 人才库批量导出excel
          */
-        TALENT_POOL_BATCH_EXCEL_EXPORT(28,LogOperationType.UPDATE.getNum()),
+        TALENT_POOL_BATCH_EXCEL_EXPORT{
+            @Override
+            public int getTypeId() {
+                return 28;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 人才库批量邀请投递
          */
-        TALENT_POOL_BATCH_INVITE(29,LogOperationType.UPDATE.getNum())
-        ;
-        private Integer typeId;
+        TALENT_POOL_BATCH_INVITE{
+            @Override
+            public int getTypeId() {
+                return 29;
+            }
 
-        private Integer operationLogType;
-
-        public Integer getTypeId() {
-            return typeId;
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
         }
 
-        public void setTypeId(Integer typeId) {
-            this.typeId = typeId;
-        }
 
-        public Integer getOperationLogType() {
-            return operationLogType;
-        }
-
-        public void setOperationLogType(Integer operationLogType) {
-            this.operationLogType = operationLogType;
-        }
-
-        Recruit(Integer typeId, Integer operationLogType) {
-            this.typeId = typeId;
-            this.operationLogType = operationLogType;
-        }
     }
 
     /**
@@ -204,116 +426,271 @@ public interface LogBusinessType {
         /**
          * 第三方账号绑定
          */
-        THIRD_PARTY_ACCOUNT_BIND(30,LogOperationType.CREATE.getNum()),
+        THIRD_PARTY_ACCOUNT_BIND{
+            @Override
+            public int getTypeId() {
+                return 30;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
 
         /**
          * 第三方账号解绑
          */
-        THIRD_PARTY_ACCOUNT_UNBIND(31,LogOperationType.DELETE.getNum()),
+        THIRD_PARTY_ACCOUNT_UNBIND{
+            @Override
+            public int getTypeId() {
+                return 31;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.DELETE.getNum();
+            }
+        },
 
         /**
          * 第三方账号分配
          */
-        THIRD_PARTY_ACCOUNT_ALLOCATION(32,LogOperationType.UPDATE.getNum()),
+        THIRD_PARTY_ACCOUNT_ALLOCATION{
+            @Override
+            public int getTypeId() {
+                return 32;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 子账号添加
          */
-        SUB_ACCOUNT_ADD(33,LogOperationType.CREATE.getNum()),
+        SUB_ACCOUNT_ADD{
+            @Override
+            public int getTypeId() {
+                return 33;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
 
         /**
          * 子账号换绑
          */
-        SUB_ACCOUNT_CHANGE(34,LogOperationType.UPDATE.getNum()),
+        SUB_ACCOUNT_CHANGE{
+            @Override
+            public int getTypeId() {
+                return 34;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 子账号删除
          */
-        SUB_ACCOUNT_DELETE(35,LogOperationType.DELETE.getNum()),
+        SUB_ACCOUNT_DELETE{
+            @Override
+            public int getTypeId() {
+                return 35;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.DELETE.getNum();
+            }
+        },
 
         /**
          * 猎头添加
          */
-        HEAD_HUNTER_ADD(36,LogOperationType.CREATE.getNum()),
+        HEAD_HUNTER_ADD{
+            @Override
+            public int getTypeId() {
+                return 36;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
 
         /**
          * 猎头禁用
          */
-        HEAD_HUNTER_FORBIDDEN(37,LogOperationType.UPDATE.getNum()),
+        HEAD_HUNTER_FORBIDDEN{
+            @Override
+            public int getTypeId() {
+                return 37;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 面试官添加
          */
-        INTERVIEWER_ADD(38,LogOperationType.CREATE.getNum()),
+        INTERVIEWER_ADD{
+            @Override
+            public int getTypeId() {
+                return 38;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
 
         /**
          * 面试官删除
          */
-        INTERVIEWER_DELETE(39,LogOperationType.DELETE.getNum()),
+        INTERVIEWER_DELETE{
+            @Override
+            public int getTypeId() {
+                return 39;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.DELETE.getNum();
+            }
+        },
 
         /**
          * 新增阶段
          */
-        PHASE_ADD(40,LogOperationType.CREATE.getNum()),
+        PHASE_ADD{
+            @Override
+            public int getTypeId() {
+                return 40;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
 
         /**
          * 编辑阶段
          */
-        PHASE_EDIT(41,LogOperationType.UPDATE.getNum()),
+        PHASE_EDIT{
+            @Override
+            public int getTypeId() {
+                return 41;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 新增流程
          */
-        PROCESS_ADD(42,LogOperationType.CREATE.getNum()),
+        PROCESS_ADD{
+            @Override
+            public int getTypeId() {
+                return 42;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
 
         /**
          * 编辑流程
          */
-        PROCESS_EDIT(43,LogOperationType.UPDATE.getNum()),
+        PROCESS_EDIT{
+            @Override
+            public int getTypeId() {
+                return 43;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量导出候选人
          */
-        BATCH_CANDIDATE_EXPORT(44,LogOperationType.UPDATE.getNum()),
+        BATCH_CANDIDATE_EXPORT{
+            @Override
+            public int getTypeId() {
+                return 44;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 批量导入候选人
          */
-        BATCH_CANDIDATE_IMPORT(45,LogOperationType.UPDATE.getNum()),
+        BATCH_CANDIDATE_IMPORT{
+            @Override
+            public int getTypeId() {
+                return 45;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
 
         /**
          * 新增通知模版
          */
-        NOTICE_TEMPLATE_ADD(46,LogOperationType.CREATE.getNum()),
+        NOTICE_TEMPLATE_ADD{
+            @Override
+            public int getTypeId() {
+                return 46;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
 
         /**
          * 编辑通知模版
          */
-        NOTICE_TEMPLATE_EDIT(47,LogOperationType.UPDATE.getNum())
-        ;
-        private Integer typeId;
+        NOTICE_TEMPLATE_EDIT{
+            @Override
+            public int getTypeId() {
+                return 47;
+            }
 
-        private Integer operationLogType;
-
-        public Integer getTypeId() {
-            return typeId;
-        }
-
-        public void setTypeId(Integer typeId) {
-            this.typeId = typeId;
-        }
-
-        public Integer getOperationLogType() {
-            return operationLogType;
-        }
-
-        public void setOperationLogType(Integer operationLogType) {
-            this.operationLogType = operationLogType;
-        }
-
-        Setting(Integer typeId, Integer operationLogType) {
-            this.typeId = typeId;
-            this.operationLogType = operationLogType;
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
         }
     }
 
