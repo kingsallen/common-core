@@ -33,11 +33,6 @@ public interface LogBusinessType {
          */
         CREATE{
             @Override
-            public int getParentId() {
-                return 1;
-            }
-
-            @Override
             public int getTypeId() {
                 return 4;
             }
@@ -51,11 +46,6 @@ public interface LogBusinessType {
          * 置顶职位
          */
         STICKY{
-            @Override
-            public int getParentId() {
-                return 1;
-            }
-
             @Override
             public int getTypeId() {
                 return 5;
@@ -72,11 +62,6 @@ public interface LogBusinessType {
          */
         CANCEL_STICKY{
             @Override
-            public int getParentId() {
-                return 1;
-            }
-
-            @Override
             public int getTypeId() {
                 return 6;
             }
@@ -91,11 +76,6 @@ public interface LogBusinessType {
          * 撤下职位
          */
         RECEDED{
-            @Override
-            public int getParentId() {
-                return 1;
-            }
-
             @Override
             public int getTypeId() {
                 return 7;
@@ -112,11 +92,6 @@ public interface LogBusinessType {
          */
         RESUME{
             @Override
-            public int getParentId() {
-                return 1;
-            }
-
-            @Override
             public int getTypeId() {
                 return 8;
             }
@@ -131,11 +106,6 @@ public interface LogBusinessType {
          * 编辑职位
          */
         EDIT{
-            @Override
-            public int getParentId() {
-                return 1;
-            }
-
             @Override
             public int getTypeId() {
                 return 9;
@@ -152,11 +122,6 @@ public interface LogBusinessType {
          */
         SYNCHRONOUS{
             @Override
-            public int getParentId() {
-                return 1;
-            }
-
-            @Override
             public int getTypeId() {
                 return 10;
             }
@@ -171,11 +136,6 @@ public interface LogBusinessType {
          * 删除职位
          */
         DELETE{
-            @Override
-            public int getParentId() {
-                return 1;
-            }
-
             @Override
             public int getTypeId() {
                 return 11;
@@ -192,11 +152,6 @@ public interface LogBusinessType {
          */
         ARRANGE{
             @Override
-            public int getParentId() {
-                return 1;
-            }
-
-            @Override
             public int getTypeId() {
                 return 12;
             }
@@ -211,11 +166,6 @@ public interface LogBusinessType {
          * 批量置顶
          */
         BATCH_STICKY{
-            @Override
-            public int getParentId() {
-                return 1;
-            }
-
             @Override
             public int getTypeId() {
                 return 13;
@@ -232,11 +182,6 @@ public interface LogBusinessType {
          */
         BATCH_ARRANGE{
             @Override
-            public int getParentId() {
-                return 1;
-            }
-
-            @Override
             public int getTypeId() {
                 return 14;
             }
@@ -251,11 +196,6 @@ public interface LogBusinessType {
          * 批量撤下
          */
         BATCH_RECEDED{
-            @Override
-            public int getParentId() {
-                return 1;
-            }
-
             @Override
             public int getTypeId() {
                 return 15;
@@ -272,11 +212,6 @@ public interface LogBusinessType {
          */
         BATCH_DELETE{
             @Override
-            public int getParentId() {
-                return 1;
-            }
-
-            @Override
             public int getTypeId() {
                 return 16;
             }
@@ -292,11 +227,6 @@ public interface LogBusinessType {
          */
         BATCH_IMPORT{
             @Override
-            public int getParentId() {
-                return 1;
-            }
-
-            @Override
             public int getTypeId() {
                 return 17;
             }
@@ -305,6 +235,11 @@ public interface LogBusinessType {
             public int getOperationtype() {
                 return LogOperationType.UPDATE.getNum();
             }
+        };
+
+        @Override
+        public int getParentId() {
+            return 1;
         }
     }
 
@@ -316,11 +251,6 @@ public interface LogBusinessType {
          * 批量推荐到用人部门
          */
         BATCH_RECOMMEND{
-            @Override
-            public int getParentId() {
-                return 2;
-            }
-
             @Override
             public int getTypeId() {
                 return 18;
@@ -337,11 +267,6 @@ public interface LogBusinessType {
          */
         EXCEL_EXPORT{
             @Override
-            public int getParentId() {
-                return 2;
-            }
-
-            @Override
             public int getTypeId() {
                 return 19;
             }
@@ -356,11 +281,6 @@ public interface LogBusinessType {
          * 批量收藏
          */
         BATCH_COLLECT{
-            @Override
-            public int getParentId() {
-                return 2;
-            }
-
             @Override
             public int getTypeId() {
                 return 20;
@@ -377,11 +297,6 @@ public interface LogBusinessType {
          */
         BATCH_DOWNLOAD_PROFILE{
             @Override
-            public int getParentId() {
-                return 2;
-            }
-
-            @Override
             public int getTypeId() {
                 return 21;
             }
@@ -396,11 +311,6 @@ public interface LogBusinessType {
          * 批量淘汰
          */
         BATCH_OBSOLETE{
-            @Override
-            public int getParentId() {
-                return 2;
-            }
-
             @Override
             public int getTypeId() {
                 return 22;
@@ -417,11 +327,6 @@ public interface LogBusinessType {
          */
         BATCH_CHANGE_PROCESS{
             @Override
-            public int getParentId() {
-                return 2;
-            }
-
-            @Override
             public int getTypeId() {
                 return 23;
             }
@@ -436,11 +341,6 @@ public interface LogBusinessType {
          * 人才库批量取消收藏
          */
         TALENT_POOL_BATCH_CANCEL_COLLECT{
-            @Override
-            public int getParentId() {
-                return 2;
-            }
-
             @Override
             public int getTypeId() {
                 return 24;
@@ -457,11 +357,6 @@ public interface LogBusinessType {
          */
         TALENT_POOL_BATCH_SET_PUBLIC{
             @Override
-            public int getParentId() {
-                return 2;
-            }
-
-            @Override
             public int getTypeId() {
                 return 25;
             }
@@ -476,11 +371,6 @@ public interface LogBusinessType {
          * 人才库批量设为私有
          */
         TALENT_POOL_BATCH_SET_PRIVATE{
-            @Override
-            public int getParentId() {
-                return 2;
-            }
-
             @Override
             public int getTypeId() {
                 return 26;
@@ -497,11 +387,6 @@ public interface LogBusinessType {
          */
         TALENT_POOL_BATCH_DOWNLOAD_PROFILE{
             @Override
-            public int getParentId() {
-                return 2;
-            }
-
-            @Override
             public int getTypeId() {
                 return 27;
             }
@@ -516,11 +401,6 @@ public interface LogBusinessType {
          * 人才库批量导出excel
          */
         TALENT_POOL_BATCH_EXCEL_EXPORT{
-            @Override
-            public int getParentId() {
-                return 2;
-            }
-
             @Override
             public int getTypeId() {
                 return 28;
@@ -537,11 +417,6 @@ public interface LogBusinessType {
          */
         TALENT_POOL_BATCH_INVITE{
             @Override
-            public int getParentId() {
-                return 2;
-            }
-
-            @Override
             public int getTypeId() {
                 return 29;
             }
@@ -550,6 +425,10 @@ public interface LogBusinessType {
             public int getOperationtype() {
                 return LogOperationType.UPDATE.getNum();
             }
+        };
+        @Override
+        public int getParentId() {
+            return 2;
         }
 
 
@@ -563,11 +442,6 @@ public interface LogBusinessType {
          * 第三方账号绑定
          */
         THIRD_PARTY_ACCOUNT_BIND{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 30;
@@ -584,11 +458,6 @@ public interface LogBusinessType {
          */
         THIRD_PARTY_ACCOUNT_UNBIND{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 31;
             }
@@ -603,11 +472,6 @@ public interface LogBusinessType {
          * 第三方账号分配
          */
         THIRD_PARTY_ACCOUNT_ALLOCATION{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 32;
@@ -624,11 +488,6 @@ public interface LogBusinessType {
          */
         SUB_ACCOUNT_ADD{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 33;
             }
@@ -643,11 +502,6 @@ public interface LogBusinessType {
          * 子账号换绑
          */
         SUB_ACCOUNT_CHANGE{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 34;
@@ -664,11 +518,6 @@ public interface LogBusinessType {
          */
         SUB_ACCOUNT_DELETE{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 35;
             }
@@ -683,11 +532,6 @@ public interface LogBusinessType {
          * 猎头添加
          */
         HEAD_HUNTER_ADD{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 36;
@@ -704,11 +548,6 @@ public interface LogBusinessType {
          */
         HEAD_HUNTER_FORBIDDEN{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 37;
             }
@@ -723,11 +562,6 @@ public interface LogBusinessType {
          * 面试官添加
          */
         INTERVIEWER_ADD{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 38;
@@ -744,11 +578,6 @@ public interface LogBusinessType {
          */
         INTERVIEWER_DELETE{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 39;
             }
@@ -763,11 +592,6 @@ public interface LogBusinessType {
          * 新增阶段
          */
         PHASE_ADD{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 40;
@@ -784,11 +608,6 @@ public interface LogBusinessType {
          */
         PHASE_EDIT{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 41;
             }
@@ -803,11 +622,6 @@ public interface LogBusinessType {
          * 新增流程
          */
         PROCESS_ADD{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 42;
@@ -824,11 +638,6 @@ public interface LogBusinessType {
          */
         PROCESS_EDIT{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 43;
             }
@@ -843,11 +652,6 @@ public interface LogBusinessType {
          * 批量导出候选人
          */
         BATCH_CANDIDATE_EXPORT{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 44;
@@ -864,11 +668,6 @@ public interface LogBusinessType {
          */
         BATCH_CANDIDATE_IMPORT{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 45;
             }
@@ -883,11 +682,6 @@ public interface LogBusinessType {
          * 新增通知模版
          */
         NOTICE_TEMPLATE_ADD{
-            @Override
-            public int getParentId() {
-                return 3;
-            }
-
             @Override
             public int getTypeId() {
                 return 46;
@@ -904,11 +698,6 @@ public interface LogBusinessType {
          */
         NOTICE_TEMPLATE_EDIT{
             @Override
-            public int getParentId() {
-                return 3;
-            }
-
-            @Override
             public int getTypeId() {
                 return 47;
             }
@@ -917,6 +706,10 @@ public interface LogBusinessType {
             public int getOperationtype() {
                 return LogOperationType.UPDATE.getNum();
             }
+        };
+        @Override
+        public int getParentId() {
+            return 3;
         }
     }
 
