@@ -36,7 +36,10 @@ public enum RabbitMQConstant {
     NEW_PROCESS_ATS_MESSSAGE_ROUTINGKEY("new_process_ats_message_routingkey"),
     MESSAGE_CENTER_NOTICE_EXCHANGE("message_center_notice_exchange"),
     MESSAGE_CENTER_NOTICE_QUEUE("message_center_notice_queue"),
-    MESSAGE_CENTER_NOTICE_ROUTEKEY("message_center_notice_routekey")
+    MESSAGE_CENTER_NOTICE_ROUTEKEY("message_center_notice_routekey"),
+    OPERATION_LOG_EXCHANGE("operation_log_exchange"),
+    OPERATION_LOG_QUEUE("operation_log_queue"),
+    OPERATION_LOG_ROUTEKEY("operation_log_routekey")
     ;
 
     private String value;

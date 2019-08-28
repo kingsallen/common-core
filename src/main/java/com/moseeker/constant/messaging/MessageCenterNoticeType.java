@@ -73,7 +73,12 @@ public enum MessageCenterNoticeType {
     /**
      * 其他-候选人备注
      */
-    OTHER_CANDIDATE_REMARK(20)
+    OTHER_CANDIDATE_REMARK(20),
+
+    /**
+     * 推荐-推荐到用人部门
+     */
+    RECOMMAND_TO_MANAGER(21)
     ;
 
 
