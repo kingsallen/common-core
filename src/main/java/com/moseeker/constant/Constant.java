@@ -188,6 +188,11 @@ public final class Constant {
 	public static final int PROFILER_COMPLETENESS_AWARD_MAXVALUE = 1;			//活得奖项完成度最大值
 	public static final int PROFILER_COMPLETENESS_WORKS_MAXVALUE = 1; 			//作品完成度的最大值
 	public static final int PROFILER_COMPLETENESS_INTENTION_MAXVALUE = 4;		//求职意愿完成度最大值
+
+    //身份证识别组件
+    public static final String IDCARD_RECOG = "idcard-recog";
+    public static final String IDPHOTO_FRONT = "IdPhotoFront";
+    public static final String IDPHOTO_BACK = "IdPhotoBack";
 	
 	public static final int DICT_CONSTANT_COMPANY_SCAL = 1102; 					//公司规模常量表parent_code值
 	public static final int DICT_CONSTANT_COMPANY_PROPERTY = 1103; 				//公司性质常量表parent_code值
