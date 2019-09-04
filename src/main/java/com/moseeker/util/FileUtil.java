@@ -27,14 +27,6 @@ public class FileUtil {
 
     private static Logger logger = LoggerFactory.getLogger(FileUtil.class);
 
-    public static void main(String[] args) throws IOException {
-        byte[] bytes = FileUtils.readFileToByteArray(new File("/Users/wulei/Desktop/归档/11.jpeg"));
-        long l = System.currentTimeMillis();
-        bytes = FileUtil.compressPicForScale(bytes, 1024*2, "x");// 图片小于300kb
-        System.out.println(System.currentTimeMillis() - l);
-        FileUtils.writeByteArrayToFile(new File("/Users/wulei/Desktop/归档/hhh.jpeg"), bytes);
-    }
-
     /**
      * 根据指定大小压缩图片
      *
