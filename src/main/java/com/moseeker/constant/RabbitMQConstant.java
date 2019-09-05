@@ -37,6 +37,9 @@ public enum RabbitMQConstant {
     MESSAGE_CENTER_NOTICE_EXCHANGE("message_center_notice_exchange"),
     MESSAGE_CENTER_NOTICE_QUEUE("message_center_notice_queue"),
     MESSAGE_CENTER_NOTICE_ROUTEKEY("message_center_notice_routekey"),
+    INTERVIEW_IMMEDIATE_QUEUE("interview_refresh_status_immediate_queue"),
+    INTERVIEW_DELAY_EXCHANGE("interview_refresh_status_delay_exchange"),
+    INTERVIEW_DELAY_ROUTEKEY("interview_refresh_status_delay_routekey"),
     OPERATION_LOG_EXCHANGE("operation_log_exchange"),
     OPERATION_LOG_QUEUE("operation_log_queue"),
     OPERATION_LOG_ROUTEKEY("operation_log_routekey")
