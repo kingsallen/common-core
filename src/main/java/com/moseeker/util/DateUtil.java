@@ -548,6 +548,9 @@ public final class DateUtil {
     * @param destPattern:目标日期格式
     * */
     public static String formatDateStr(String date,String originPattern,String destPattern) {
+        if(StringUtils.isEmpty(date)){
+            return null;
+        }
         try{
             SimpleDateFormat originSdf = new SimpleDateFormat(originPattern);
             SimpleDateFormat destSdf = new SimpleDateFormat(destPattern);
