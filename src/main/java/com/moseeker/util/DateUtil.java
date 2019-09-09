@@ -542,4 +542,20 @@ public final class DateUtil {
         return  time;
     }
 
+    /*
+    * @param date:日期字符串
+    * @param originPattern:原日期格式
+    * @param destPattern:目标日期格式
+    * */
+    public static String formatDateStr(String date,String originPattern,String destPattern) {
+        try{
+            SimpleDateFormat originSdf = new SimpleDateFormat(originPattern);
+            SimpleDateFormat destSdf = new SimpleDateFormat(destPattern);
+            return destSdf.format(originSdf.parse(date));
+        }catch (ParseException e){
+            e.printStackTrace();
+            return date;
+        }
+    }
+
 }
