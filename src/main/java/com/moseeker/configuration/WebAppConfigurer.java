@@ -14,13 +14,13 @@ public class WebAppConfigurer extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public LogInterceptor getLogInterceptor() {
-        return new LogInterceptor();
+    public TimeConsumeInterceptor getTimeConsumeInterceptor() {
+        return new TimeConsumeInterceptor();
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(getTraceInterceptor()).addPathPatterns("/**");
-        registry.addInterceptor(getLogInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(getTimeConsumeInterceptor()).addPathPatterns("/**");
     }
 }

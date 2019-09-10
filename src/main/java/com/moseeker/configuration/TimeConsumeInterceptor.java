@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 @Component
-public class LogInterceptor implements HandlerInterceptor {
+public class TimeConsumeInterceptor implements HandlerInterceptor {
 
     private long start = 0;
 
@@ -32,7 +32,7 @@ public class LogInterceptor implements HandlerInterceptor {
         try {
             map.put("requestMethod", request.getMethod());
             map.put("requestUrl", request.getRequestURL());
-            map.put("耗时", (System.currentTimeMillis() - start) + "ms");
+            map.put("timeConsume", (System.currentTimeMillis() - start) + "ms");
             LogUtil.CommonLog(LogType.Info, "耗时监控", "", "", map);
         } catch (Exception e) {
             map.put("error", e.toString());
