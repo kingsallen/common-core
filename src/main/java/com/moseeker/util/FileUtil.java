@@ -83,15 +83,6 @@ public class FileUtil {
         return g.getFontMetrics(g.getFont()).charsWidth(waterMarkContent.toCharArray(), 0, waterMarkContent.length());
     }
 
-    public static void main(String[] args) {
-        Font font = new Font("微软雅黑", Font.PLAIN, 50);                     //水印字体
-        String srcImgPath="/Users/wulei/Desktop/归档/Rays.jpeg"; //源图片地址
-        String tarImgPath="/Users/wulei/Desktop/归档/Rays.jpeg"; //待存储的地址
-        String waterMarkContent="此照片仅供招聘使用";  //水印内容
-        Color color=new Color(255,255,255,128);                               //水印图片色彩以及透明度
-        new FileUtil().mark(srcImgPath, tarImgPath, waterMarkContent,font,color);
-    }
-
     /**
      * 给图片增加文字水印
      *
