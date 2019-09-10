@@ -193,7 +193,8 @@ public final class Constant {
     public static final String IDCARD_RECOG = "id_card";
     public static final String IDPHOTO_FRONT = "id_card_front";
     public static final String IDPHOTO_BACK = "id_card_back";
-	
+    public static final String IDPHOTO_ADDR = "id_card_addr";
+
 	public static final int DICT_CONSTANT_COMPANY_SCAL = 1102; 					//公司规模常量表parent_code值
 	public static final int DICT_CONSTANT_COMPANY_PROPERTY = 1103; 				//公司性质常量表parent_code值
 	
