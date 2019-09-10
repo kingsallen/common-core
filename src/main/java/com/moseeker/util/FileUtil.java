@@ -133,7 +133,7 @@ public class FileUtil {
     }
 
     // 加文字水印
-    public static void mark(BufferedImage bufImg, Image img, String text, Font font, Color color) {
+    private static void mark(BufferedImage bufImg, Image img, String text, Font font, Color color) {
         Graphics2D g = bufImg.createGraphics();
         int x = (int) (bufImg.getWidth()-getWatermarkLength(text,g)-(font.getSize()*text.length()));;
         int y = (int) (bufImg.getHeight()*0.96);;
