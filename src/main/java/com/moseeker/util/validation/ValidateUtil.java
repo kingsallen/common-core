@@ -7,23 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.moseeker.util.validation.rules.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.moseeker.exception.BaseException;
 import com.moseeker.util.StringUtils;
-import com.moseeker.util.validation.rules.DateType;
-import com.moseeker.util.validation.rules.DateTypeValidateRule;
-import com.moseeker.util.validation.rules.DoubleTypeValidateRule;
-import com.moseeker.util.validation.rules.IntTypeValidateRule;
-import com.moseeker.util.validation.rules.OverUpperValidateRule;
-import com.moseeker.util.validation.rules.RegExpressValidateRule;
-import com.moseeker.util.validation.rules.RequiredOneValidateRule;
-import com.moseeker.util.validation.rules.RequiredStringValidateRule;
-import com.moseeker.util.validation.rules.RequiredValidateRule;
-import com.moseeker.util.validation.rules.SensitiveWordsValidateRule;
-import com.moseeker.util.validation.rules.StringLengthValidateRule;
-import com.moseeker.util.validation.rules.StringSplitLengthValidateRule;
 
 /**
  * 
@@ -515,6 +504,37 @@ public class ValidateUtil {
 	}
 
 	/**
+	 * 手机号码校验器
+	 *
+	 * @param paramName
+	 * @param beanToBeValidated
+	 * @param errorMessage
+	 * @param message
+	 * @return DasValidateRule
+	 */
+	public ValidateRule addPhoneNumberValidate(String paramName,
+											 String beanToBeValidated, String errorMessage, String message)
+			throws BaseException {
+		PhoneNumberValidateRule pnvr = null;
+		try {
+			pnvr = new PhoneNumberValidateRule(paramName, beanToBeValidated,errorMessage);
+			if (!StringUtils.isNullOrEmpty(errorMessage)) {
+				pnvr.setErrorMessage(errorMessage);
+			}
+			if (!StringUtils.isNullOrEmpty(message)) {
+				pnvr.setMessage(message);
+			}
+			addToRules(pnvr);
+		} catch (BaseException e) {
+			logger.error("faild!", e);
+			throw e;
+		} finally {
+			// do nothing
+		}
+		return pnvr;
+	}
+
+	/**
 	 * 将创建好的rule 添加到验证库中
 	 * 
 	 * @param rule
@@ -597,6 +617,11 @@ public class ValidateUtil {
 					(String) param.get("errorMessage"),
 					(String) param.get("message"));
 			break;
+		case phoneNumber:
+			addPhoneNumberValidate((String) param.get("paramName"),
+					(String) param.get("beanToBeValiated"),
+					(String) param.get("errorMessage"),
+					(String) param.get("message"));
 		default:
 		}
 		return this;
