@@ -338,6 +338,81 @@ public interface LogBusinessType {
         },
 
         /**
+         * Offer已发送
+         */
+        OFFER_SEND{
+            @Override
+            public int getTypeId() {
+                return 48;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 候选人接受Offer
+         */
+        OFFER_ACCEPT{
+            @Override
+            public int getTypeId() {
+                return 49;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 候选人拒绝Offer
+         */
+        OFFER_REJECT{
+            @Override
+            public int getTypeId() {
+                return 50;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 候选人入职
+         */
+        ON_BOARDING{
+            @Override
+            public int getTypeId() {
+                return 51;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 放弃入职
+         */
+        ABANDON_ON_BOARDING{
+            @Override
+            public int getTypeId() {
+                return 52;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
          * 人才库批量取消收藏
          */
         TALENT_POOL_BATCH_CANCEL_COLLECT{
