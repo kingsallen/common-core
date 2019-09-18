@@ -14,15 +14,15 @@ import javax.servlet.MultipartConfigElement;
 @Configuration
 public class ConfigFileUpload {
 
-    @Bean
-    public MultipartConfigElement multipartConfigElement() {
-        MultipartConfigFactory factory = new MultipartConfigFactory();
-        //  单个数据大小
-        factory.setMaxFileSize("10240KB");
-        /// 总上传数据大小
-        factory.setMaxRequestSize("10240KB");
-        return factory.createMultipartConfig();
-    }
+//    @Bean
+//    public MultipartConfigElement multipartConfigElement() {
+//        MultipartConfigFactory factory = new MultipartConfigFactory();
+//        //  单个数据大小
+//        factory.setMaxFileSize("10240KB");
+//        /// 总上传数据大小
+//        factory.setMaxRequestSize("10240KB");
+//        return factory.createMultipartConfig();
+//    }
 
 
 }
