@@ -1,17 +1,10 @@
 package com.moseeker.constant.company;
 
-import sun.rmi.runtime.Log;
-
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 操作记录应用场景分类
  * @author yehu
  */
 public interface LogBusinessType {
-
-    Map<String, LogBusinessType> storage = new HashMap<>();
 
     /**
      * 获取操作类型id
@@ -247,11 +240,6 @@ public interface LogBusinessType {
         @Override
         public int getParentId() {
             return 1;
-        }
-        static {
-            for (LogBusinessType.Position position : LogBusinessType.Position.values()) {
-                storage.put(position.name(), position);
-            }
         }
     }
 
@@ -516,12 +504,6 @@ public interface LogBusinessType {
         @Override
         public int getParentId() {
             return 2;
-        }
-
-        static {
-            for(LogBusinessType.Recruit recruit:LogBusinessType.Recruit.values()){
-                storage.put(recruit.name(),recruit);
-            }
         }
 
 
@@ -804,15 +786,6 @@ public interface LogBusinessType {
         public int getParentId() {
             return 3;
         }
-
-        static {
-            for(LogBusinessType.Setting setting:LogBusinessType.Setting.values()){
-                storage.put(setting.name(),setting);
-            }
-        }
     }
-
-
-
 
 }
