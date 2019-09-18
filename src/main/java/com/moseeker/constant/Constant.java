@@ -333,6 +333,7 @@ public final class Constant {
 
     public static final Integer REDIS_OPERATION_LOCK = 500;
     public static final Integer REDIS_API_LOCK = 50;
+    public static final int THREAD_SLEEP_TIME = 500;
 
     // DateUtil
     public static final String FORMAT_YYYYMMDD = "yyyy-MM-dd";
