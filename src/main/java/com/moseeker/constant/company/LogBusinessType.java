@@ -413,6 +413,96 @@ public interface LogBusinessType {
         },
 
         /**
+         * 设置入职日期
+         */
+        SET_ENTRY_DATE{
+            @Override
+            public int getTypeId() {
+                return 53;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 新增面试安排
+         */
+        INTERVIEW_ADD{
+            @Override
+            public int getTypeId() {
+                return 54;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
+
+        /**
+         * 编辑面试安排
+         */
+        INTERVIEW_EDIT{
+            @Override
+            public int getTypeId() {
+                return 55;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 推荐到其他职位
+         */
+        RECOMMENT_TO_OTHER_POSITION{
+            @Override
+            public int getTypeId() {
+                return 56;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 转发候选人信息
+         */
+        TRANSMIT_CANDIDATE_INFORMATION{
+            @Override
+            public int getTypeId() {
+                return 57;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 放入人才库
+         */
+        ADD_TO_TALENT_POOL{
+            @Override
+            public int getTypeId() {
+                return 58;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
          * 人才库批量取消收藏
          */
         TALENT_POOL_BATCH_CANCEL_COLLECT{
