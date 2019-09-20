@@ -73,28 +73,40 @@ public class XssAndSqlHttpServletRequestWrapper extends HttpServletRequestWrappe
         if (s == null || s.isEmpty()) {
             return s;
         }else{
-            s = stripXSSAndSql(s);
+            return stripXSSAndSql(s);
         }
-        StringBuilder sb = new StringBuilder(s.length() + 16);
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            switch (c) {
-                case '>':
-                    sb.append("＞");// 转义大于号
-                    break;
-                case '<':
-                    sb.append("＜");// 转义小于号
-                    break;
-                case '\'':
-                    sb.append("");// 转义单引号
-                    break;
-                default:
-                    sb.append(c);
-                    break;
-            }
-        }
-        return sb.toString();
+//        StringBuilder sb = new StringBuilder(s.length() + 16);
+//        for (int i = 0; i < s.length(); i++) {
+//            char c = s.charAt(i);
+//            switch (c) {
+//                case '>':
+//                    sb.append("&gt;");// 转义大于号
+//                    break;
+//                case '<':
+//                    sb.append("&lt;");// 转义小于号
+//                    break;
+//                case '\'':
+////                    sb.append("'");// 转义单引号
+//                    break;
+//                default:
+//                    sb.append(c);
+//                    break;
+//            }
+//        }
+//        return sb.toString();
     }
+//    private static String xssEncode(String value) {
+//        if (value == null || value.isEmpty()) {
+//            return value;
+//        }
+//        value = value.replaceAll("eval\\((.*)\\)", "");
+//        value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");
+//        value = value.replaceAll("(?i)<script.*?>.*?<script.*?>", "");
+//        value = value.replaceAll("(?i)<script.*?>.*?</script.*?>", "");
+//        value = value.replaceAll("(?i)<.*?javascript:.*?>.*?</.*?>", "");
+//        value = value.replaceAll("(?i)<.*?\\s+on.*?>.*?</.*?>", "");
+//        return value;
+//    }
 
     /**
      * 获取最原始的request
@@ -117,7 +129,6 @@ public class XssAndSqlHttpServletRequestWrapper extends HttpServletRequestWrappe
 
         return req;
     }
-
     /**
      *
      * 防止xss跨脚本攻击（替换，根据实际情况调整）
@@ -135,8 +146,8 @@ public class XssAndSqlHttpServletRequestWrapper extends HttpServletRequestWrappe
             Pattern scriptPattern = Pattern.compile("<[\r\n| | ]*script[\r\n| | ]*>(.*?)</[\r\n| | ]*script[\r\n| | ]*>", Pattern.CASE_INSENSITIVE);
             value = scriptPattern.matcher(value).replaceAll("");
             // Avoid anything in a src="http://www.yihaomen.com/article/java/..." type of e-xpression
-            scriptPattern = Pattern.compile("src[\r\n| | ]*=[\r\n| | ]*[\\\"|\\\'](.*?)[\\\"|\\\']", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
-            value = scriptPattern.matcher(value).replaceAll("");
+//            scriptPattern = Pattern.compile("src[\r\n| | ]*=[\r\n| | ]*[\\\"|\\\'](.*?)[\\\"|\\\']", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
+//            value = scriptPattern.matcher(value).replaceAll("");
             // Remove any lonesome </script> tag
             scriptPattern = Pattern.compile("</[\r\n| | ]*script[\r\n| | ]*>", Pattern.CASE_INSENSITIVE);
             value = scriptPattern.matcher(value).replaceAll("");
@@ -156,10 +167,7 @@ public class XssAndSqlHttpServletRequestWrapper extends HttpServletRequestWrappe
             scriptPattern = Pattern.compile("vbscript[\r\n| | ]*:[\r\n| | ]*", Pattern.CASE_INSENSITIVE);
             value = scriptPattern.matcher(value).replaceAll("");
             // Avoid onload= expressions
-            scriptPattern = Pattern.compile("onload(.*?)=", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
-            value = scriptPattern.matcher(value).replaceAll("");
-            // Avoid onerror= expressions
-            scriptPattern = Pattern.compile("onerror(.*?)=", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
+            scriptPattern = Pattern.compile("on(.*?)=", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
             value = scriptPattern.matcher(value).replaceAll("");
         }
         return value;
