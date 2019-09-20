@@ -7,10 +7,9 @@ import java.io.IOException;
 
 
 /**
- * 过滤器
+ * xss攻击过滤器
  *
  */
-@WebFilter(filterName = "xssFilter", urlPatterns = "/*")
 public class XssFilter implements javax.servlet.Filter {
 
     @Override
