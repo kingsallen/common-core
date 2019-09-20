@@ -167,7 +167,7 @@ public class XssAndSqlHttpServletRequestWrapper extends HttpServletRequestWrappe
             scriptPattern = Pattern.compile("vbscript[\r\n| | ]*:[\r\n| | ]*", Pattern.CASE_INSENSITIVE);
             value = scriptPattern.matcher(value).replaceAll("");
             // Avoid onload= expressions
-            scriptPattern = Pattern.compile("on(.[0,15]?)=", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
+            scriptPattern = Pattern.compile("on([a-zA-Z_ ]{0,15}?)=", Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL);
             value = scriptPattern.matcher(value).replaceAll("");
         }
         return value;
