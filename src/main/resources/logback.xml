@@ -28,34 +28,32 @@
     </appender>
 
     <appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">
-        <additionalField>
-            <key>url</key>
-            <value>%X{url}</value>
-        </additionalField>
-        <additionalField>
-            <key>method</key>
-            <value>%X{method}</value>
-        </additionalField>
-        <additionalField>
-            <key>timeConsume</key>
-            <value>%X{timeConsume}</value>
-        </additionalField>
-        <additionalField>
-            <key>application</key>
-            <value>${spring.application.name}</value>
-        </additionalField>
-        <additionalField>
-            <key>customTraceId</key>
-            <value>%X{customTraceId}</value>
-        </additionalField>
-        <additionalField>
-            <key>X-B3-TraceId</key>
-            <value>%X{X-B3-TraceId}</value>
-        </additionalField>
-        <additionalField>
-            <key>msg</key>
-            <value>%msg%n</value>
-        </additionalField>
+        <layout class="com.moseeker.configuration.MyJsonLayout">
+            <additionalField>
+                <key>url</key>
+                <value>@{url}</value>
+            </additionalField>
+            <additionalField>
+                <key>method</key>
+                <value>@{method}</value>
+            </additionalField>
+            <additionalField>
+                <key>timeConsume</key>
+                <value>@{timeConsume}</value>
+            </additionalField>
+            <additionalField>
+                <key>application</key>
+                <value>${spring.application.name}</value>
+            </additionalField>
+            <additionalField>
+                <key>customTraceId</key>
+                <value>@{customTraceId}</value>
+            </additionalField>
+            <additionalField>
+                <key>X-B3-TraceId</key>
+                <value>@{X-B3-TraceId}</value>
+            </additionalField>
+        </layout>
         <host>${redis.elk.host}</host>
         <port>${redis.elk.port}</port>
         <key>log_301_debug</key>
