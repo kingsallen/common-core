@@ -30,6 +30,18 @@
     <appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">
         <layout class="com.moseeker.configuration.MyJsonLayout">
             <additionalField>
+                <key>customTraceId</key>
+                <value>@{customTraceId}</value>
+            </additionalField>
+            <additionalField>
+                <key>X-B3-TraceId</key>
+                <value>@{X-B3-TraceId}</value>
+            </additionalField>
+            <additionalField>
+                <key>application</key>
+                <value>${spring.application.name}</value>
+            </additionalField>
+            <additionalField>
                 <key>url</key>
                 <value>@{url}</value>
             </additionalField>
@@ -40,18 +52,6 @@
             <additionalField>
                 <key>timeConsume</key>
                 <value>@{timeConsume}</value>
-            </additionalField>
-            <additionalField>
-                <key>application</key>
-                <value>${spring.application.name}</value>
-            </additionalField>
-            <additionalField>
-                <key>customTraceId</key>
-                <value>@{customTraceId}</value>
-            </additionalField>
-            <additionalField>
-                <key>X-B3-TraceId</key>
-                <value>@{X-B3-TraceId}</value>
             </additionalField>
         </layout>
         <host>${redis.elk.host}</host>

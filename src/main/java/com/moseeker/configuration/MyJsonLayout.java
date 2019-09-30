@@ -34,26 +34,23 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
 
     @Override
     public synchronized String doLayout(ILoggingEvent event) {
-
         if (buf.capacity() > UPPER_LIMIT) {
             buf = new StringBuilder(DEFAULT_SIZE);
         } else {
             buf.setLength(0);
         }
-
         Map<String, String> mdc = event.getMDCPropertyMap();
         buf.append("{");
-        appendKeyValue(buf, "message", event.getFormattedMessage(), null);
-        buf.append(COMMA);
         appendKeyValue(buf, "@timestamp",
                 df.format(new Date(event.getTimeStamp())), null);
-        buf.append(COMMA);
-        appendKeyValue(buf, "logger", event.getLoggerName(), null);
         buf.append(COMMA);
         appendKeyValue(buf, "level", event.getLevel().toString(), null);
         buf.append(COMMA);
         appendKeyValue(buf, "thread", event.getThreadName(), null);
         buf.append(COMMA);
+        appendKeyValue(buf, "logger", event.getLoggerName(), null);
+        buf.append(COMMA);
+        appendKeyValue(buf, "message", event.getFormattedMessage(), null);
         IThrowableProxy tp = event.getThrowableProxy();
         if (tp != null) {
             buf.append(COMMA);
@@ -68,7 +65,6 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
             }
         }
         buf.append("}");
-
         return buf.toString();
     }
 
