@@ -20,7 +20,7 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
     private final static char DBL_QUOTE = '"';
     private final static char COMMA = ',';
 
-    private Map<String,Object> map = new HashMap<>();
+    //private Map<String,Object> map = new HashMap<>();
     private DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SZ");
     private Pattern MDC_VAR_PATTERN = Pattern.compile("\\@\\{([^}]*)\\}");
 
@@ -36,6 +36,7 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
     @Override
     public synchronized String doLayout(ILoggingEvent event) {
         Map<String, String> mdc = event.getMDCPropertyMap();
+        Map<String,Object> map = new HashMap<>();
         map.put("@timestamp", df.format(new Date(event.getTimeStamp())));
         map.put("level", event.getLevel().toString());
         map.put("thread", event.getThreadName());
