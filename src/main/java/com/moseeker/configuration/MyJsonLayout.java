@@ -4,6 +4,7 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.classic.spi.IThrowableProxy;
 import ch.qos.logback.classic.spi.ThrowableProxyUtil;
 import ch.qos.logback.core.LayoutBase;
+import com.alibaba.fastjson.JSON;
 import com.cwbase.logback.AdditionalField;
 
 import java.text.DateFormat;
@@ -19,7 +20,7 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
     private final static char DBL_QUOTE = '"';
     private final static char COMMA = ',';
 
-    private StringBuilder buf = new StringBuilder(DEFAULT_SIZE);
+    private Map<String,Object> map = new HashMap<>();
     private DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SZ");
     private Pattern MDC_VAR_PATTERN = Pattern.compile("\\@\\{([^}]*)\\}");
 
@@ -34,59 +35,44 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
 
     @Override
     public synchronized String doLayout(ILoggingEvent event) {
-        if (buf.capacity() > UPPER_LIMIT) {
-            buf = new StringBuilder(DEFAULT_SIZE);
-        } else {
-            buf.setLength(0);
-        }
         Map<String, String> mdc = event.getMDCPropertyMap();
-        buf.append("{");
-        appendKeyValue(buf, "@timestamp",
-                df.format(new Date(event.getTimeStamp())), null);
-        buf.append(COMMA);
-        appendKeyValue(buf, "level", event.getLevel().toString(), null);
-        buf.append(COMMA);
-        appendKeyValue(buf, "thread", event.getThreadName(), null);
-        buf.append(COMMA);
-        appendKeyValue(buf, "logger", event.getLoggerName(), null);
-        buf.append(COMMA);
-        appendKeyValue(buf, "message", event.getFormattedMessage(), null);
+        map.put("@timestamp", df.format(new Date(event.getTimeStamp())));
+        map.put("level", event.getLevel().toString());
+        map.put("thread", event.getThreadName());
+        map.put("logger", event.getLoggerName());
+        map.put("message", event.getFormattedMessage());
         IThrowableProxy tp = event.getThrowableProxy();
         if (tp != null) {
-            buf.append(COMMA);
             String throwable = ThrowableProxyUtil.asString(tp);
-            appendKeyValue(buf, "throwable", throwable, null);
+            map.put("throwable", throwable);
         }
-
         if(additionalFields != null) {
             for(AdditionalField field : additionalFields) {
-                buf.append(COMMA);
-                appendKeyValue(buf, field.getKey(), field.getValue(), mdc);
+                map.put(field.getKey(),mdcSubst(field.getValue(),mdc));
             }
         }
-        buf.append("}");
-        return buf.toString();
+        return JSON.toJSONString(map);
     }
 
 
-    private void appendKeyValue(StringBuilder buf, String key, String value,
-                                Map<String, String> mdc) {
-        if (value != null) {
-            buf.append(DBL_QUOTE);
-            buf.append(escape(key));
-            buf.append(DBL_QUOTE);
-            buf.append(':');
-            buf.append(DBL_QUOTE);
-            buf.append(escape(mdcSubst(value, mdc)));
-            buf.append(DBL_QUOTE);
-        } else {
-            buf.append(DBL_QUOTE);
-            buf.append(escape(key));
-            buf.append(DBL_QUOTE);
-            buf.append(':');
-            buf.append("null");
-        }
-    }
+//    private void appendKeyValue(StringBuilder buf, String key, String value,
+//                                Map<String, String> mdc) {
+//        if (value != null) {
+//            buf.append(DBL_QUOTE);
+//            buf.append(escape(key));
+//            buf.append(DBL_QUOTE);
+//            buf.append(':');
+//            buf.append(DBL_QUOTE);
+//            buf.append(escape(mdcSubst(value, mdc)));
+//            buf.append(DBL_QUOTE);
+//        } else {
+//            buf.append(DBL_QUOTE);
+//            buf.append(escape(key));
+//            buf.append(DBL_QUOTE);
+//            buf.append(':');
+//            buf.append("null");
+//        }
+//    }
 
     private String mdcSubst(String v, Map<String, String> mdc) {
         if (mdc != null && v != null && v.contains("@{")) {
@@ -110,51 +96,51 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
         return "application/json";
     }
 
-    private String escape(String s) {
-        if (s == null)
-            return null;
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
-            switch (ch) {
-                case '"':
-                    sb.append("\\\"");
-                    break;
-//                case '\\':
-//                    sb.append("\\\\");
+//    private String escape(String s) {
+//        if (s == null)
+//            return null;
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = 0; i < s.length(); i++) {
+//            char ch = s.charAt(i);
+//            switch (ch) {
+//                case '"':
+//                    sb.append("\\\"");
 //                    break;
-//                case '\b':
-//                    sb.append("\\b");
-//                    break;
-//                case '\f':
-//                    sb.append("\\f");
-//                    break;
-//                case '\n':
-//                    sb.append("\\n");
-//                    break;
-//                case '\r':
-//                    sb.append("\\r");
-//                    break;
-//                case '\t':
-//                    sb.append("\\t");
-//                    break;
-//                case '/':
-//                    sb.append("\\/");
-//                    break;
-                default:
-                    if (ch >= '\u0000' && ch <= '\u001F') {
-                        String ss = Integer.toHexString(ch);
-                        sb.append("\\u");
-                        for (int k = 0; k < 4 - ss.length(); k++) {
-                            sb.append('0');
-                        }
-                        sb.append(ss.toUpperCase());
-                    } else {
-                        sb.append(ch);
-                    }
-            }
-        }// for
-        return sb.toString();
-    }
+////                case '\\':
+////                    sb.append("\\\\");
+////                    break;
+////                case '\b':
+////                    sb.append("\\b");
+////                    break;
+////                case '\f':
+////                    sb.append("\\f");
+////                    break;
+////                case '\n':
+////                    sb.append("\\n");
+////                    break;
+////                case '\r':
+////                    sb.append("\\r");
+////                    break;
+////                case '\t':
+////                    sb.append("\\t");
+////                    break;
+////                case '/':
+////                    sb.append("\\/");
+////                    break;
+//                default:
+//                    if (ch >= '\u0000' && ch <= '\u001F') {
+//                        String ss = Integer.toHexString(ch);
+//                        sb.append("\\u");
+//                        for (int k = 0; k < 4 - ss.length(); k++) {
+//                            sb.append('0');
+//                        }
+//                        sb.append(ss.toUpperCase());
+//                    } else {
+//                        sb.append(ch);
+//                    }
+//            }
+//        }// for
+//        return sb.toString();
+//    }
 
 }
