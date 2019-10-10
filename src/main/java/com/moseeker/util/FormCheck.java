@@ -86,7 +86,7 @@ public class FormCheck {
 		if (str == null || str.trim().equals("")) {
 			throw PARAM_NULL_EXPCEPTION;
 		}
-		String regEx = "^([\\w-])+(\\.[\\w-]+)*@([\\w-])+((\\.[\\w-]{2,})+)$";
+		String regEx = "^([a-zA-Z0-9_\\.-]+)@([\\da-zA-Z\\.-]+)\\.([a-zA-Z]{2,6})$";
 		Pattern p = Pattern.compile(regEx);
 		Matcher m = p.matcher(str);
 		return m.find();
