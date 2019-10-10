@@ -21,11 +21,11 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
 
     private String NUMBER_REGEX = "\\d+";
 
-    List<AdditionalField> additionalFields;
+    List<MyAdditionalField> additionalFields;
 
-    public void setAdditionalField(AdditionalField additionalField) {
+    public void setAdditionalField(MyAdditionalField additionalField) {
         if (additionalFields == null) {
-            additionalFields = new ArrayList<AdditionalField>();
+            additionalFields = new ArrayList<MyAdditionalField>();
         }
         additionalFields.add(additionalField);
     }
@@ -45,13 +45,15 @@ public class MyJsonLayout extends LayoutBase<ILoggingEvent> {
             map.put("throwable", throwable);
         }
         if (additionalFields != null) {
-            for (AdditionalField field : additionalFields) {
+            for (MyAdditionalField field : additionalFields) {
                 String value = mdcSubst(field.getValue(), mdc);
-                if(StringUtils.isEmpty(value)){
+                if (StringUtils.isEmpty(value)) {
                     continue;
                 }
-                if (value.matches(NUMBER_REGEX)) {
-                    map.put(field.getKey(), Integer.parseInt(value));
+                if (field.getIsNumber() != null && field.getIsNumber().equals(1)) {
+                    if (value.matches(NUMBER_REGEX)) {
+                        map.put(field.getKey(), Integer.parseInt(value));
+                    }
                 } else {
                     map.put(field.getKey(), value);
                 }
