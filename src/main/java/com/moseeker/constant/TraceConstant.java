@@ -10,5 +10,4 @@ public class TraceConstant {
     public static final String URL = "url";
     public static final String METHOD = "method";
     public static final String TIMECONSUME = "timeConsume";
-    public static final String HOST = "host";
 }

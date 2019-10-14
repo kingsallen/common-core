@@ -42,10 +42,6 @@
                 <value>${spring.application.name}</value>
             </additionalField>
             <additionalField>
-                <key>host</key>
-                <value>@{host}</value>
-            </additionalField>
-            <additionalField>
                 <key>url</key>
                 <value>@{url}</value>
             </additionalField>

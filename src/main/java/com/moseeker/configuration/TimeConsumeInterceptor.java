@@ -33,7 +33,6 @@ public class TimeConsumeInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         Map<String, Object> map = new java.util.concurrent.ConcurrentHashMap<>();
         try {
-            MDC.put(HOST,request.getRemoteAddr());
             MDC.put(URL,request.getRequestURI());
             MDC.put(METHOD,request.getMethod());
             MDC.put(TIMECONSUME,(System.currentTimeMillis() - start)+"");
@@ -42,7 +41,6 @@ public class TimeConsumeInterceptor implements HandlerInterceptor {
             map.put("error", e.toString());
             LogUtil.CommonLog(LogType.Error, "耗时监控异常", "", "", map);
         }finally {
-            MDC.remove(HOST);
             MDC.remove(URL);
             MDC.remove(METHOD);
             MDC.remove(TIMECONSUME);
