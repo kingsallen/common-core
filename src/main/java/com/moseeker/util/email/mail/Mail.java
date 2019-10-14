@@ -9,10 +9,13 @@ import com.moseeker.util.email.attachment.Attachment;
 import com.moseeker.util.email.config.EmailContent;
 import com.moseeker.util.email.config.EmailSessionConfig;
 import com.moseeker.util.email.config.ServerConfig;
+import org.apache.axis.attachments.ImageDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
 import javax.mail.*;
@@ -164,7 +167,7 @@ public class Mail {
         	if(message == null) {
         		initMessage();
         	}
-            this.buildHeader(emailContent).buildContent(emailContent).buildAttachment(emailContent);
+            this.buildHeader(emailContent).buildContent(emailContent).buildAttachment(emailContent).buildImage(emailContent);
             this.message.saveChanges();
             return new Mail(this);
         }
@@ -218,6 +221,11 @@ public class Mail {
          */
         private MailBuilder buildAttachment(EmailContent emailContent) throws Exception {
         	Mail.buildAttachment(message, emailContent);
+            return this;
+        }
+
+        private MailBuilder buildImage(EmailContent emailContent) throws Exception {
+            Mail.buildImage(message, emailContent);
             return this;
         }
 
@@ -301,5 +309,17 @@ public class Mail {
                 content.addBodyPart(attachment.getAttachment());
             }
         }
+    }
+
+    private static void buildImage(Message message, EmailContent emailContent) throws Exception {
+        MimeMultipart content = (MimeMultipart) message.getContent();
+        MimeBodyPart image = new MimeBodyPart();
+        DataHandler dh = new DataHandler(new ImageDataSource("name",emailContent.getImage()));
+        image.setDataHandler(dh);
+        image.setContentID("emailImage");
+        content.addBodyPart(image);
+        content.setSubType("related");
+        MimeBodyPart body = new MimeBodyPart();
+        body.setContent(content);
     }
 }
