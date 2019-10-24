@@ -167,7 +167,7 @@ public class Mail {
         	if(message == null) {
         		initMessage();
         	}
-            this.buildHeader(emailContent).buildContent(emailContent).buildAttachment(emailContent).buildImage(emailContent);
+            this.buildHeader(emailContent).buildContent(emailContent).buildImage(emailContent).buildAttachment(emailContent);
             this.message.saveChanges();
             return new Mail(this);
         }
@@ -291,6 +291,7 @@ public class Mail {
     private static void buildContent(Message message, EmailContent emailContent) throws IOException, MessagingException {
     	 Multipart content = (Multipart) message.getContent();
          MimeBodyPart body = new MimeBodyPart();
+         body.setContentID("emailText");
          content.addBodyPart(body);
          body.setText(emailContent.getContent(), emailContent.getCharset(), emailContent.getSubType());
     }
@@ -312,14 +313,22 @@ public class Mail {
     }
 
     private static void buildImage(Message message, EmailContent emailContent) throws Exception {
-        MimeMultipart content = (MimeMultipart) message.getContent();
         MimeBodyPart image = new MimeBodyPart();
         DataHandler dh = new DataHandler(new ImageDataSource("name",emailContent.getImage()));
         image.setDataHandler(dh);
         image.setContentID("emailImage");
-        content.addBodyPart(image);
-        content.setSubType("related");
-        MimeBodyPart body = new MimeBodyPart();
-        body.setContent(content);
+
+        MimeMultipart content = (MimeMultipart) message.getContent();
+        BodyPart text = content.getBodyPart("emailText");
+        content.removeBodyPart(text);
+
+        MimeMultipart multipart = new MimeMultipart();
+        multipart.addBodyPart(text);
+        multipart.addBodyPart(image);
+        multipart.setSubType("related");
+
+        MimeBodyPart contentText =  new MimeBodyPart();
+        contentText.setContent(multipart);
+        content.addBodyPart(contentText);
     }
 }
