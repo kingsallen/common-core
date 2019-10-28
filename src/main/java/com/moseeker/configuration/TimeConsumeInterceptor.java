@@ -37,7 +37,7 @@ public class TimeConsumeInterceptor implements HandlerInterceptor {
             MDC.put(METHOD,request.getMethod());
             String timeConsume =(System.currentTimeMillis() - start)+"";
             MDC.put(TIMECONSUME,timeConsume);
-            LogUtil.CommonLog(LogType.Info, String.format("耗时监控：%s",timeConsume);
+            LogUtil.CommonLog(LogType.Info, String.format("耗时监控：%s",timeConsume));
         } catch (Exception e) {
             map.put("error", e.toString());
             LogUtil.CommonLog(LogType.Error, "耗时监控异常", "", "", map);
