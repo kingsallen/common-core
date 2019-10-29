@@ -3,6 +3,7 @@ package com.moseeker.util.email.config;
 
 import com.moseeker.util.email.attachment.Attachment;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -22,7 +23,9 @@ public class EmailContent {
 	private String content;							//邮件内容
 	private String subject;							//邮件标题
 	private List<Attachment> attachments;			//附件
-	
+
+	private Image image;						    //图片
+
 	private String charset = "utf-8";				//编码格式
 	private String subType = "html";				//邮件内容格式
 	
@@ -74,5 +77,12 @@ public class EmailContent {
 	}
 	public void setSubType(String subType) {
 		this.subType = subType;
+	}
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 }

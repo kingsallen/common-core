@@ -9,10 +9,13 @@ import com.moseeker.util.email.attachment.Attachment;
 import com.moseeker.util.email.config.EmailContent;
 import com.moseeker.util.email.config.EmailSessionConfig;
 import com.moseeker.util.email.config.ServerConfig;
+import org.apache.axis.attachments.ImageDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
 import javax.mail.*;
@@ -164,7 +167,7 @@ public class Mail {
         	if(message == null) {
         		initMessage();
         	}
-            this.buildHeader(emailContent).buildContent(emailContent).buildAttachment(emailContent);
+            this.buildHeader(emailContent).buildContent(emailContent).buildImage(emailContent).buildAttachment(emailContent);
             this.message.saveChanges();
             return new Mail(this);
         }
@@ -218,6 +221,11 @@ public class Mail {
          */
         private MailBuilder buildAttachment(EmailContent emailContent) throws Exception {
         	Mail.buildAttachment(message, emailContent);
+            return this;
+        }
+
+        private MailBuilder buildImage(EmailContent emailContent) throws Exception {
+            Mail.buildImage(message, emailContent);
             return this;
         }
 
@@ -283,6 +291,7 @@ public class Mail {
     private static void buildContent(Message message, EmailContent emailContent) throws IOException, MessagingException {
     	 Multipart content = (Multipart) message.getContent();
          MimeBodyPart body = new MimeBodyPart();
+         body.setContentID("emailText");
          content.addBodyPart(body);
          body.setText(emailContent.getContent(), emailContent.getCharset(), emailContent.getSubType());
     }
@@ -301,5 +310,25 @@ public class Mail {
                 content.addBodyPart(attachment.getAttachment());
             }
         }
+    }
+
+    private static void buildImage(Message message, EmailContent emailContent) throws Exception {
+        MimeBodyPart image = new MimeBodyPart();
+        DataHandler dh = new DataHandler(new ImageDataSource("name",emailContent.getImage()));
+        image.setDataHandler(dh);
+        image.setContentID("emailImage");
+
+        MimeMultipart content = (MimeMultipart) message.getContent();
+        BodyPart text = content.getBodyPart("emailText");
+        content.removeBodyPart(text);
+
+        MimeMultipart multipart = new MimeMultipart();
+        multipart.addBodyPart(text);
+        multipart.addBodyPart(image);
+        multipart.setSubType("related");
+
+        MimeBodyPart contentText =  new MimeBodyPart();
+        contentText.setContent(multipart);
+        content.addBodyPart(contentText);
     }
 }
