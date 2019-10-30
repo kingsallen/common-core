@@ -590,6 +590,66 @@ public interface LogBusinessType {
             public int getOperationtype() {
                 return LogOperationType.UPDATE.getNum();
             }
+        },
+
+        /**
+         * HR上传简历到职位
+         */
+        UPLOAD_TO_POSITION{
+            @Override
+            public int getTypeId() {
+                return 59;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
+
+        /**
+         * HR首次查看了候选人简历
+         */
+        PROFILE_VIEWED_BY_HR{
+            @Override
+            public int getTypeId() {
+                return 60;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 用人经理首次查看了候选人简历
+         */
+        PROFILE_VIEWED_BY_MANAGER{
+            @Override
+            public int getTypeId() {
+                return 61;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 用人经理对推荐简历进行反馈
+         */
+        PROFILE_FEEDBACK_BY_MANAGER{
+            @Override
+            public int getTypeId() {
+                return 62;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
         };
         @Override
         public int getParentId() {
