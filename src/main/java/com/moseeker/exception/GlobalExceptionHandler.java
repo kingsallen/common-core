@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.net.SocketTimeoutException;
 import java.sql.SQLException;
 
 /**
@@ -47,7 +48,7 @@ public class GlobalExceptionHandler {
     }
 
 
-    @ExceptionHandler(CouldNotConnectException.class)
+    @ExceptionHandler({CouldNotConnectException.class,SocketTimeoutException.class})
     public Result esException(Exception e) {
         Result result = new Result();
         log.error(e.getMessage(), e);
