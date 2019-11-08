@@ -20,6 +20,8 @@ public class TimeConsumeInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        MDC.put(URL,request.getRequestURI());
+        MDC.put(METHOD,request.getMethod());
         start = System.currentTimeMillis();
         return true;
     }
@@ -33,8 +35,6 @@ public class TimeConsumeInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         Map<String, Object> map = new java.util.concurrent.ConcurrentHashMap<>();
         try {
-            MDC.put(URL,request.getRequestURI());
-            MDC.put(METHOD,request.getMethod());
             String timeConsume =(System.currentTimeMillis() - start)+"";
             MDC.put(TIMECONSUME,timeConsume);
             LogUtil.CommonLog(LogType.Info, String.format("耗时监控：%s",timeConsume));

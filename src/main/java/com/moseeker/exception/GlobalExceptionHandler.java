@@ -2,11 +2,14 @@ package com.moseeker.exception;
 
 import com.moseeker.dto.Result;
 import com.moseeker.enums.CommonExceptionEnum;
+import com.moseeker.enums.ESExceptionEnum;
+import io.searchbox.client.config.exception.CouldNotConnectException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.net.SocketTimeoutException;
 import java.sql.SQLException;
 
 /**
@@ -43,4 +46,16 @@ public class GlobalExceptionHandler {
         result.setMessage(CommonExceptionEnum.error10001.getValue());
         return result;
     }
+
+
+    @ExceptionHandler({CouldNotConnectException.class,SocketTimeoutException.class})
+    public Result esException(Exception e) {
+        Result result = new Result();
+        log.error(e.getMessage(), e);
+        result.setCode(ESExceptionEnum.timeOut.getKey());
+        result.setMessage(ESExceptionEnum.timeOut.getValue());
+        return result;
+    }
+
+
 }
