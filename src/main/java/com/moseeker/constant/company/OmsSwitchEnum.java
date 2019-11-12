@@ -33,7 +33,7 @@ public enum OmsSwitchEnum {
     IDCARD_RECOGNITION(15,"身份证识别", false),//身份证识别
     LBS_POSITION_LIST(16,"LBS职位列表",false),//LBS职位列表
     MOMO_WECHAT(17,"MOMO微信端", true),//身份证识别
-    EMPLOYEE_IM_CHAT(18,"员工IM聊天",true); // 员工IM聊天 默认开
+    EMPLOYEE_IM_CHAT(30,"员工IM聊天",true); // 员工IM聊天 默认开
 
     private int value;
     private String name;
@@ -94,7 +94,6 @@ public enum OmsSwitchEnum {
         }else{
             return null ;
         }
-
     }
 
     /**
