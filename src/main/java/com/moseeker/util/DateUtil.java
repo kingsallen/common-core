@@ -561,4 +561,60 @@ public final class DateUtil {
         }
     }
 
+    /**
+     * 根据生日计算年龄
+     *
+     * @param  birthDay 生日
+     * @return
+     * @Author lee
+     * @Date 2019/11/13 16:57
+     */
+    public static Integer getAgeByBirth(Date birthDay) {
+        Calendar cal = Calendar.getInstance();
+        //生日大于当前时间，返回null
+        if (cal.before(birthDay)) {
+            return null;
+        }
+        int nowYear = cal.get(Calendar.YEAR);
+        int nowMonth = cal.get(Calendar.MONTH);
+        int nowDay = cal.get(Calendar.DAY_OF_MONTH);
+
+        cal.setTime(birthDay);
+        int birthYear = cal.get(Calendar.YEAR);
+        int birthMonth = cal.get(Calendar.MONTH);
+        int _birthDay = cal.get(Calendar.DAY_OF_MONTH);
+        int age = nowYear - birthYear;
+        if (birthMonth >= nowMonth) {
+            if (birthMonth == nowMonth) {
+                if (_birthDay > nowDay) {
+                    age--;
+                }
+            } else {
+                age--;
+            }
+        }
+        return age;
+    }
+
+    /**
+     * 根据年龄计算生日
+     *
+     * @param  age 年龄
+     * @return
+     * @Author lee
+     * @Date 2019/11/13 16:57
+     */
+    public static String getBirthByAge(int age, boolean isFull) {
+        if (age > 100 || age < 0) {
+            return null;
+        }
+        Calendar cal = Calendar.getInstance();
+        int nowYear = cal.get(Calendar.YEAR);
+        int birthYear = nowYear - age;
+        if (isFull) {
+            return birthYear+"-01-01";
+        } else {
+            return String.valueOf(birthYear);
+        }
+    }
 }

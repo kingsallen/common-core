@@ -338,6 +338,171 @@ public interface LogBusinessType {
         },
 
         /**
+         * Offer已发送
+         */
+        OFFER_SEND{
+            @Override
+            public int getTypeId() {
+                return 48;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 候选人接受Offer
+         */
+        OFFER_ACCEPT{
+            @Override
+            public int getTypeId() {
+                return 49;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 候选人拒绝Offer
+         */
+        OFFER_REJECT{
+            @Override
+            public int getTypeId() {
+                return 50;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 候选人入职
+         */
+        ON_BOARDING{
+            @Override
+            public int getTypeId() {
+                return 51;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 放弃入职
+         */
+        ABANDON_ON_BOARDING{
+            @Override
+            public int getTypeId() {
+                return 52;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 设置入职日期
+         */
+        SET_ENTRY_DATE{
+            @Override
+            public int getTypeId() {
+                return 53;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 新增面试安排
+         */
+        INTERVIEW_ADD{
+            @Override
+            public int getTypeId() {
+                return 54;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
+
+        /**
+         * 编辑面试安排
+         */
+        INTERVIEW_EDIT{
+            @Override
+            public int getTypeId() {
+                return 55;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 推荐到其他职位
+         */
+        RECOMMENT_TO_OTHER_POSITION{
+            @Override
+            public int getTypeId() {
+                return 56;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 转发候选人信息
+         */
+        TRANSMIT_CANDIDATE_INFORMATION{
+            @Override
+            public int getTypeId() {
+                return 57;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 放入人才库
+         */
+        ADD_TO_TALENT_POOL{
+            @Override
+            public int getTypeId() {
+                return 58;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
          * 人才库批量取消收藏
          */
         TALENT_POOL_BATCH_CANCEL_COLLECT{
@@ -419,6 +584,66 @@ public interface LogBusinessType {
             @Override
             public int getTypeId() {
                 return 29;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * HR上传简历到职位
+         */
+        UPLOAD_TO_POSITION{
+            @Override
+            public int getTypeId() {
+                return 59;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.CREATE.getNum();
+            }
+        },
+
+        /**
+         * HR首次查看了候选人简历
+         */
+        PROFILE_VIEWED_BY_HR{
+            @Override
+            public int getTypeId() {
+                return 60;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 用人经理首次查看了候选人简历
+         */
+        PROFILE_VIEWED_BY_MANAGER{
+            @Override
+            public int getTypeId() {
+                return 61;
+            }
+
+            @Override
+            public int getOperationtype() {
+                return LogOperationType.UPDATE.getNum();
+            }
+        },
+
+        /**
+         * 用人经理对推荐简历进行反馈
+         */
+        PROFILE_FEEDBACK_BY_MANAGER{
+            @Override
+            public int getTypeId() {
+                return 62;
             }
 
             @Override
