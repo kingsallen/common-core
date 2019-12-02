@@ -50,6 +50,7 @@ public final class Constant {
     public static final int APPID_IMPORT_SCRIPT = 203; // 脚本批量导入第三方简历
     public static final int APPID_PINDUODUO = 204;  // 聘多多
     public static final int APPID_OPENAPI = 302;  // OPENAPI
+    public static final int APPID_MOCHANNEL_SPIDER = 303;  // mo_channel_spider scrapy
 
 
     public static final String DASVALIDATE_SENSITIVEWORDS_ILLEGAL = "敏感词校验失败";
