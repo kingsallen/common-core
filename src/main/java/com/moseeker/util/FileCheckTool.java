@@ -200,6 +200,15 @@ public class FileCheckTool {
 
     /**
      * 校验文件是否是支持的文件格式
+     * @param fileContent 文件内容
+     * @return true 支持；false 不支持
+     */
+    public static boolean checkFileFormat(byte[] fileContent) {
+        return checkMagicNumber(fileContent) || isHtmlOrXml(fileContent);
+    }
+
+    /**
+     * 校验文件是否是支持的文件格式
      * @param fileName 文件名称
      * @param fileContent 文件内容
      * @return true 支持；false 不支持
@@ -209,7 +218,7 @@ public class FileCheckTool {
     }
 
    /* public static void main(String[] args) throws IOException {
-        File file = new File("/Users/huangxia/Desktop/fileverify/py 转图片.png");//"郭倩倩-37岁-15年经验-推广主任-猎聘简历(1).doc");
+        File file = new File("/Users/qiancheng/Desktop/fileverify/py 转图片.png");//"郭倩倩-37岁-15年经验-推广主任-猎聘简历(1).doc");
         String content = new String(IOUtils.toByteArray(new FileInputStream(file)));
         System.out.print(checkFileFormat(file.getName(), IOUtils.toByteArray(new FileInputStream(file))));
     }*/
