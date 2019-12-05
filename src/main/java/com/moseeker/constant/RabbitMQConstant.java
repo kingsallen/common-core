@@ -45,7 +45,10 @@ public enum RabbitMQConstant {
     INTERVIEW_DELAY_ROUTEKEY("interview_refresh_status_delay_routekey"),
     OPERATION_LOG_EXCHANGE("operation_log_exchange"),
     OPERATION_LOG_QUEUE("operation_log_queue"),
-    OPERATION_LOG_ROUTEKEY("operation_log_routekey")
+    OPERATION_LOG_ROUTEKEY("operation_log_routekey"),
+    POSITION_PROCESS_EXCHANGE("position_process_exchange"),
+    POSITION_PROCESS_QUEUE("position_process_queue"),
+    POSITION_PROCESS_ROUTEKEY("position_process_routekey")
     ;
 
     private String value;
