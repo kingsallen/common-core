@@ -1,5 +1,10 @@
 package com.moseeker.constant.company;
 
+import org.springframework.util.CollectionUtils;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 操作记录应用场景分类
  * @author yehu
@@ -23,6 +28,23 @@ public interface LogBusinessType {
      * @return
      */
     int getOperationtype();
+
+    Map<String,LogBusinessType> container=new HashMap<>();
+
+    static LogBusinessType initFromEnumStr(String enumStr){
+        if(CollectionUtils.isEmpty(container)){
+            for (Position position : Position.values()) {
+                container.put(position.toString(),position);
+            }
+            for (Recruit recruit : Recruit.values()) {
+                container.put(recruit.toString(),recruit);
+            }
+            for (Setting setting : Setting.values()) {
+                container.put(setting.toString(),setting);
+            }
+        }
+        return container.get(enumStr);
+    }
 
     /**
      * 职位相关
